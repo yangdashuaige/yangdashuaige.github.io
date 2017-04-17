@@ -1,0 +1,657 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="(2) 实验内容：设计Java类文件，并作简单测试具体要求：  创建项目：BankProject； 创建Account类：·位于包：com.mybank.domain；·向Account类中添加私有实例变量balance，用于维护客户银行账户的存款额；·添加有一个参数的公有构造方法：initBalance，用于初始化账户存款额；·添加一个公有方法：deposit(double amt)，用于向账户">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java实验3">
+<meta property="og:url" content="http://yoursite.com/2017/04/17/java实验3/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="(2) 实验内容：设计Java类文件，并作简单测试具体要求：  创建项目：BankProject； 创建Account类：·位于包：com.mybank.domain；·向Account类中添加私有实例变量balance，用于维护客户银行账户的存款额；·添加有一个参数的公有构造方法：initBalance，用于初始化账户存款额；·添加一个公有方法：deposit(double amt)，用于向账户">
+<meta property="og:updated_time" content="2017-04-17T12:32:54.317Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java实验3">
+<meta name="twitter:description" content="(2) 实验内容：设计Java类文件，并作简单测试具体要求：  创建项目：BankProject； 创建Account类：·位于包：com.mybank.domain；·向Account类中添加私有实例变量balance，用于维护客户银行账户的存款额；·添加有一个参数的公有构造方法：initBalance，用于初始化账户存款额；·添加一个公有方法：deposit(double amt)，用于向账户">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/17/java实验3/"/>
+
+
+
+
+
+  <title> java实验3 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">你是无意穿堂风，却偏偏引山洪。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/java实验3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                java实验3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T20:25:26+08:00">
+                2017-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>(2) 实验内容：设计Java类文件，并作简单测试<br>具体要求：</p>
+<ol>
+<li>创建项目：BankProject；</li>
+<li>创建Account类：<br>·位于包：com.mybank.domain；<br>·向Account类中添加私有实例变量balance，用于维护客户银行账户的存款额；<br>·添加有一个参数的公有构造方法：initBalance，用于初始化账户存款额；<br>·添加一个公有方法：deposit(double amt)，用于向账户存钱，返回值是boolean型；<br>·添加一个公有方法：withdraw(double amt)，用于从账户取钱，需要根据账户的实际余额做判断分析，返回值是boolean型；<br>·添加一个公有方法：getBalance()，用于返回balance的值，返回值是double型。</li>
+<li>创建Customer类：<br>·位于包：com.mybank.domain中；<br>·向Customer类添加三个实例变量：firstName，lastName，accounts（Account对象数组，长度为10）和numberOfAccounts（记录实际的账户个数）；<br>·添加一个公有构造方法：两个形式参数firstName，lastname，用于初始化客户姓名；还用于初始化accounts数组和numberOfAccounts；<br>·添加getFirstName方法：该方法返回客户的firstName实例变量；<br>·添加getLastName方法：该方法返回客户的lastName实例变量；<br>·添加addAccount方法：该方法有一个形式参数（即double amt），数组的下标通过实例变量numberOfAccounts实现递增，同时将实例化出来的Account对象存储到accounts数组中；<br>·添加getNumberOfAccounts方法：该方法返回numberOfAccounts实例变量；<br>·添加getAccount方法：根据传进来的数组下标返回指定下标的Account对象。<br>·重写toString() 方法，修改客户名字的输出方式。</li>
+<li>创建Bank类：<br>·位于包：com.mybank.domain中；<br>·向Bank类添加两个实例变量：customers（Customer对象数组，长度为10）和numberOfCustomers（记录实际客户个数）；<br>·添加一个无参的公有构造方法：用于初始化customers数组和customers数组个数；<br>·添加addCustomer方法：该方法有两个形式参数（即firstName，lastName），数组的下标通过实例变量numberOfCustomers实现递增，同时将实例化出来的Customer对象存储到customers数组中；<br>·添加getNumberOfCustomers方法：该方法返回numberOfCustomers实例变量；<br>·添加getCustomer方法：根据传进来的数组下标返回指定下标的Customers对象。</li>
+<li>创建TestBanking类，该类有程序入口 main() 函数：<br>·该类文件位于包：com.mybank.test；<br>·通过初始化Bank对象和调用相应方法，为银行的每个客户及其账户开户；<br>·用双重for循环遍历银行类的customers数组以及每个客户的accounts数组，通过随机数类（Random类）然后每个账户分别完成存取款，并最终打印输出客户姓名及其每个账户的余额。</li>
+</ol>
+<p>五、实验要求及总结</p>
+<ol>
+<li>结合上课内容，对上述程序先阅读，然后上机并调试程序，并对实验结果写出你自己的分析结论。</li>
+<li>整理上机步骤，总结经验和体会。</li>
+<li>完成实验报告和上交程序。</li>
+</ol>
+<p>ACCOUNT类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">package com.mybank.domain;</div><div class="line"></div><div class="line">public class Account &#123;</div><div class="line">	private double balance;</div><div class="line">	Account(double initBalance)&#123;</div><div class="line">		this.balance=initBalance;</div><div class="line">	&#125;</div><div class="line">	public boolean deposit(double amt)</div><div class="line">	&#123;</div><div class="line">		balance+=amt;</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	public boolean withdraw(double amt)&#123;</div><div class="line">		if(balance&gt;=amt)&#123;</div><div class="line">			balance-=amt;</div><div class="line">			return true;</div><div class="line">		&#125;</div><div class="line">		else&#123;</div><div class="line">			System.out.println(&quot;余额不足&quot;);</div><div class="line">			return false;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	public double getBalance()&#123;</div><div class="line">		return balance;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>bank类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package com.mybank.domain;</div><div class="line"></div><div class="line">public class Bank &#123;</div><div class="line">	private Customer customers[];</div><div class="line">	private int numberOfCustomers;</div><div class="line">	public Bank()&#123;</div><div class="line">		customers=new Customer[10];</div><div class="line">		numberOfCustomers=0;</div><div class="line">	&#125;</div><div class="line">    public void	addCustomer(String firstname,String lastname)&#123;</div><div class="line">	customers[numberOfCustomers++]=new Customer(firstname,lastname);</div><div class="line">    &#125;</div><div class="line">    public int getNumberOfCustomers()&#123;</div><div class="line">	return numberOfCustomers;</div><div class="line">   &#125;</div><div class="line">    public Customer getCustomer(int index)&#123;</div><div class="line">	return customers[index];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>customer类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">package com.mybank.domain;</div><div class="line"></div><div class="line">public class Customer &#123;</div><div class="line">	private String firstname;</div><div class="line">	private String lastname;</div><div class="line">	//代码重用：组合</div><div class="line">	private Account [] accounts;</div><div class="line">	private int numberOfAccoounts;</div><div class="line">	Customer(String firstname,String lastname)&#123;</div><div class="line">		this.firstname=firstname;</div><div class="line">		this.lastname=lastname;</div><div class="line">		numberOfAccoounts++;</div><div class="line">		accounts=new Account[10];</div><div class="line">		numberOfAccoounts=0;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	public String getFirstname()&#123;</div><div class="line">		return firstname;</div><div class="line">	&#125;</div><div class="line">	public String getLastname()&#123;</div><div class="line">		return lastname;</div><div class="line">	&#125;	</div><div class="line">	public void addAccount(double amt)&#123;</div><div class="line">		accounts[numberOfAccoounts++]=new Account(amt);</div><div class="line">	&#125;</div><div class="line">	public int getNumberOfAccounts()&#123;</div><div class="line">		return numberOfAccoounts;</div><div class="line">	&#125;</div><div class="line">	public 	Account getAccount(int index)&#123;</div><div class="line">		return accounts[index];</div><div class="line">	&#125;</div><div class="line">	public String toString()&#123;</div><div class="line">		return &quot;[ &quot;+firstname+&quot;,&quot;+lastname+&quot;]&quot;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>testbanking类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">package com.mybank.test;</div><div class="line"></div><div class="line">import java.util.Random;</div><div class="line"></div><div class="line">import com.mybank.domain.Bank;</div><div class="line">import com.mybank.domain.Customer;</div><div class="line"></div><div class="line">public class TestBanking &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Bank bank=new Bank();</div><div class="line">		bank.addCustomer(&quot;Marry&quot;, &quot;White&quot;);</div><div class="line">		Customer cus1=bank.getCustomer(0);</div><div class="line">		cus1.addAccount(1000);</div><div class="line">		cus1.addAccount(10000);</div><div class="line">		bank.addCustomer(&quot;Tom&quot;,&quot;Soley&quot;);</div><div class="line">		Customer cus2=bank.getCustomer(1);</div><div class="line">		cus2.addAccount(5000);</div><div class="line">		Random ran=new Random();</div><div class="line">		for(int i=0;i&lt;bank.getNumberOfCustomers();i++)&#123;</div><div class="line">			Customer cus=bank.getCustomer(i);</div><div class="line">		for(int j=0;j&lt;cus.getNumberOfAccounts();j++)&#123;			</div><div class="line">		     Account acc=cus.getAccount(j);</div><div class="line">		    acc.deposit(Math.random()*1000);</div><div class="line">		    acc.withdraw(Math.random()*5000);</div><div class="line">		    System.out.print(cus.toString()+&quot;:&quot;+cus.getAccount(j));</div><div class="line">		&#125;</div><div class="line">     &#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/17/java实验2/" rel="prev" title="java实验2">
+                java实验2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
