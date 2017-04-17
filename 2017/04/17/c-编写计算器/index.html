@@ -87,12 +87,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="杨大帅哥的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="首先，打开vs，并新建名字为计算器的程序。  然后，在新程序界面窗口上放置合适的控件：包括显示过程数字和结果数字的textbox控件，用于各字 输入和计算方式的按钮。如下图所示：  接下来就是逻辑的代码了，其实也不是很难。我们先定义一些变量。1234double a = 0;double b = 0;bool c = false;string d;   接着我会附上功能代码以便更好理解这四个量">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="c#编写计算器">
+<meta property="og:url" content="http://yoursite.com/2017/04/17/c-编写计算器/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="首先，打开vs，并新建名字为计算器的程序。  然后，在新程序界面窗口上放置合适的控件：包括显示过程数字和结果数字的textbox控件，用于各字 输入和计算方式的按钮。如下图所示：  接下来就是逻辑的代码了，其实也不是很难。我们先定义一些变量。1234double a = 0;double b = 0;bool c = false;string d;   接着我会附上功能代码以便更好理解这四个量">
+<meta property="og:image" content="http://oohubzl9h.bkt.clouddn.com/%E8%AE%A1%E7%AE%97%E5%99%A81.PNG">
+<meta property="og:image" content="http://oohubzl9h.bkt.clouddn.com/%E6%8F%90%E9%86%92.PNG">
+<meta property="og:updated_time" content="2017-04-17T11:59:45.822Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="杨大帅哥的博客">
+<meta name="twitter:title" content="c#编写计算器">
+<meta name="twitter:description" content="首先，打开vs，并新建名字为计算器的程序。  然后，在新程序界面窗口上放置合适的控件：包括显示过程数字和结果数字的textbox控件，用于各字 输入和计算方式的按钮。如下图所示：  接下来就是逻辑的代码了，其实也不是很难。我们先定义一些变量。1234double a = 0;double b = 0;bool c = false;string d;   接着我会附上功能代码以便更好理解这四个量">
+<meta name="twitter:image" content="http://oohubzl9h.bkt.clouddn.com/%E8%AE%A1%E7%AE%97%E5%99%A81.PNG">
 
 
 
@@ -120,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/17/c-编写计算器/"/>
 
 
 
 
 
-  <title> 杨大帅哥的博客 </title>
+  <title> c#编写计算器 | 杨大帅哥的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -151,9 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -236,9 +242,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -268,10 +274,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/04/17/c-编写计算器/" itemprop="url">
-                  c#编写计算器
-                </a>
+                c#编写计算器
               
             
           </h1>
@@ -322,30 +325,33 @@
       
 
       
+        <p>  首先，打开vs，并新建名字为计算器的程序。<br>  然后，在新程序界面窗口上放置合适的控件：包括显示过程数字和结果数字的textbox控件，用于各字<br> 输入和计算方式的按钮。如下图所示：<br><img src="http://oohubzl9h.bkt.clouddn.com/%E8%AE%A1%E7%AE%97%E5%99%A81.PNG" alt="计算器"><br>  接下来就是逻辑的代码了，其实也不是很难。我们先定义一些变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">double a = 0;</div><div class="line">double b = 0;</div><div class="line">bool c = false;</div><div class="line">string d;</div></pre></td></tr></table></figure></p>
+<p>  接着我会附上功能代码以便更好理解这四个量的作用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">private void button11_Click(object sender, EventArgs e)</div><div class="line">&#123;</div><div class="line">    if(c==true)</div><div class="line">    &#123;</div><div class="line">        textBox1.Text = &quot;&quot;;</div><div class="line">        c = false;</div><div class="line">    &#125;</div><div class="line">    textBox1.Text += &quot;1&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>  这是数字键一的代码逻辑，可以看出在一开始c的默认值是false，因为这时的textbox是无显示的，所以并不需要去给他置空，只需在显示窗口显示便可。<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  private void button16_Click(object sender, EventArgs e)</div><div class="line">&#123;</div><div class="line">    if (c == true)</div><div class="line">    &#123;</div><div class="line">        textBox1.Text = &quot;&quot;;</div><div class="line">        c = false;</div><div class="line">    &#125;</div><div class="line">    textBox1.Text += &quot;0&quot;;</div><div class="line">    if (d == &quot;/&quot;)</div><div class="line">    &#123;</div><div class="line">        textBox1.Clear();</div><div class="line">        MessageBox.Show(&quot;除数不能为0&quot;, &quot;错误提示&quot;, MessageBoxButtons.OK, MessageBoxIcon.Warning);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>  其他的数字键大体上都差不多，但是有一个例外，那就是0，所以0的数字键多了一个判断除数是否为0的过程。当除数为0时，会有以下提醒：<br>  <img src="http://oohubzl9h.bkt.clouddn.com/%E6%8F%90%E9%86%92.PNG" alt="提醒"><br>  而在面对+-*/等符号时，可以看出d的作用是存储运算符,而b是存储先输入的数字。代码如下<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  private void button4_Click(object sender, EventArgs e)</div><div class="line">&#123;</div><div class="line">    c = true;</div><div class="line">    b = double.Parse(textBox1.Text);</div><div class="line">    d = &quot;+&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接下来，通过一个switch（d）语句来做出不同逻辑的运算。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">private void button18_Click(object sender, EventArgs e)</div><div class="line">&#123;</div><div class="line">    switch (d)</div><div class="line">    &#123;</div><div class="line">        case &quot;+&quot;: a = b + double.Parse(textBox1.Text);break;</div><div class="line">        case &quot;-&quot;: a = b - double.Parse(textBox1.Text);break;</div><div class="line">        case &quot;*&quot;: a = b * double.Parse(textBox1.Text);break;</div><div class="line">        case &quot;/&quot;: a = b / double.Parse(textBox1.Text); break;</div><div class="line">        case &quot;x2&quot;: a = b *double.Parse(textBox1.Text); break;</div><div class="line">        case &quot;sqrt&quot;: a = Math.Sqrt(b);break;</div><div class="line">        case &quot;log&quot;: a = Math.Log(double.Parse(textBox1.Text), b);break;</div><div class="line">        case &quot;ln&quot;: a = Math.Log(b, Math.E);break;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    textBox1.Text = a + &quot;&quot;;</div><div class="line">    c = true;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
         
-          
-            首先，打开vs，并新建名字为计算器的程序。  然后，在新程序界面窗口上放置合适的控件：包括显示过程数字和结果数字的textbox控件，用于各字 输入和计算方式的按钮。如下图所示：  接下来就是逻辑的代码了，其实也不是很难。我们先定义一些变量。1234double a = 0;double b =
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/17/c-编写计算器/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
-      
-    </div>
-
-    <div>
       
     </div>
 
@@ -353,275 +359,38 @@
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/15/c-编写记事本/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨彦修">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨大帅哥的博客">
-    </span>
-
-    
-      <header class="post-header">
-
         
-        
-          <h1 class="post-title" itemprop="name headline">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-              
-                
-                <a class="post-title-link" href="/2017/04/15/c-编写记事本/" itemprop="url">
-                  c#编写记事本
-                </a>
-              
+              <a href="/2017/04/15/c-编写记事本/" rel="prev" title="c#编写记事本">
+                c#编写记事本 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-15T19:05:54+08:00">
-                2017-04-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            记事本是一种常用的软件，而微软自带了一个记事本软件，如下图所示：    而我这个记事本很简单，只做了菜单栏，下面我将简单地介绍一下记事本的做法。  首先，打开vs，然后新建项目，选择Winform，拖动工具箱里面的menustrip，在面编辑菜单栏的名字。它共有文件，编辑，格式，查看，帮助5个下
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/15/c-编写记事本/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/12/致橡树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="杨彦修">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨大帅哥的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/12/致橡树/" itemprop="url">
-                  致橡树
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T12:11:57+08:00">
-                2017-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          我如果爱你绝不像攀援的凌霄花借你的高枝炫耀自己我如果爱你绝不学痴情的鸟儿为绿荫重复单调的歌曲也不止像泉源常年送来清凉的慰藉也不止像险峰增加你的高度，衬托你的威仪甚至日光甚至春雨不，这些都还不够我必须是你近旁的一株木棉作为树的形象和你站在一起根，紧握在地下叶，相融在云里每一阵风吹过我们都互相致意但没有
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/12/致橡树/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -629,6 +398,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -809,6 +582,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
