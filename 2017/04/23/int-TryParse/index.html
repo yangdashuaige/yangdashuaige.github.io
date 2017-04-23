@@ -87,19 +87,17 @@
 
 
 
-<meta name="description" content="继承是一种由已知的类创建新类的机制。利用继承，可以先编写一个共有属性的一般类，再根据该一般类编写具有特殊属性的新类，新类继承一般类的状态和行为，并根据需要增加新的状态和行为。关键字 extends 且java里的继承是单一继承，也就是子类只能有一个父类。（构造方法不会被继承）  如果子类和父类在同一个包中，那么子类自然地继承了其父类中不是private的成员变量作为自己的成员变量，方法中非pr">
+<meta name="description" content="程序开发中，免不了不同数据类型之间的转换。C#中针对转换有了一个TryParse的方法。 如果转换成功则返回true。否则返回false int.TryParse(string s,out int i) 的参数： s是要转换的字符串，i 是转换的结果。 经过测试发现如下： int i=0; 1、s 为null int.TryParse(null,out i)false 2、s 为空字符串 int.">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="继承与接口">
-<meta property="og:url" content="http://yoursite.com/2017/04/18/继承与接口/index.html">
+<meta property="og:title" content="int.TryParse">
+<meta property="og:url" content="http://yoursite.com/2017/04/23/int-TryParse/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
-<meta property="og:description" content="继承是一种由已知的类创建新类的机制。利用继承，可以先编写一个共有属性的一般类，再根据该一般类编写具有特殊属性的新类，新类继承一般类的状态和行为，并根据需要增加新的状态和行为。关键字 extends 且java里的继承是单一继承，也就是子类只能有一个父类。（构造方法不会被继承）  如果子类和父类在同一个包中，那么子类自然地继承了其父类中不是private的成员变量作为自己的成员变量，方法中非pr">
-<meta property="og:image" content="http://oohubzl9h.bkt.clouddn.com/example5_1.PNG">
-<meta property="og:updated_time" content="2017-04-18T12:44:34.502Z">
+<meta property="og:description" content="程序开发中，免不了不同数据类型之间的转换。C#中针对转换有了一个TryParse的方法。 如果转换成功则返回true。否则返回false int.TryParse(string s,out int i) 的参数： s是要转换的字符串，i 是转换的结果。 经过测试发现如下： int i=0; 1、s 为null int.TryParse(null,out i)false 2、s 为空字符串 int.">
+<meta property="og:updated_time" content="2017-04-23T07:35:13.514Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="继承与接口">
-<meta name="twitter:description" content="继承是一种由已知的类创建新类的机制。利用继承，可以先编写一个共有属性的一般类，再根据该一般类编写具有特殊属性的新类，新类继承一般类的状态和行为，并根据需要增加新的状态和行为。关键字 extends 且java里的继承是单一继承，也就是子类只能有一个父类。（构造方法不会被继承）  如果子类和父类在同一个包中，那么子类自然地继承了其父类中不是private的成员变量作为自己的成员变量，方法中非pr">
-<meta name="twitter:image" content="http://oohubzl9h.bkt.clouddn.com/example5_1.PNG">
+<meta name="twitter:title" content="int.TryParse">
+<meta name="twitter:description" content="程序开发中，免不了不同数据类型之间的转换。C#中针对转换有了一个TryParse的方法。 如果转换成功则返回true。否则返回false int.TryParse(string s,out int i) 的参数： s是要转换的字符串，i 是转换的结果。 经过测试发现如下： int i=0; 1、s 为null int.TryParse(null,out i)false 2、s 为空字符串 int.">
 
 
 
@@ -127,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/18/继承与接口/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/23/int-TryParse/"/>
 
 
 
 
 
-  <title> 继承与接口 | 杨大帅哥的博客 </title>
+  <title> int.TryParse | 杨大帅哥的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +250,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/18/继承与接口/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/23/int-TryParse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨彦修">
@@ -273,7 +271,7 @@
             
             
               
-                继承与接口
+                int.TryParse
               
             
           </h1>
@@ -288,8 +286,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T20:05:20+08:00">
-                2017-04-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-23T15:34:21+08:00">
+                2017-04-23
               </time>
             
 
@@ -324,13 +322,19 @@
       
 
       
-        <p>  继承是一种由已知的类创建新类的机制。利用继承，可以先编写一个共有属性的一般类，再根据该一般类编写具有特殊属性的新类，新类继承一般类的状态和行为，并根据需要增加新的状态和行为。关键字 extends 且java里的继承是单一继承，也就是子类只能有一个父类。（构造方法不会被继承）<br>  如果子类和父类在同一个包中，那么子类自然地继承了其父类中不是private的成员变量作为自己的成员变量，方法中非private的也被继承。如，下面的四个源文件在同一个包中。<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">  package grandson_son;</div><div class="line"></div><div class="line">public class Father &#123;</div><div class="line">	private int money;</div><div class="line">	int weight;</div><div class="line">	int getweight()&#123;</div><div class="line">		return weight;</div><div class="line">	&#125;</div><div class="line">	protected void setWeight(int w)&#123;</div><div class="line">		weight=w;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">package grandson_son;</div><div class="line"></div><div class="line">public class Son extends Father &#123;</div><div class="line">	String hand;</div><div class="line">	public void setHand(String hand)&#123;</div><div class="line">		this.hand=hand;</div><div class="line">	&#125;</div><div class="line">	String getHand()&#123;</div><div class="line">		return hand;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">  package grandson_son;</div><div class="line"></div><div class="line">public class Grandson extends Son &#123;</div><div class="line">	String foot;</div><div class="line">	public void setFoot(String foot)&#123;</div><div class="line">		this.foot=foot;</div><div class="line">	&#125;</div><div class="line">	String getFoot()&#123;</div><div class="line">		return foot;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">  package grandson_son;</div><div class="line"></div><div class="line">public class Example5_1 &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Son son=new Son();</div><div class="line">		Grandson grandson=new Grandson();</div><div class="line">		son.setWeight(62);</div><div class="line">		son.setHand(&quot;一双大手&quot;);</div><div class="line">		grandson.setWeight(29);</div><div class="line">		grandson.setFoot(&quot;一双小脚&quot;);</div><div class="line">		System.out.println(&quot;儿子的重量&quot;+son.getweight());</div><div class="line">		System.out.println(&quot;孙子的重量&quot;+grandson.getweight());</div><div class="line">		System.out.println(&quot;儿子的手&quot;+son.getHand());</div><div class="line">		System.out.println(&quot;孙子的手&quot;+grandson.getHand());</div><div class="line">		System.out.println(&quot;孙子的脚&quot;+grandson.getFoot());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>  运算的结果如下图所示：<br>  <img src="http://oohubzl9h.bkt.clouddn.com/example5_1.PNG" alt="example5_1"></p>
-<p>  如果子类与父类不在同一个包中，那么子类继承了父类的protected public 成员变量作为子类的成员变量，并且继承了父类中protected public 方法，继承的成员或方法的访问权限保持不变。子类不能继承父类的友好变量和友好方法。</p>
-<p>  ##protected 的进一步说明<br>  一个类中的proteced成员变量和方法是可以被他的直接子类和间接子类继承，比如b是a的子类，c是b的子类，d是c的子类，那么b c d 都继承了a的protected成员变量和方法。<br>  如果在D中本身创建了一个D对象，那么该对象总可以通过“.”运算符访问继承的货自己定义的protected变量和方法。但是如果在OTHER类中用D类创建了一个对象object，该对象通过. 访问proteed的方法和变量权限如下：<br>  1，如果是D中声明的，只需OTHE D 在同一个包中就可以<br>  2.如果是继承来的A OTHER 必须在一个包</p>
+        <p>程序开发中，免不了不同数据类型之间的转换。C#中针对转换有了一个TryParse的方法。</p>
+<p>如果转换成功则返回true。否则返回false</p>
+<p>int.TryParse(string s,out int i) 的参数： s是要转换的字符串，i 是转换的结果。</p>
+<p>经过测试发现如下：</p>
+<p>int i=0;</p>
+<p>1、s 为null</p>
+<p>int.TryParse(null,out i)<br>false</p>
+<p>2、s 为空字符串</p>
+<p>int.TryParse(“”,out i)<br>false<br>3、s字符串中带有 空格。</p>
+<p>int.TryParse(“1 “,out i)<br>true<br>int.TryParse(“ 1”,out i)<br>true<br>int.TryParse(“ 1 “,out i)<br>true<br>int.TryParse(“1 2”,out i)<br>false<br>4、非数字型字符串 肯定是 false了。</p>
+<p>5、在数据库的操作中，经常会遇到了 DBNull</p>
+<p>int.TryParse(System.DBNull,out i)<br>“System.DBNull”是一个“类型”，这在给定的上下文中无效</p>
+<p>int.TryParse(System.DBNull.Value,out i)<br>与“int.TryParse(string, out int)”最匹配的重载方法具有一些无效参数<br>int.TryParse(System.DBNull.Value.ToString(),out i)<br>false<br>可以发现，System.DBNull.Value可以直接进行ToString()的。</p>
 
       
     </div>
@@ -367,18 +371,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/23/java试验4/" rel="next" title="java试验4">
-                <i class="fa fa-chevron-left"></i> java试验4
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/18/写给幸福/" rel="prev" title="写给幸福">
-                写给幸福 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/23/java试验4/" rel="prev" title="java试验4">
+                java试验4 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
