@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="程序开发中，免不了不同数据类型之间的转换。C#中针对转换有了一个TryParse的方法。 如果转换成功则返回true。否则返回false int.TryParse(string s,out int i) 的参数： s是要转换的字符串，i 是转换的结果。 经过测试发现如下： int i=0; 1、s 为null int.TryParse(null,out i)false 2、s 为空字符串 int.">
+<meta name="description" content="求s=a+aa+aaa+aaaa+aa…a的值，其中a是一个数字。例如：2+22（此时共有2个2相加），3+33+333（此时共有3个3相加），   5+55+555+5555+55555（此时共有5个5相加）请由键盘输入求和的项数a，给出计算结果。（10分） 1234567891011121314151617181920import java.util.Scanner;public class">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="int.TryParse">
-<meta property="og:url" content="http://yoursite.com/2017/04/23/int-TryParse/index.html">
+<meta property="og:title" content="Java作业四">
+<meta property="og:url" content="http://yoursite.com/2017/05/15/Java作业四/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
-<meta property="og:description" content="程序开发中，免不了不同数据类型之间的转换。C#中针对转换有了一个TryParse的方法。 如果转换成功则返回true。否则返回false int.TryParse(string s,out int i) 的参数： s是要转换的字符串，i 是转换的结果。 经过测试发现如下： int i=0; 1、s 为null int.TryParse(null,out i)false 2、s 为空字符串 int.">
-<meta property="og:updated_time" content="2017-04-23T07:35:13.514Z">
+<meta property="og:description" content="求s=a+aa+aaa+aaaa+aa…a的值，其中a是一个数字。例如：2+22（此时共有2个2相加），3+33+333（此时共有3个3相加），   5+55+555+5555+55555（此时共有5个5相加）请由键盘输入求和的项数a，给出计算结果。（10分） 1234567891011121314151617181920import java.util.Scanner;public class">
+<meta property="og:updated_time" content="2017-05-15T06:54:03.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="int.TryParse">
-<meta name="twitter:description" content="程序开发中，免不了不同数据类型之间的转换。C#中针对转换有了一个TryParse的方法。 如果转换成功则返回true。否则返回false int.TryParse(string s,out int i) 的参数： s是要转换的字符串，i 是转换的结果。 经过测试发现如下： int i=0; 1、s 为null int.TryParse(null,out i)false 2、s 为空字符串 int.">
+<meta name="twitter:title" content="Java作业四">
+<meta name="twitter:description" content="求s=a+aa+aaa+aaaa+aa…a的值，其中a是一个数字。例如：2+22（此时共有2个2相加），3+33+333（此时共有3个3相加），   5+55+555+5555+55555（此时共有5个5相加）请由键盘输入求和的项数a，给出计算结果。（10分） 1234567891011121314151617181920import java.util.Scanner;public class">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/23/int-TryParse/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/15/Java作业四/"/>
 
 
 
 
 
-  <title> int.TryParse | 杨大帅哥的博客 </title>
+  <title> Java作业四 | 杨大帅哥的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +250,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/23/int-TryParse/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/15/Java作业四/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨彦修">
@@ -271,7 +271,7 @@
             
             
               
-                int.TryParse
+                Java作业四
               
             
           </h1>
@@ -286,8 +286,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-23T15:34:21+08:00">
-                2017-04-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-15T14:06:04+08:00">
+                2017-05-15
               </time>
             
 
@@ -322,19 +322,13 @@
       
 
       
-        <p>程序开发中，免不了不同数据类型之间的转换。C#中针对转换有了一个TryParse的方法。</p>
-<p>如果转换成功则返回true。否则返回false</p>
-<p>int.TryParse(string s,out int i) 的参数： s是要转换的字符串，i 是转换的结果。</p>
-<p>经过测试发现如下：</p>
-<p>int i=0;</p>
-<p>1、s 为null</p>
-<p>int.TryParse(null,out i)<br>false</p>
-<p>2、s 为空字符串</p>
-<p>int.TryParse(“”,out i)<br>false<br>3、s字符串中带有 空格。</p>
-<p>int.TryParse(“1 “,out i)<br>true<br>int.TryParse(“ 1”,out i)<br>true<br>int.TryParse(“ 1 “,out i)<br>true<br>int.TryParse(“1 2”,out i)<br>false<br>4、非数字型字符串 肯定是 false了。</p>
-<p>5、在数据库的操作中，经常会遇到了 DBNull</p>
-<p>int.TryParse(System.DBNull,out i)<br>“System.DBNull”是一个“类型”，这在给定的上下文中无效</p>
-<p>int.TryParse(System.DBNull.Value,out i)<br>与“int.TryParse(string, out int)”最匹配的重载方法具有一些无效参数<br>int.TryParse(System.DBNull.Value.ToString(),out i)<br>false<br>可以发现，System.DBNull.Value可以直接进行ToString()的。</p>
+        <ol>
+<li><p>求s=a+aa+aaa+aaaa+aa…a的值，其中a是一个数字。<br>例如：2+22（此时共有2个2相加），3+33+333（此时共有3个3相加），<br>   5+55+555+5555+55555（此时共有5个5相加）<br>请由键盘输入求和的项数a，给出计算结果。（10分）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">public class Example2 &#123;</div><div class="line">	public static void main(String[] args)&#123;</div><div class="line">		Scanner sc=new Scanner(System.in);</div><div class="line">		System.out.println(&quot;输入求和的项数a&quot;);</div><div class="line">		int a=sc.nextInt();</div><div class="line">		int mount,m;</div><div class="line">		m=a;</div><div class="line">		int temp=a;</div><div class="line">		mount=0;</div><div class="line">		while(m!=0)&#123;</div><div class="line">			mount=mount+a;</div><div class="line">			a=a*10+temp;</div><div class="line">			m--;</div><div class="line">		&#125;</div><div class="line">		System.out.println(mount);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>按要求完成下列任务：（10分）<br>（1）定义一个接口，包含一个有两个参数的area方法，用于计算面积；（2分）<br>（2）定义描述圆的Circle类，数据成员为半径radius，并根据需要补充必要的方法；（3分）<br>（3）定义描述矩形的Rectangle类，其数据成员为长度length和宽度width，并根据需要补充必要的方法；（3分）<br>（4）定义一个测试类，通过输入一个圆的半径和一个矩形的长和宽，对所定义的类和接口进行测试。（2分）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">public interface Area &#123;</div><div class="line">	double area(double a,double b);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">public class Circle implements Area &#123;</div><div class="line">	</div><div class="line">	public double area(double radius,double x)&#123;</div><div class="line">		return 3.14*radius*radius;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">public class Rectangle implements Area &#123;</div><div class="line">	</div><div class="line">	public double area(double length,double height)&#123;</div><div class="line">		</div><div class="line">		return length*height;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String []args)&#123;</div><div class="line">	Circle circle=new Circle();</div><div class="line">	System.out.println(&quot;输入圆的半径&quot;);</div><div class="line">	Scanner sc=new Scanner(System.in);</div><div class="line">	double radius=sc.nextDouble();</div><div class="line">	System.out.println(&quot;圆形面积为&quot;+circle.area(radius, 1));</div><div class="line">	Rectangle rect=new Rectangle();</div><div class="line">	System.out.println(&quot;输入矩形长和宽&quot;);</div><div class="line">	Scanner sc1=new Scanner(System.in);</div><div class="line">	double length=sc1.nextDouble();</div><div class="line">	Scanner sc2=new Scanner(System.in);</div><div class="line">	double height=sc2.nextDouble();</div><div class="line">	System.out.println(&quot;矩形面积为&quot;+rect.area(length, height));</div><div class="line">	</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ol>
 
       
     </div>
@@ -371,8 +365,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/25/abstract类-与-接口/" rel="next" title="abstract类 与 接口">
-                <i class="fa fa-chevron-left"></i> abstract类 与 接口
+              <a href="/2017/05/15/Java作业三/" rel="next" title="Java作业三">
+                <i class="fa fa-chevron-left"></i> Java作业三
               </a>
             
           </div>
@@ -381,8 +375,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/23/java试验4/" rel="prev" title="java试验4">
-                java试验4 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/10/常用实用类/" rel="prev" title="常用实用类">
+                常用实用类 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
