@@ -87,17 +87,19 @@
 
 
 
-<meta name="description" content="@Override是伪代码,表示重写(当然不写也可以)，不过写上有如下好处:1、可以当注释用,方便阅读；2、编译器可以给你验证@Override下面的方法名是否是你父类中所有的，如果没有则报错。例如，你如果没写@Override，而你下面的方法名又写错了，这时你的编译器是可以编译通过的，因为编译器以为这个方法是你的子类中自己增加的方法。 举例：在重写父类的onCreate时，在方法前面加上@Ove">
+<meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768import java.util.ArrayList;public class Testfile1 &amp;#123;	public static  v">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="@Override作用">
-<meta property="og:url" content="http://yoursite.com/2017/05/04/Override作用/index.html">
+<meta property="og:title" content="java处理事件">
+<meta property="og:url" content="http://yoursite.com/2017/05/29/java处理事件/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
-<meta property="og:description" content="@Override是伪代码,表示重写(当然不写也可以)，不过写上有如下好处:1、可以当注释用,方便阅读；2、编译器可以给你验证@Override下面的方法名是否是你父类中所有的，如果没有则报错。例如，你如果没写@Override，而你下面的方法名又写错了，这时你的编译器是可以编译通过的，因为编译器以为这个方法是你的子类中自己增加的方法。 举例：在重写父类的onCreate时，在方法前面加上@Ove">
-<meta property="og:updated_time" content="2017-05-04T07:12:41.101Z">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768import java.util.ArrayList;public class Testfile1 &amp;#123;	public static  v">
+<meta property="og:image" content="http://oohubzl9h.bkt.clouddn.com/%E9%98%B2%E6%99%92%E9%9C%9C%E7%9A%84.PNG">
+<meta property="og:updated_time" content="2017-05-29T11:48:50.747Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="@Override作用">
-<meta name="twitter:description" content="@Override是伪代码,表示重写(当然不写也可以)，不过写上有如下好处:1、可以当注释用,方便阅读；2、编译器可以给你验证@Override下面的方法名是否是你父类中所有的，如果没有则报错。例如，你如果没写@Override，而你下面的方法名又写错了，这时你的编译器是可以编译通过的，因为编译器以为这个方法是你的子类中自己增加的方法。 举例：在重写父类的onCreate时，在方法前面加上@Ove">
+<meta name="twitter:title" content="java处理事件">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768import java.util.ArrayList;public class Testfile1 &amp;#123;	public static  v">
+<meta name="twitter:image" content="http://oohubzl9h.bkt.clouddn.com/%E9%98%B2%E6%99%92%E9%9C%9C%E7%9A%84.PNG">
 
 
 
@@ -125,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/04/Override作用/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/29/java处理事件/"/>
 
 
 
 
 
-  <title> @Override作用 | 杨大帅哥的博客 </title>
+  <title> java处理事件 | 杨大帅哥的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/04/Override作用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/29/java处理事件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨彦修">
@@ -271,7 +273,7 @@
             
             
               
-                @Override作用
+                java处理事件
               
             
           </h1>
@@ -286,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-04T15:12:14+08:00">
-                2017-05-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-29T19:43:12+08:00">
+                2017-05-29
               </time>
             
 
@@ -322,8 +324,8 @@
       
 
       
-        <p>@Override是伪代码,表示重写(当然不写也可以)，不过写上有如下好处:<br>1、可以当注释用,方便阅读；<br>2、编译器可以给你验证@Override下面的方法名是否是你父类中所有的，如果没有则报错。例如，你如果没写@Override，而你下面的方法名又写错了，这时你的编译器是可以编译通过的，因为编译器以为这个方法是你的子类中自己增加的方法。</p>
-<p>举例：在重写父类的onCreate时，在方法前面加上@Override 系统可以帮你检查方法的正确性。<br>@Override<br>public void onCreate(Bundle savedInstanceState)<br>{…….}<br>这种写法是正确的，如果你写成：<br>@Override<br>public void oncreate(Bundle savedInstanceState)<br>{…….}<br>编译器会报如下错误：The method oncreate(Bundle) of type HelloWorld must override or implement a supertype method，以确保你正确重写onCreate方法（因为oncreate应该为onCreate）。而如果你不加@Override，则编译器将不会检测出错误，而是会认为你为子类定义了一个新方法：oncreate</p>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line">import java.util.ArrayList;</div><div class="line"></div><div class="line">public class Testfile1 &#123;</div><div class="line"></div><div class="line">	public static  void main(String[] args) &#123;</div><div class="line">		WindowNumber win=new WindowNumber();</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">import java.awt.FlowLayout;</div><div class="line"></div><div class="line">import javax.swing.JFrame;</div><div class="line">import javax.swing.JTextField;</div><div class="line"></div><div class="line">public class WindowNumber extends JFrame&#123;</div><div class="line">	JTextField input,output;</div><div class="line">	PoliceListen listener;</div><div class="line">	public WindowNumber()&#123;</div><div class="line">		init();</div><div class="line">		setBounds(100,100,150,150);</div><div class="line">		setVisible(true);</div><div class="line">		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div><div class="line">	&#125;</div><div class="line">	public void init()&#123;</div><div class="line">		setLayout(new FlowLayout());</div><div class="line">		input=new JTextField(10);</div><div class="line">		output=new JTextField(10);</div><div class="line">		output.setEditable(false);</div><div class="line">		listener=new PoliceListen();</div><div class="line">		listener.setJTextField(output);</div><div class="line">		input.addActionListener(listener);</div><div class="line">		add(input);</div><div class="line">		add(output);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">import java.awt.event.ActionEvent;</div><div class="line">import java.awt.event.ActionListener;</div><div class="line"></div><div class="line">import javax.swing.JTextField;</div><div class="line"></div><div class="line">public class PoliceListen implements ActionListener &#123;</div><div class="line">	    JTextField text;</div><div class="line">	    public void setJTextField(JTextField text)&#123;</div><div class="line">	    	this.text=text;</div><div class="line">	    &#125;</div><div class="line">	public void actionPerformed(ActionEvent e)&#123;</div><div class="line">		int n=0,m=0;</div><div class="line">		JTextField textSource=(JTextField)e.getSource();</div><div class="line">		String str=textSource.getText();</div><div class="line">		if(!str.isEmpty())&#123;</div><div class="line">			try&#123;</div><div class="line">				n=Integer.parseInt(str);</div><div class="line">				m=n*n;</div><div class="line">				text.setText(&quot;&quot;+m);</div><div class="line">			&#125;</div><div class="line">			catch(Exception ee)&#123;</div><div class="line">				textSource.setText(&quot;请输入数字&quot;);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果是这样的，如图:<br><img src="http://oohubzl9h.bkt.clouddn.com/%E9%98%B2%E6%99%92%E9%9C%9C%E7%9A%84.PNG" alt="1"></p>
 
       
     </div>
@@ -360,18 +362,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/10/常用实用类/" rel="next" title="常用实用类">
-                <i class="fa fa-chevron-left"></i> 常用实用类
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/30/网格系统工作原理/" rel="prev" title="网格系统工作原理">
-                网格系统工作原理 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/21/Java-swing/" rel="prev" title="Java swing">
+                Java swing <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
