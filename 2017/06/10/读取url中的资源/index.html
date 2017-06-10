@@ -1,0 +1,646 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="URL对象InputStream openStream（）方法可以返回一个输入流，该输入流指向URL对象所包含的资源。通过该输入流可以将服务器上的资源信息读入到客户端。在下面的例子中，单击确定按钮，显示网页。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读取url中的资源">
+<meta property="og:url" content="http://yoursite.com/2017/06/10/读取url中的资源/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="URL对象InputStream openStream（）方法可以返回一个输入流，该输入流指向URL对象所包含的资源。通过该输入流可以将服务器上的资源信息读入到客户端。在下面的例子中，单击确定按钮，显示网页。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525">
+<meta property="og:image" content="http://oohubzl9h.bkt.clouddn.com/taobao.PNG">
+<meta property="og:image" content="http://oohubzl9h.bkt.clouddn.com/zhen.PNG">
+<meta property="og:updated_time" content="2017-06-10T07:13:43.244Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读取url中的资源">
+<meta name="twitter:description" content="URL对象InputStream openStream（）方法可以返回一个输入流，该输入流指向URL对象所包含的资源。通过该输入流可以将服务器上的资源信息读入到客户端。在下面的例子中，单击确定按钮，显示网页。123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525">
+<meta name="twitter:image" content="http://oohubzl9h.bkt.clouddn.com/taobao.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/10/读取url中的资源/"/>
+
+
+
+
+
+  <title> 读取url中的资源 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">你是无意穿堂风，却偏偏引山洪。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/10/读取url中的资源/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                读取url中的资源
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-10T14:51:09+08:00">
+                2017-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>URL对象InputStream openStream（）方法可以返回一个输入流，该输入流指向URL对象所包含的资源。通过该输入流可以将服务器上的资源信息读入到客户端。<br>在下面的例子中，单击确定按钮，显示网页。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line">import java.net.InetAddress;</div><div class="line">import java.net.UnknownHostException;</div><div class="line"></div><div class="line">public class Example6 &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		WindowURL win=new WindowURL();</div><div class="line">		try&#123;</div><div class="line">			InetAddress address_1=InetAddress.getByName(&quot;www.sina.com.cn&quot;);</div><div class="line">			System.out.println(address_1.toString());</div><div class="line">			InetAddress address_2=InetAddress.getByName(&quot;163.111.222.3&quot;);</div><div class="line">			System.out.println(address_2.toString());</div><div class="line">		&#125;catch(UnknownHostException e)&#123;</div><div class="line">			System.out.println(&quot;无法找到www.sina.com&quot;);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">import java.awt.BorderLayout;</div><div class="line">import java.awt.event.ActionEvent;</div><div class="line">import java.awt.event.ActionListener;</div><div class="line">import java.io.IOException;</div><div class="line">import java.net.URL;</div><div class="line"></div><div class="line">import javax.swing.JButton;</div><div class="line">import javax.swing.JEditorPane;</div><div class="line">import javax.swing.JFrame;</div><div class="line">import javax.swing.JLabel;</div><div class="line">import javax.swing.JPanel;</div><div class="line">import javax.swing.JScrollPane;</div><div class="line">import javax.swing.JTextField;</div><div class="line">import javax.swing.event.HyperlinkEvent;</div><div class="line">import javax.swing.event.HyperlinkListener;</div><div class="line"></div><div class="line">public class WindowURL extends JFrame implements ActionListener,Runnable &#123;</div><div class="line">	JButton button;</div><div class="line">	URL url;</div><div class="line">	JTextField text;</div><div class="line">	JEditorPane editPane;</div><div class="line">	byte b[]=new byte[118];</div><div class="line">	Thread thread;</div><div class="line">	public WindowURL()&#123;</div><div class="line">		text=new JTextField(20);</div><div class="line">	editPane=new JEditorPane();</div><div class="line">	editPane.setEditable(false);</div><div class="line">	button=new JButton(&quot;确定&quot;);</div><div class="line">	button.addActionListener(this);</div><div class="line">	thread=new Thread(this);</div><div class="line">	JPanel p=new JPanel();</div><div class="line">	p.add(new JLabel(&quot;输入网址&quot;));</div><div class="line">	p.add(text);</div><div class="line">	p.add(button);</div><div class="line">	JScrollPane scroll=new JScrollPane(editPane);</div><div class="line">	add(scroll,BorderLayout.CENTER);</div><div class="line">	add(p,BorderLayout.NORTH);</div><div class="line">	setBounds(160,60,420,300);</div><div class="line">	setVisible(true);</div><div class="line">	validate();</div><div class="line">	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div><div class="line">	editPane.addHyperlinkListener(new HyperlinkListener()&#123;</div><div class="line">		public void hyperlinkUpdate(HyperlinkEvent e)&#123;</div><div class="line">			if(e.getEventType()==HyperlinkEvent.EventType.ACTIVATED)&#123;</div><div class="line">				try&#123;editPane.setPage(e.getURL());&#125;</div><div class="line">				catch(IOException e1)&#123;&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">	&#125;</div><div class="line">	public void actionPerformed(ActionEvent e)&#123;</div><div class="line">		if(!(thread.isAlive()))&#123;</div><div class="line">			thread=new Thread(this);</div><div class="line">		&#125;</div><div class="line">		try&#123;</div><div class="line">			thread.start();</div><div class="line">		&#125;</div><div class="line">		catch(Exception ee)&#123;</div><div class="line">			text.setText(&quot;我正在读取&quot;+url);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void run()&#123;</div><div class="line">		try&#123;</div><div class="line">			int n=-1;</div><div class="line">			editPane.setText(null);</div><div class="line">			url=new URL(text.getText().trim());</div><div class="line">			editPane.setPage(url);</div><div class="line">		&#125;</div><div class="line">		catch(Exception e1)&#123;</div><div class="line">			text.setText(&quot;&quot;+e1);</div><div class="line">			return;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>图片效果如下:<br><img src="http://oohubzl9h.bkt.clouddn.com/taobao.PNG" alt="taobao"></p>
+<p>当我们想看一个网站的源码的时候，可以用下面这种方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line">package urllianxi;</div><div class="line"></div><div class="line">public class Example &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		</div><div class="line">		WindowHTML win=new WindowHTML();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">package urllianxi;</div><div class="line"></div><div class="line">import java.awt.BorderLayout;</div><div class="line">import java.awt.Label;</div><div class="line">import java.awt.event.ActionEvent;</div><div class="line">import java.awt.event.ActionListener;</div><div class="line">import java.net.URL;</div><div class="line"></div><div class="line">import javax.swing.JButton;</div><div class="line">import javax.swing.JFrame;</div><div class="line">import javax.swing.JPanel;</div><div class="line">import javax.swing.JScrollPane;</div><div class="line">import javax.swing.JTextArea;</div><div class="line">import javax.swing.JTextField;</div><div class="line"></div><div class="line">import org.omg.CORBA.portable.InputStream;</div><div class="line"></div><div class="line">public class WindowHTML extends JFrame implements ActionListener,Runnable&#123;</div><div class="line">	JButton button;</div><div class="line">	URL url;</div><div class="line">	JTextField text;</div><div class="line">	JTextArea area;</div><div class="line">	byte b[]=new byte[118];</div><div class="line">	Thread thread;</div><div class="line">	WindowHTML()&#123;</div><div class="line">		text =new JTextField(20);</div><div class="line">		area=new JTextArea();</div><div class="line">		button=new JButton(&quot;确定&quot;);</div><div class="line">		button.addActionListener(this);</div><div class="line">		thread=new Thread(this);</div><div class="line">		JPanel p=new JPanel();</div><div class="line">		p.add(new Label(&quot;输入网址&quot;));</div><div class="line">		p.add(text);</div><div class="line">		p.add(button);</div><div class="line">		add(p,BorderLayout.NORTH);</div><div class="line">		add(new JScrollPane(area),BorderLayout.CENTER);</div><div class="line">		setBounds(160,60,450,300);</div><div class="line">		setVisible(true);</div><div class="line">		validate();</div><div class="line">		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</div><div class="line">	&#125;</div><div class="line">	public void actionPerformed(ActionEvent e)&#123;</div><div class="line">		if(!(thread.isAlive()))</div><div class="line">			thread=new Thread(this);</div><div class="line">		try&#123;</div><div class="line">			thread.start();</div><div class="line">		&#125;</div><div class="line">		catch(Exception ee)&#123;</div><div class="line">			text.setText(&quot;我正在读取&quot;+url);</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	public void run()&#123;</div><div class="line">		try&#123;</div><div class="line">			int n=-1;</div><div class="line">			area.setText(null);</div><div class="line">			url=new URL(text.getText().trim());</div><div class="line">			java.io.InputStream in= url.openStream();</div><div class="line">			while((n=in.read(b))!=-1)&#123;</div><div class="line">				String s=new String(b,0,n);</div><div class="line">				area.append(s);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		catch(Exception e1)&#123;</div><div class="line">			text.setText(null);</div><div class="line">			return;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://oohubzl9h.bkt.clouddn.com/zhen.PNG" alt="zhen"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/02/java实验七/" rel="prev" title="java实验七">
+                java实验七 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
