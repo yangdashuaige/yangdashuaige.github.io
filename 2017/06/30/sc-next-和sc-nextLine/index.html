@@ -87,17 +87,20 @@
 
 
 
-<meta name="description" content="1234567891011121314151617181920package example;import javax.swing.*;import java.awt.*;public class example1 &amp;#123;	public static void main(String[] args) &amp;#123;		JFrame win1=new JFrame(&amp;quot;第一个窗口&amp;quo">
+<meta name="description" content="next()方法读取到有效字符以后才可以结束输入，对输入有效字符前遇到的空格键，Tab键或ENTER键等结束符，next()方法会自动将其去掉 ，只有在输入有效字符后，next()方法才将其后输入的空格键，Tab键，Enter键视为分隔符或者结束符。简单地说，next()查找并返回来自扫描器的下一个完整标记。完整标记的前后是与分隔模式匹配的输入信息，所以next（）方法并不能得到带空格的字符串">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java swing">
-<meta property="og:url" content="http://yoursite.com/2017/05/21/Java-swing/index.html">
+<meta property="og:title" content="sc.next()和sc.nextLine()">
+<meta property="og:url" content="http://yoursite.com/2017/06/30/sc-next-和sc-nextLine/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
-<meta property="og:description" content="1234567891011121314151617181920package example;import javax.swing.*;import java.awt.*;public class example1 &amp;#123;	public static void main(String[] args) &amp;#123;		JFrame win1=new JFrame(&amp;quot;第一个窗口&amp;quo">
-<meta property="og:updated_time" content="2017-06-10T06:51:41.875Z">
+<meta property="og:description" content="next()方法读取到有效字符以后才可以结束输入，对输入有效字符前遇到的空格键，Tab键或ENTER键等结束符，next()方法会自动将其去掉 ，只有在输入有效字符后，next()方法才将其后输入的空格键，Tab键，Enter键视为分隔符或者结束符。简单地说，next()查找并返回来自扫描器的下一个完整标记。完整标记的前后是与分隔模式匹配的输入信息，所以next（）方法并不能得到带空格的字符串">
+<meta property="og:image" content="http://oohubzl9h.bkt.clouddn.com/6.30.PNG">
+<meta property="og:image" content="http://oohubzl9h.bkt.clouddn.com/6.301.PNG">
+<meta property="og:updated_time" content="2017-06-30T11:50:31.067Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java swing">
-<meta name="twitter:description" content="1234567891011121314151617181920package example;import javax.swing.*;import java.awt.*;public class example1 &amp;#123;	public static void main(String[] args) &amp;#123;		JFrame win1=new JFrame(&amp;quot;第一个窗口&amp;quo">
+<meta name="twitter:title" content="sc.next()和sc.nextLine()">
+<meta name="twitter:description" content="next()方法读取到有效字符以后才可以结束输入，对输入有效字符前遇到的空格键，Tab键或ENTER键等结束符，next()方法会自动将其去掉 ，只有在输入有效字符后，next()方法才将其后输入的空格键，Tab键，Enter键视为分隔符或者结束符。简单地说，next()查找并返回来自扫描器的下一个完整标记。完整标记的前后是与分隔模式匹配的输入信息，所以next（）方法并不能得到带空格的字符串">
+<meta name="twitter:image" content="http://oohubzl9h.bkt.clouddn.com/6.30.PNG">
 
 
 
@@ -125,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/21/Java-swing/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/30/sc-next-和sc-nextLine/"/>
 
 
 
 
 
-  <title> Java swing | 杨大帅哥的博客 </title>
+  <title> sc.next()和sc.nextLine() | 杨大帅哥的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/21/Java-swing/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/30/sc-next-和sc-nextLine/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="杨彦修">
@@ -271,7 +274,7 @@
             
             
               
-                Java swing
+                sc.next()和sc.nextLine()
               
             
           </h1>
@@ -286,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-21T19:21:42+08:00">
-                2017-05-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T18:48:21+08:00">
+                2017-06-30
               </time>
             
 
@@ -322,7 +325,11 @@
       
 
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package example;</div><div class="line">import javax.swing.*;</div><div class="line">import java.awt.*;</div><div class="line">public class example1 &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		JFrame win1=new JFrame(&quot;第一个窗口&quot;);</div><div class="line">		JFrame win2=new JFrame(&quot;第二个窗口&quot;);</div><div class="line">		Container con=win1.getContentPane();</div><div class="line">		con.setBackground(Color.YELLOW);//通过getcontenpane来给背景换颜色</div><div class="line">		win1.setBounds(60,100,188,108);</div><div class="line">		win2.setBounds(260,100,188,108);</div><div class="line">		win1.setVisible(true);   //使得窗口可见</div><div class="line">		win2.setVisible(true);</div><div class="line">		win1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//设置关闭窗口后的处理：释放当前窗口</div><div class="line">		win2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//退出程序</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>  next()方法读取到有效字符以后才可以结束输入，对输入有效字符前遇到的空格键，Tab键或ENTER键等结束符，<br>next()方法会自动将其去掉 ，只有在输入有效字符后，next()方法才将其后输入的空格键，Tab键，Enter键视<br>为分隔符或者结束符。简单地说，next()查找并返回来自扫描器的下一个完整标记。完整标记的前后是与分隔<br>模式匹配的输入信息，所以next（）方法并不能得到带空格的字符串。<br>  而nextLine()方法的结束符只是ENTER键，所以它是可以得到带空格的字符串的。而最重要的就是next()和nextLine()方法的连用<br> 下面举个栗子：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">import java.util.Scanner;</div><div class="line">public class Next &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		String s1,s2;</div><div class="line">		Scanner sc=new Scanner(System.in);</div><div class="line">		System.out.println(&quot;请输入第一个字符串：&quot;);</div><div class="line">		s1=sc.nextLine();</div><div class="line">		System.out.println(&quot;请输入第二个字符串：&quot;);</div><div class="line">		s2=sc.next();</div><div class="line">		System.out.println(&quot;输入的字符串是：&quot;+s1+&quot; &quot;+s2);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> <img src="http://oohubzl9h.bkt.clouddn.com/6.30.PNG" alt=""><br> 如果是这样，结果就会不一样了<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">import java.util.Scanner;</div><div class="line">public class Next &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		String s1,s2;</div><div class="line">		Scanner sc=new Scanner(System.in);</div><div class="line">		System.out.println(&quot;请输入第一个字符串：&quot;);</div><div class="line">		s1=sc.next();</div><div class="line">		System.out.println(&quot;请输入第二个字符串：&quot;);</div><div class="line">		s2=sc.nextLine();</div><div class="line">		System.out.println(&quot;输入的字符串是：&quot;+s1+&quot; &quot;+s2);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> <img src="http://oohubzl9h.bkt.clouddn.com/6.301.PNG" alt=""></p>
+<p>  由上面的结果可以看到，nextLine()方法自动读取了被next()方法去掉的ENTER键作为它的结束符，所以没有办法给s2从键盘输入值。<br>  而且double nextDouble(),int nextInt()等方法与nextLine()方法连用的时候都存在这个问题。解决的办法就是：在每一个next（）<br>  方法后面加上nextLine()方法，把结束符先过滤掉。</p>
+
       
     </div>
 
@@ -358,18 +365,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/29/java处理事件/" rel="next" title="java处理事件">
-                <i class="fa fa-chevron-left"></i> java处理事件
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/15/Java作业三/" rel="prev" title="Java作业三">
-                Java作业三 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/21/数据库上/" rel="prev" title="数据库上">
+                数据库上 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
