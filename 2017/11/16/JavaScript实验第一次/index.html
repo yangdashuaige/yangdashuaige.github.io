@@ -1,0 +1,643 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一、省市级联动思路：两个下拉菜单，通过第一个下拉菜单的selectedIndex的值来确定选择的 省份，从而确定了第二个下拉菜单里面的选项。然后将选项填入第二个下拉菜单中。12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&amp;lt;&amp;lt;!DOCTYPE ht">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript实验第一次">
+<meta property="og:url" content="http://yoursite.com/2017/11/16/JavaScript实验第一次/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="一、省市级联动思路：两个下拉菜单，通过第一个下拉菜单的selectedIndex的值来确定选择的 省份，从而确定了第二个下拉菜单里面的选项。然后将选项填入第二个下拉菜单中。12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&amp;lt;&amp;lt;!DOCTYPE ht">
+<meta property="og:updated_time" content="2017-11-16T12:43:40.205Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript实验第一次">
+<meta name="twitter:description" content="一、省市级联动思路：两个下拉菜单，通过第一个下拉菜单的selectedIndex的值来确定选择的 省份，从而确定了第二个下拉菜单里面的选项。然后将选项填入第二个下拉菜单中。12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&amp;lt;&amp;lt;!DOCTYPE ht">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/16/JavaScript实验第一次/"/>
+
+
+
+
+
+  <title> JavaScript实验第一次 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/16/JavaScript实验第一次/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript实验第一次
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T17:01:24+08:00">
+                2017-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一、省市级联动<br>思路：两个下拉菜单，通过第一个下拉菜单的selectedIndex的值来确定选择的 省份，从而确定了第二个下拉菜单里面的选项。然后将选项填入第二个下拉菜单中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">&lt;&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;省市级联动&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">function showCity(num)&#123;</div><div class="line">	var Cities=new Array();</div><div class="line">	Cities[0]=[&quot;成都&quot;,&quot;绵阳&quot;,&quot;自贡&quot;,&quot;攀枝花&quot;];</div><div class="line">	Cities[1]=[&quot;南京&quot;,&quot;苏州&quot;,&quot;无锡&quot;,&quot;镇江&quot;];</div><div class="line">	Cities[2]=[&quot;武汉&quot;,&quot;黄石&quot;,&quot;宜昌&quot;,&quot;荆门&quot;];</div><div class="line">	if (num!=0) &#123;</div><div class="line">		document.myform.city.options.length=0;</div><div class="line">	switch(num)&#123;</div><div class="line">		case 1:</div><div class="line">		for(var i in Cities[0])</div><div class="line">		&#123;</div><div class="line">			document.myform.city.options.add(new Option(Cities[0][i],parseInt(i)+1));</div><div class="line">	    &#125;</div><div class="line">	    break;</div><div class="line">		case 2:</div><div class="line">		for(var i in Cities[1])</div><div class="line">		&#123;</div><div class="line">			document.myform.city.options.add(new Option(Cities[1][i],parseInt(i)+1));</div><div class="line">	    &#125;</div><div class="line">	    break;</div><div class="line">		case 3:</div><div class="line">		for(var i in Cities[2])</div><div class="line">		&#123;</div><div class="line">			document.myform.city.options.add(new Option(Cities[2][i],parseInt(i)+1));</div><div class="line">	    &#125;</div><div class="line">	    break;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;form name=&quot;myform&quot;&gt;</div><div class="line">	省份：&lt;select name=&quot;province&quot; onchange=&quot;showCity(this.selectedIndex)&quot;&gt;</div><div class="line">		&lt;option value=&quot;&quot;&gt;请选择省份&lt;/option&gt;</div><div class="line">		&lt;option value=&quot;1&quot;&gt;四川省&lt;/option&gt;</div><div class="line">		&lt;option value=&quot;2&quot;&gt;江苏省&lt;/option&gt;</div><div class="line">		&lt;option value=&quot;3&quot;&gt;湖北省&lt;/option&gt;</div><div class="line">	&lt;/select&gt;</div><div class="line">	城市：&lt;select name=&quot;city&quot;&gt;</div><div class="line">	&lt;option value=&quot;&quot;&gt;请选择城市&lt;/option&gt;</div><div class="line">		</div><div class="line">	&lt;/select&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>二、轮播图<br>position属性把元素放置到一个静态的 相对的 绝对的 或固定的位置中<br> static 默认。始终会处于页面流给予的位置，忽略任何top bottom left right 声明<br> relative 将其移至相对其正常位置的地方，如left:20px 会将元素移至正常位置左边20个像素的地方<br> absolute  fixed</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;title&gt;轮播图&lt;/title&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">var NowFrame=1;</div><div class="line">var MaxFrame=5;</div><div class="line">  function scroll(num)&#123;</div><div class="line">  	if (Number(num)) &#123;</div><div class="line">  		clearTimeout(theTimer);</div><div class="line">  		NowFrame=num;</div><div class="line">  	&#125;</div><div class="line">  	for (var i=1;i&lt;(MaxFrame+1);i++) &#123;</div><div class="line">  		if(NowFrame==i)&#123;</div><div class="line">  			document.getElementById(NowFrame).style.display=&apos;block&apos;;</div><div class="line">  			document.getElementById(&apos;bg&apos;+i).color=&apos;#ff0000&apos;;</div><div class="line">  		&#125;</div><div class="line">  		else&#123;</div><div class="line">  			document.getElementById(i).style.display=&apos;none&apos;;</div><div class="line">  			document.getElementById(&apos;bg&apos;+i).color=&apos;#414141&apos;;</div><div class="line">  		&#125;</div><div class="line">  	&#125;</div><div class="line">  	if(NowFrame==MaxFrame)</div><div class="line">  		NowFrame=1;</div><div class="line">  	else</div><div class="line">  		NowFrame++;</div><div class="line">  	theTimer=setTimeout(&apos;scroll()&apos;,5000);</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body onload=&quot;scroll()&quot;&gt;</div><div class="line"> &lt;div&gt;</div><div class="line">   &lt;img src=&quot;img/class1-1.jpg&quot; id=&quot;1&quot; style=&quot;display: none;&quot;&gt;</div><div class="line">   &lt;img src=&quot;img/class1-2.jpg&quot; id=&quot;2&quot; style=&quot;display: none;&quot;&gt;</div><div class="line">   &lt;img src=&quot;img/class1-3.jpg&quot; id=&quot;3&quot; style=&quot;display: none;&quot;&gt;</div><div class="line">   &lt;img src=&quot;img/class1-4.jpg&quot; id=&quot;4&quot; style=&quot;display: none;&quot;&gt;</div><div class="line">   &lt;img src=&quot;img/class1-5.jpg&quot; id=&quot;5&quot; style=&quot;display: none;&quot;&gt;</div><div class="line">   &lt;div style=&quot;position: relative;left: 430px;top: -100px;z-index: 2;&quot;&gt;</div><div class="line">     &lt;font class=&quot;font-scroll&quot; id=&quot;bg1&quot;&gt;</div><div class="line">     &lt;span onmousemove=&quot;scroll(1)&quot;&gt;1&lt;/span&gt;</div><div class="line">     &lt;/font&gt;&lt;/br&gt;</div><div class="line">     &lt;font class=&quot;font-scroll&quot; id=&quot;bg2&quot;&gt;</div><div class="line">     &lt;span onmousemove=&quot;scroll(2)&quot;&gt;2&lt;/span&gt;</div><div class="line">     &lt;/font&gt;&lt;/br&gt;</div><div class="line">     &lt;font class=&quot;font-scroll&quot; id=&quot;bg3&quot;&gt;</div><div class="line">     &lt;span onmousemove=&quot;scroll(3)&quot;&gt;3&lt;/span&gt;</div><div class="line">     &lt;/font&gt;&lt;/br&gt;</div><div class="line">     &lt;font class=&quot;font-scroll&quot; id=&quot;bg4&quot;&gt;</div><div class="line">     &lt;span onmousemove=&quot;scroll(4)&quot;&gt;4&lt;/span&gt;</div><div class="line">     &lt;/font&gt;&lt;/br&gt;</div><div class="line">     &lt;font class=&quot;font-scroll&quot; id=&quot;bg5&quot;&gt;</div><div class="line">     &lt;span onmousemove=&quot;scroll(5)&quot;&gt;5&lt;/span&gt;</div><div class="line">     &lt;/font&gt;</div><div class="line">   &lt;/div&gt;</div><div class="line"></div><div class="line"> &lt;/div&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p> 三、浮动广告<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;shubiaogundong&lt;/title&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	var adverTop;   //到顶端距离</div><div class="line">	var adverObject;  //层对象</div><div class="line">	var exitObject;</div><div class="line">	function inix()&#123;</div><div class="line">		adverObject=document.getElementById(&quot;adver&quot;);</div><div class="line">		exitObject=document.getElementById(&quot;exit&quot;);</div><div class="line">		if(adverObject.currentStyle)&#123;     //判断是否是IE浏览器</div><div class="line">			adverTop=parseInt(adverObject.currentStyle.top);</div><div class="line">		&#125;</div><div class="line">		else&#123;</div><div class="line">			adverTop=parseInt(document.defaultView.getComputedStyle(adverObject,null).top);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	function move()&#123;</div><div class="line">		adverObject.style.top=adverTop+parseInt(document.documentElement.scrollTop)+&quot;px&quot;;  //加上了滚动条的位置</div><div class="line">		exitObject.style.top=adverTop+parseInt(document.documentElement.scrollTop)+&quot;px&quot;;</div><div class="line">	&#125;</div><div class="line">	function dispear()&#123;</div><div class="line">		adverObject.style.display=&quot;none&quot;;</div><div class="line">		exitObject.style.display=&quot;none&quot;;</div><div class="line">	&#125;</div><div class="line">	window.onload=inix;</div><div class="line">	window.onscroll=move;   //注意 一定不能写成=&quot;inix()&quot; </div><div class="line"></div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;ol&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;li&gt;fafakl&lt;/li&gt;</div><div class="line">&lt;/ol&gt;</div><div class="line"></div><div class="line">  &lt;div id=&quot;adver&quot; style=&quot;position: absolute;top:30px;z-index: 1&quot;&gt;</div><div class="line">    &lt;img src=&quot;img/lady_0007.jpg&quot;&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">  &lt;div id=&quot;exit&quot; style=&quot;position: absolute;top: 30px;z-index: 2&quot;&gt;</div><div class="line">  &lt;img src=&quot;img/close.gif&quot; onclick=&quot;dispear()&quot;&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/16/正则表达式第二天/" rel="prev" title="正则表达式第二天">
+                正则表达式第二天 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
