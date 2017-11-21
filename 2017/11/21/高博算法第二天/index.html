@@ -1,0 +1,675 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1008.一个数组A中存有N（N&amp;gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M&amp;gt;=0）个位置，即将A中的数据由（A0 A1……AN-1）变换为（AN-M …… AN-1 A0 A1……AN-M-1）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？ 12345678910111213141516171819202">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高博算法第二天">
+<meta property="og:url" content="http://yoursite.com/2017/11/21/高博算法第二天/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="1008.一个数组A中存有N（N&amp;gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M&amp;gt;=0）个位置，即将A中的数据由（A0 A1……AN-1）变换为（AN-M …… AN-1 A0 A1……AN-M-1）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？ 12345678910111213141516171819202">
+<meta property="og:updated_time" content="2017-11-21T12:23:20.716Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高博算法第二天">
+<meta name="twitter:description" content="1008.一个数组A中存有N（N&amp;gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M&amp;gt;=0）个位置，即将A中的数据由（A0 A1……AN-1）变换为（AN-M …… AN-1 A0 A1……AN-M-1）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？ 12345678910111213141516171819202">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/21/高博算法第二天/"/>
+
+
+
+
+
+  <title> 高博算法第二天 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/高博算法第二天/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                高博算法第二天
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-21T11:01:56+08:00">
+                2017-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1008.<br>一个数组A中存有N（N&gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（M&gt;=0）个位置，即将A中的数据由（A0 A1……AN-1）变换为（AN-M …… AN-1 A0 A1……AN-M-1）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()&#123;</div><div class="line"> int i,N,M,a[100],temp;</div><div class="line">  cin&gt;&gt;N&gt;&gt;M;</div><div class="line">  for(i=0;i&lt;N;i++)&#123;</div><div class="line">    cin&gt;&gt;a[i];</div><div class="line">  &#125;</div><div class="line">  for(i=0;i&lt;M;i++)</div><div class="line">  &#123;</div><div class="line">    temp=a[N-1];</div><div class="line">    for(int j=N-1;j&gt;=1;j--)</div><div class="line">      a[j]=a[j-1];</div><div class="line">    a[0]=temp;</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">  for(i=0;i&lt;N-1;i++)</div><div class="line">  &#123;</div><div class="line">   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;; </div><div class="line">  &#125;</div><div class="line">  cout&lt;&lt;a[N-1];</div><div class="line">  return 0;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1011.给定区间[-231, 231]内的3个整数A、B和C，请判断A+B是否大于C。</p>
+<p>输入格式：</p>
+<p>输入第1行给出正整数T(&lt;=10)，是测试用例的个数。随后给出T组测试用例，每组占一行，顺序给出A、B和C。整数间以空格分隔。</p>
+<p>输出格式：</p>
+<p>对每组测试用例，在一行中输出“Case #X: true”如果A+B&gt;C，否则输出“Case #X: false”，其中X是测试用例的编号（从1开始）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">  int T;</div><div class="line">  long long a,b,c;</div><div class="line">  cin&gt;&gt;T;</div><div class="line">  for(int i=1;i&lt;=T;i++)</div><div class="line">  &#123;</div><div class="line">   cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</div><div class="line">    if((a+b)&gt;c)</div><div class="line">      cout&lt;&lt;&quot;Case #&quot;&lt;&lt;i&lt;&lt;&quot;:&quot;&lt;&lt;&quot; true&quot;&lt;&lt;endl;</div><div class="line">    else</div><div class="line">      cout&lt;&lt;&quot;Case #&quot;&lt;&lt;i&lt;&lt;&quot;:&quot;&lt;&lt;&quot; false&quot;&lt;&lt;endl;</div><div class="line">  &#125;</div><div class="line">  return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>给定一系列正整数，请按要求对数字进行分类，并输出以下5个数字：</p>
+<p>A1 = 能被5整除的数字中所有偶数的和；<br>A2 = 将被5除后余1的数字按给出顺序进行交错求和，即计算n1-n2+n3-n4…；<br>A3 = 被5除后余2的数字的个数；<br>A4 = 被5除后余3的数字的平均数，精确到小数点后1位；<br>A5 = 被5除后余4的数字中最大数字。<br>输入格式：</p>
+<p>每个输入包含1个测试用例。每个测试用例先给出一个不超过1000的正整数N，随后给出N个不超过1000的待分类的正整数。数字间以空格分隔。</p>
+<p>输出格式：</p>
+<p>对给定的N个正整数，按题目要求计算A1~A5并在一行中顺序输出。数字间以空格分隔，但行末不得有多余空格。</p>
+<p>若其中某一类数字不存在，则在相应位置输出“N”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">void Sum(int a[],int i)&#123;</div><div class="line">  int S=0;</div><div class="line"> for(int j=0;j&lt;i;j++) </div><div class="line"> &#123;</div><div class="line">   S=S+a[j];</div><div class="line"> </div><div class="line"> &#125;</div><div class="line">  cout&lt;&lt;S&lt;&lt;&quot; &quot;;</div><div class="line">&#125;</div><div class="line">void fun(int a[],int i)&#123;</div><div class="line"> int S=0;</div><div class="line">  double t;</div><div class="line">  for(int j=0;j&lt;i;j++)S=S+a[i];</div><div class="line">  t=S/i;</div><div class="line">  cout&lt;&lt;setprecision(2)&lt;&lt;t&lt;&lt;&quot; &quot;;</div><div class="line">  </div><div class="line">  </div><div class="line">  </div><div class="line">&#125;</div><div class="line">int main()&#123;</div><div class="line"> int i=0,j=0,k=0,count=0,max=0,N,n;</div><div class="line">  int a[1000],b[1000],c[1000];</div><div class="line">  cin&gt;&gt;N;</div><div class="line">  for(int m=0;m&lt;N;m++)</div><div class="line">  &#123;</div><div class="line">    cin&gt;&gt;n;</div><div class="line">    if(n%5==0&amp;&amp;n%2==0)&#123;a[i++]=n;&#125;</div><div class="line">    else if(n%5==1)&#123;</div><div class="line">      if(j%2==0)&#123;b[j++]=n;&#125;</div><div class="line">      else b[j++]=-n;</div><div class="line">    &#125;</div><div class="line">    else if(n%5==2)&#123;count++;&#125;</div><div class="line">    else if(n%5==3)&#123;c[k++]=n;&#125;</div><div class="line">    else&#123;if(n&gt;max)max=n;&#125; </div><div class="line">  &#125;</div><div class="line">  if(i==0)&#123;cout&lt;&lt;&quot;N&quot;&lt;&lt;&quot; &quot;;&#125;</div><div class="line">  else Sum(a,i);</div><div class="line">  if(j==0)&#123;cout&lt;&lt;&quot;N&quot;&lt;&lt;&quot; &quot;;&#125;</div><div class="line">  else Sum(b,j);</div><div class="line">  if(count==0)&#123;cout&lt;&lt;&quot;N&quot;&lt;&lt;&quot; &quot;;&#125;</div><div class="line">  else cout&lt;&lt;count&lt;&lt;&quot; &quot;;</div><div class="line">  if(k==0)&#123;cout&lt;&lt;&quot;N&quot;&lt;&lt;&quot; &quot;;&#125;</div><div class="line">  else fun(c,k);</div><div class="line">  if(max==0)&#123;cout&lt;&lt;&quot;N&quot;&lt;&lt;&quot; &quot;;&#125;</div><div class="line">  else cout&lt;&lt;max;</div><div class="line">  return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>说反话 (20)<br>时间限制<br>400 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。</li>
+</ol>
+<p>输入格式：测试输入包含一个测试用例，在一行内给出总长度不超过80的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用1个空格分开，输入保证句子末尾没有多余的空格。</p>
+<p>输出格式：每个测试用例的输出占一行，输出倒序后的句子。</p>
+<p>输入样例：<br>Hello World Here I Come<br>输出样例：<br>Come I Here World Hello</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()&#123;</div><div class="line"> string a[100],s;</div><div class="line">  int i=0;</div><div class="line">  while(cin&gt;&gt;s)&#123;</div><div class="line">    a[i++]=s;</div><div class="line">  &#125;</div><div class="line">  for(int j=i-1;j&gt;=1;j--)cout&lt;&lt;a[j]&lt;&lt;&quot; &quot;;</div><div class="line">  cout&lt;&lt;a[0];</div><div class="line">  return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1064</p>
+<p>这道题真的是非常巧妙。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#include&lt;iostream&gt; </div><div class="line">#include&lt;algorithm&gt;</div><div class="line">#include&lt;vector&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	vector&lt;int&gt;vec;</div><div class="line">	int N;cin&gt;&gt;N;</div><div class="line">	int vis[10008]=&#123;0&#125;;   桶排序，找出所有的</div><div class="line">	for(int i=1;i&lt;=N;i++)</div><div class="line">	&#123;</div><div class="line">		int n;cin&gt;&gt;n;</div><div class="line">		int sum=0;</div><div class="line">		while(n)</div><div class="line">		&#123;</div><div class="line">			sum+=n%10;</div><div class="line">			n/=10;</div><div class="line">		&#125;</div><div class="line">		if(vis[sum]==0)</div><div class="line">		&#123;</div><div class="line">			vec.push_back(sum);</div><div class="line">			vis[sum]=1;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	cout&lt;&lt;vec.size()&lt;&lt;endl;</div><div class="line">	sort(vec.begin(),vec.end());</div><div class="line">	for(vector&lt;int&gt;::iterator it=vec.begin();it!=vec.end();it++)</div><div class="line">	&#123;</div><div class="line">		cout&lt;&lt;*it;</div><div class="line">		it++;</div><div class="line">		if(it!=vec.end())</div><div class="line">		&#123;</div><div class="line">			cout&lt;&lt;&quot; &quot;;</div><div class="line">		&#125;</div><div class="line">		it--;</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>单身狗(25)</li>
+</ol>
+<p>时间限制<br>300 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>“单身狗”是中文对于单身人士的一种爱称。本题请你从上万人的大型派对中找出落单的客人，以便给予特殊关爱。</p>
+<p>输入格式：</p>
+<p>输入第一行给出一个正整数N（&lt;=50000），是已知夫妻/伴侣的对数；随后N行，每行给出一对夫妻/伴侣——为方便起见，每人对应一个ID号，为5位数字（从00000到99999），ID间以空格分隔；之后给出一个正整数M（&lt;=10000），为参加派对的总人数；随后一行给出这M位客人的ID，以空格分隔。题目保证无人重婚或脚踩两条船。</p>
+<p>输出格式：</p>
+<p>首先第一行输出落单客人的总人数；随后第二行按ID递增顺序列出落单的客人。ID间用1个空格分隔，行的首尾不得有多余空格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()&#123;</div><div class="line">  int N;cin&gt;&gt;N;</div><div class="line">  long a,b;</div><div class="line">  map&lt;long,long&gt;my_map;</div><div class="line">  for(int i=0;i&lt;N;i++)</div><div class="line">  &#123;</div><div class="line">    cin&gt;&gt;a&gt;&gt;b;</div><div class="line">    my_map[a]=b;</div><div class="line">    my_map[b]=a;</div><div class="line">  &#125;</div><div class="line">  int M;</div><div class="line">  vector&lt;long&gt;vec;</div><div class="line">  for(int i=0;i&lt;M;i++)</div><div class="line">  &#123;</div><div class="line">    vec.push_back(i);</div><div class="line">  &#125;</div><div class="line">  vector&lt;long&gt;veclong;</div><div class="line">  for(int i=0;i&lt;vec.size();i++)</div><div class="line">  &#123;</div><div class="line">    vector&lt;long&gt;::iterator iter;</div><div class="line">    long t=my_map[vec[i]];</div><div class="line">    iter=find(vec.begin(),vec.end(),t);</div><div class="line">    if(iter==vec.end())</div><div class="line">      veclong.push_back(vec[i]);</div><div class="line">  &#125;</div><div class="line">  cout&lt;&lt;veclong.size()&lt;&lt;endl;</div><div class="line">  for(vector&lt;long&gt;::iterator it=veclong.begin();it!=veclong.end();it++)</div><div class="line">  &#123;</div><div class="line">   cout&lt;&lt;*it;</div><div class="line">    it++;</div><div class="line">    if(it!=veclong.end())</div><div class="line">    &#123;</div><div class="line">      cout&lt;&lt;&quot; &quot;;</div><div class="line">    &#125;</div><div class="line">    it--; </div><div class="line">  &#125;</div><div class="line">  return 0; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/21/vector容器用法/" rel="next" title="vector容器用法">
+                <i class="fa fa-chevron-left"></i> vector容器用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/20/高博算法第一天/" rel="prev" title="高博算法第一天">
+                高博算法第一天 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
