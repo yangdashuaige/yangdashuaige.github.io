@@ -1,0 +1,680 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="一元多项式及其运算1.顺序存储结构直接表示18 19 65 14  锤子剪刀布 (20)时间限制100 ms内存限制65536 kB代码长度限制8000 B判题程序Standard作者CHEN, Yue大家应该都会玩“锤子剪刀布”的游戏：两人同时给出手势，胜负规则如图所示：  1234567891011121314151617181920212223242526272829303132333435">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高博算法第三天">
+<meta property="og:url" content="http://yoursite.com/2017/11/22/高博算法第三天/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="一元多项式及其运算1.顺序存储结构直接表示18 19 65 14  锤子剪刀布 (20)时间限制100 ms内存限制65536 kB代码长度限制8000 B判题程序Standard作者CHEN, Yue大家应该都会玩“锤子剪刀布”的游戏：两人同时给出手势，胜负规则如图所示：  1234567891011121314151617181920212223242526272829303132333435">
+<meta property="og:updated_time" content="2017-11-27T07:27:57.876Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高博算法第三天">
+<meta name="twitter:description" content="一元多项式及其运算1.顺序存储结构直接表示18 19 65 14  锤子剪刀布 (20)时间限制100 ms内存限制65536 kB代码长度限制8000 B判题程序Standard作者CHEN, Yue大家应该都会玩“锤子剪刀布”的游戏：两人同时给出手势，胜负规则如图所示：  1234567891011121314151617181920212223242526272829303132333435">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/22/高博算法第三天/"/>
+
+
+
+
+
+  <title> 高博算法第三天 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/22/高博算法第三天/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                高博算法第三天
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-22T08:49:13+08:00">
+                2017-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一元多项式及其运算<br>1.顺序存储结构直接表示<br>18 19 65 14</p>
+<ol>
+<li>锤子剪刀布 (20)<br>时间限制<br>100 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>大家应该都会玩“锤子剪刀布”的游戏：两人同时给出手势，胜负规则如图所示：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">#include &lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">  int N;</div><div class="line">  while(cin&gt;&gt;N)</div><div class="line">  &#123;</div><div class="line">    int sheng=0,ping=0,fu=0;</div><div class="line">    int j1=0,j2=0,j3=0;</div><div class="line">    int y1=0,y2=0,y3=0;</div><div class="line">    char jia,yi;</div><div class="line">   for(int i=0;i&lt;N;i++)</div><div class="line">   &#123;</div><div class="line">      cin&gt;&gt;jia&gt;&gt;yi;</div><div class="line">      if(jia==yi)</div><div class="line">        ping++;</div><div class="line">      else if(jia==&apos;C&apos;&amp;&amp;yi==&apos;J&apos;||jia==&apos;J&apos;&amp;&amp;yi==&apos;B&apos;||jia==&apos;B&apos;&amp;&amp;yi==&apos;C&apos;)</div><div class="line">      &#123;</div><div class="line">        sheng++;</div><div class="line">        if (jia==&apos;B&apos;) j1++;</div><div class="line">        if (jia==&apos;C&apos;) j2++;</div><div class="line">        if (jia==&apos;J&apos;) j3++;</div><div class="line">      &#125;</div><div class="line">      else</div><div class="line">      &#123;</div><div class="line">        fu++;</div><div class="line">        if (yi==&apos;B&apos;) y1++;</div><div class="line">        if (yi==&apos;C&apos;) y2++;</div><div class="line">        if (yi==&apos;J&apos;) y3++;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    cout&lt;&lt;sheng&lt;&lt;&quot; &quot;&lt;&lt;ping&lt;&lt;&quot; &quot;&lt;&lt;fu&lt;&lt;endl;</div><div class="line">    cout&lt;&lt;fu&lt;&lt;&quot; &quot;&lt;&lt;ping&lt;&lt;&quot; &quot;&lt;&lt;sheng&lt;&lt;endl;</div><div class="line">    int ma=j1;char tc=&apos;B&apos;;</div><div class="line">    if(ma&lt;j2) ma=j2,tc=&apos;C&apos;;</div><div class="line">    if(ma&lt;j3) ma=j3,tc=&apos;J&apos;;</div><div class="line">    cout&lt;&lt;tc;</div><div class="line">    ma=y1;tc=&apos;B&apos;;</div><div class="line">    if(ma&lt;y2) ma=y2,tc=&apos;C&apos;;</div><div class="line">    if(ma&lt;y3) ma=y3,tc=&apos;J&apos;;</div><div class="line">    cout&lt;&lt;&quot; &quot;&lt;&lt;tc;</div><div class="line">  &#125;</div><div class="line">  return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>1019</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;  </div><div class="line">#include&lt;cstdio&gt;  </div><div class="line">#include&lt;string.h&gt;  </div><div class="line">#include&lt;algorithm&gt;  </div><div class="line">using namespace std;  </div><div class="line">int a[4]= &#123;0&#125;;  </div><div class="line">int maxx=0,minn=0;  </div><div class="line">int fun(int n)  </div><div class="line">&#123;  </div><div class="line">    a[0]=n/1000;  </div><div class="line">    a[1]=n/100%10;  </div><div class="line">    a[2]=n/10%10;  </div><div class="line">    a[3]=n%10;  </div><div class="line">    sort(a,a+4);  </div><div class="line">    maxx=a[3]*1000+a[2]*100+a[1]*10+a[0];  </div><div class="line">    minn=a[0]*1000+a[1]*100+a[2]*10+a[3];  </div><div class="line">    return maxx-minn;  </div><div class="line">&#125;  </div><div class="line">int main()  </div><div class="line">&#123;  </div><div class="line">    int n;  </div><div class="line">    cin&gt;&gt;n;  </div><div class="line">    fun(n);  </div><div class="line">    if(maxx==minn)  </div><div class="line">    &#123;  </div><div class="line">        printf(&quot;%04d - %04d = 0000\n&quot;,n,n);  </div><div class="line">        return 0;  </div><div class="line">    &#125;  </div><div class="line">    else  </div><div class="line">    &#123;  </div><div class="line">        while((maxx-minn)!=6174)  </div><div class="line">        &#123;  </div><div class="line">            printf(&quot;%04d - %04d = %04d\n&quot;,maxx,minn,maxx-minn);  </div><div class="line">            fun(maxx-minn);  </div><div class="line">        &#125;  </div><div class="line">        printf(&quot;%4d - %4d = %4d\n&quot;,maxx,minn,maxx-minn);  </div><div class="line">    &#125;  </div><div class="line">    return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>格式问题搞了半天，在-号和=好旁边加两个空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt; </div><div class="line">using namespace std; </div><div class="line">int c=0,d=0; </div><div class="line">int fun(int n)  </div><div class="line">&#123;</div><div class="line">  int max=0,min=0;</div><div class="line">    int a[4]= &#123;0&#125;;  </div><div class="line">    a[0]=n/1000;  </div><div class="line">    a[1]=n/100%10;  </div><div class="line">    a[2]=n/10%10;  </div><div class="line">    a[3]=n%10;  </div><div class="line">    sort(a,a+4);  </div><div class="line">    max=a[3]*1000+a[2]*100+a[1]*10+a[0];  </div><div class="line">    min=a[0]*1000+a[1]*100+a[2]*10+a[3];  </div><div class="line">    c=max;</div><div class="line">    d=min;</div><div class="line">    return max-min;  </div><div class="line">&#125;  </div><div class="line">int main()  </div><div class="line">&#123;  </div><div class="line">    int n;  </div><div class="line">    cin&gt;&gt;n;  </div><div class="line">    int t=fun(n);  </div><div class="line">    if(t==0)  </div><div class="line">    &#123;  </div><div class="line">     cout&lt;&lt;setfill(&apos;0&apos;)&lt;&lt;setw(4)&lt;&lt;c&lt;&lt;&quot; - &quot;&lt;&lt;setfill(&apos;0&apos;)&lt;&lt;setw(4)&lt;&lt;d&lt;&lt;&quot; = &quot;&lt;&lt;setfill(&apos;0&apos;)&lt;&lt;setw(4)&lt;&lt;c-d&lt;&lt;endl;</div><div class="line">    &#125;  </div><div class="line">    else  </div><div class="line">    &#123;  </div><div class="line">  while(t!=6174)  </div><div class="line">  &#123;</div><div class="line">    cout&lt;&lt;setfill(&apos;0&apos;)&lt;&lt;setw(4)&lt;&lt;c&lt;&lt;&quot; - &quot;&lt;&lt;setfill(&apos;0&apos;)&lt;&lt;setw(4)&lt;&lt;d&lt;&lt;&quot; = &quot;&lt;&lt;setfill(&apos;0&apos;)&lt;&lt;setw(4)&lt;&lt;c-d&lt;&lt;endl;</div><div class="line">    t=fun(t);</div><div class="line">  &#125;</div><div class="line">  cout&lt;&lt;setfill(&apos;0&apos;)&lt;&lt;setw(4)&lt;&lt;c&lt;&lt;&quot; - &quot;&lt;&lt;setfill(&apos;0&apos;)&lt;&lt;setw(4)&lt;&lt;d&lt;&lt;&quot; = &quot;&lt;&lt;setfill(&apos;0&apos;)&lt;&lt;setw(4)&lt;&lt;c-d&lt;&lt;endl;</div><div class="line">    &#125;  </div><div class="line">    return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>福尔摩斯的约会 (20)<br>时间限制<br>100 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>大侦探福尔摩斯接到一张奇怪的字条：“我们约会吧！ 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&amp;hgsfdk d&amp;Hyscvnm”。大侦探很快就明白了，字条上奇怪的乱码实际上就是约会的时间“星期四 14:04”，因为前面两字符串中第1对相同的大写英文字母（大小写有区分）是第4个字母’D’，代表星期四；第2对相同的字符是’E’，那是第5个英文字母，代表一天里的第14个钟头（于是一天的0点到23点由数字0到9、以及大写字母A到N表示）；后面两字符串第1对相同的英文字母’s’出现在第4个位置（从0开始计数）上，代表第4分钟。现给定两对字符串，请帮助福尔摩斯解码得到约会的时间。</li>
+</ol>
+<p>输入格式：</p>
+<p>输入在4行中分别给出4个非空、不包含空格、且长度不超过60的字符串。</p>
+<p>输出格式：</p>
+<p>在一行中输出约会的时间，格式为“DAY HH:MM”，其中“DAY”是某星期的3字符缩写，即MON表示星期一，TUE表示星期二，WED表示星期三，THU表示星期四，FRI表示星期五，SAT表示星期六，SUN表示星期日。题目输入保证每个测试存在唯一解。</p>
+<p>输入样例：<br>3485djDkxh4hhGE<br>2984akDfkkkkggEdsb<br>s&amp;hgsfdk<br>d&amp;Hyscvnm<br>输出样例：<br>THU 14:04</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	string str1,str2,str3,str4;</div><div class="line">	cin&gt;&gt;str1&gt;&gt;str2&gt;&gt;str3&gt;&gt;str4;</div><div class="line">	map&lt;char,string&gt;my_map;</div><div class="line">	my_map[&apos;A&apos;]=&quot;MON&quot;;</div><div class="line">	my_map[&apos;B&apos;]=&quot;TUE&quot;;</div><div class="line">	my_map[&apos;C&apos;]=&quot;WED&quot;;</div><div class="line">	my_map[&apos;D&apos;]=&quot;THU&quot;;</div><div class="line">	my_map[&apos;E&apos;]=&quot;FRI&quot;;</div><div class="line">	my_map[&apos;F&apos;]=&quot;SAT&quot;;</div><div class="line">	my_map[&apos;G&apos;]=&quot;SUN&quot;;	</div><div class="line">	int i;</div><div class="line">	for(i=0;i&lt;str1.length()&amp;&amp;i&lt;str2.length();i++)</div><div class="line">	&#123;</div><div class="line">		if(str1[i]==str2[i]&amp;&amp;str1[i]&gt;=&apos;A&apos;&amp;&amp;str1[i]&lt;=&apos;G&apos;)</div><div class="line">		&#123;</div><div class="line">			cout&lt;&lt;my_map[str1[i]]&lt;&lt;&quot; &quot;;</div><div class="line">			break;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	map&lt;char,int&gt;h_map;</div><div class="line">	h_map[&apos;A&apos;]=10;</div><div class="line">	h_map[&apos;B&apos;]=11;</div><div class="line">	h_map[&apos;C&apos;]=12;</div><div class="line">	h_map[&apos;D&apos;]=13;</div><div class="line">	h_map[&apos;E&apos;]=14;</div><div class="line">	h_map[&apos;F&apos;]=15;</div><div class="line">	h_map[&apos;G&apos;]=16;</div><div class="line">	h_map[&apos;H&apos;]=17;</div><div class="line">	h_map[&apos;I&apos;]=18;</div><div class="line">	h_map[&apos;J&apos;]=19;</div><div class="line">	h_map[&apos;K&apos;]=20;	</div><div class="line">	h_map[&apos;L&apos;]=21;</div><div class="line">	h_map[&apos;M&apos;]=22;</div><div class="line">	h_map[&apos;N&apos;]=23;</div><div class="line">	for(int j=i+1;j&lt;str1.length()&amp;&amp;j&lt;str2.length();j++)</div><div class="line">	&#123;</div><div class="line">		if(str1[j]==str2[j]&amp;&amp;((str1[j]&gt;=&apos;0&apos;&amp;&amp;str1[j]&lt;=&apos;9&apos;)||(str1[j]&gt;=&apos;A&apos;&amp;&amp;str1[j]&lt;=&apos;N&apos;)))</div><div class="line">		&#123;</div><div class="line">			if(str1[j]&gt;=&apos;0&apos;&amp;&amp;str1[j]&lt;=&apos;9&apos;)</div><div class="line">			cout&lt;&lt;&quot;0&quot;&lt;&lt;str1[j]&lt;&lt;&quot;:&quot;;</div><div class="line">			else cout&lt;&lt;h_map[str1[j]]&lt;&lt;&quot;:&quot;;</div><div class="line">			break;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	for(i=0;i&lt;str3.length()&amp;&amp;i&lt;str4.length();i++)</div><div class="line">	&#123;</div><div class="line">		if(str3[i]==str4[i]&amp;&amp;isalpha(str3[i]))</div><div class="line">		break;</div><div class="line">	&#125;</div><div class="line">	cout&lt;&lt;setfill(&apos;0&apos;)&lt;&lt;setw(2)&lt;&lt;i;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这道题目前是部分正确，只拿了14分，应该是哪里的逻辑有了问题，可能没有考虑完全。暂时没有找到解决方法。</p>
+<p>找到问题了，表示分钟的哪里，当时0-9时，“：”忘记写了。</p>
+<ol>
+<li>个位数统计 (15)<br>时间限制<br>100 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>给定一个k位整数N = dk-1<em>10k-1 + … + d1</em>101 + d0 (0&lt;=di&lt;=9, i=0,…,k-1, dk-1&gt;0)，请编写程序统计每种不同的个位数字出现的次数。例如：给定N = 100311，则有2个0，3个1，和1个3。</li>
+</ol>
+<p>输入格式：</p>
+<p>每个输入包含1个测试用例，即一个不超过1000位的正整数N。</p>
+<p>输出格式：</p>
+<p>对N中每一种不同的个位数字，以D:M的格式在一行中输出该位数字D及其在N中出现的次数M。要求按D的升序输出。</p>
+<p>输入样例：<br>100311</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()&#123;</div><div class="line">  int a[11]=&#123;0&#125;;</div><div class="line">   string s;cin&gt;&gt;s;</div><div class="line">  for(int i=0;i&lt;s.length();i++)</div><div class="line">  &#123;</div><div class="line">    a[s[i]-48]++;</div><div class="line">  &#125;</div><div class="line">  for(int i=0;i&lt;11;i++)</div><div class="line">  &#123;</div><div class="line">    </div><div class="line">   if(a[i])</div><div class="line">   &#123;</div><div class="line">     cout&lt;&lt;i&lt;&lt;&quot;:&quot;&lt;&lt;a[i]&lt;&lt;endl;</div><div class="line">   &#125;</div><div class="line">  &#125;</div><div class="line">  return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>D进制的A+B (20)<br>时间限制<br>100 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>输入两个非负10进制整数A和B(&lt;=230-1)，输出A+B的D (1 &lt; D &lt;= 10)进制数。</li>
+</ol>
+<p>输入格式：</p>
+<p>输入在一行中依次给出3个整数A、B和D。</p>
+<p>输出格式：</p>
+<p>输出A+B的D进制数。</p>
+<p>输入样例：<br>123 456 8<br>输出样例：<br>1103<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">  int D,i=0;</div><div class="line">  long long a,b,sum;</div><div class="line">  cin&gt;&gt;a&gt;&gt;b&gt;&gt;D;</div><div class="line">  sum=a+b;</div><div class="line">  if(sum==0)</div><div class="line">  &#123;</div><div class="line">    cout&lt;&lt;&quot;0&quot;;</div><div class="line">  &#125;</div><div class="line">  vector&lt;long long&gt;vec;</div><div class="line">  while(sum)</div><div class="line">  &#123;</div><div class="line">   vec.push_back(sum%D);</div><div class="line">    sum/=D;</div><div class="line">  &#125;</div><div class="line">  for(int i=vec.size()-1;i&gt;=0;i--)</div><div class="line">  &#123;</div><div class="line">  	cout&lt;&lt;vec[i];</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这道题真坑，题目很简单，就是漏了0的情况，所以一直是部分正确。终于找到原因了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div></pre></td><td class="code"><pre><div class="line">PAT 1003：</div><div class="line"></div><div class="line">#include&lt;iostream&gt;</div><div class="line">using namespace std;</div><div class="line">int main()&#123;</div><div class="line">	int n;</div><div class="line">	string a;</div><div class="line">	cin &gt;&gt; n;</div><div class="line">	for(int i = 0; i &lt; n; i ++)&#123;</div><div class="line">		cin &gt;&gt; a;</div><div class="line">		bool flag = false;</div><div class="line">		for(int j = 0; a[j]; j++)&#123;</div><div class="line">			if(a[j] != &apos;P&apos; &amp;&amp; a[j]!=&apos;A&apos; &amp;&amp; a[j]!=&apos;T&apos;)&#123;</div><div class="line">				cout &lt;&lt; &quot;NO&quot; &lt;&lt; endl;</div><div class="line">				flag = true;</div><div class="line">				break;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		if(flag)&#123;</div><div class="line">			continue;</div><div class="line">		&#125;</div><div class="line">		int ppos = a.find(&quot;P&quot;);</div><div class="line">		int tpos = a.find(&quot;T&quot;);</div><div class="line">		int a1 = ppos;</div><div class="line">		int a2 = tpos - ppos - 1;</div><div class="line">		int a3 = a.size() - tpos - 1;</div><div class="line">		if(ppos &lt; tpos &amp;&amp; a2 != 0 &amp;&amp; a1 * a2 == a3)&#123;</div><div class="line">			cout &lt;&lt; &quot;YES&quot; &lt;&lt; endl;</div><div class="line">			continue;</div><div class="line">		&#125; else &#123;</div><div class="line">			cout &lt;&lt; &quot;NO&quot; &lt;&lt; endl;</div><div class="line">			continue;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line">1002：</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">using namespace std;</div><div class="line">string map[] = &#123;&quot;ling&quot;,&quot;yi&quot;,&quot;er&quot;,&quot;san&quot;,&quot;si&quot;,&quot;wu&quot;,&quot;liu&quot;,&quot;qi&quot;,&quot;ba&quot;,&quot;jiu&quot;,&quot;shi&quot;&#125;;</div><div class="line">int main()&#123;</div><div class="line">	string a;</div><div class="line">	vector&lt;int&gt; r;</div><div class="line">	cin &gt;&gt; a;</div><div class="line">	int sum = 0;</div><div class="line">	for(int i = 0; a[i]; i ++)&#123;</div><div class="line">		sum += a[i] - &apos;0&apos;;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	if(sum == 0)&#123;</div><div class="line">		cout &lt;&lt; map[0];</div><div class="line">		return 0;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	while(sum != 0)&#123;</div><div class="line">		r.push_back(sum % 10);</div><div class="line">		sum /= 10;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	for(int i = r.size() - 1; i &gt;= 0 ; i --)&#123;</div><div class="line">		cout &lt;&lt; map[r[i]];</div><div class="line">		if(i != 0)&#123;</div><div class="line">			cout &lt;&lt; &quot; &quot;;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">1004：</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">#include &lt;string&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">struct stu&#123;</div><div class="line">	string name;</div><div class="line">	string no;</div><div class="line">	int score;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">	int n;</div><div class="line">	cin &gt;&gt; n;</div><div class="line">	vector&lt;stu&gt; s(n);</div><div class="line">	for(int i = 0; i &lt; n; i ++)&#123;</div><div class="line">		cin &gt;&gt; s[i].name &gt;&gt; s[i].no &gt;&gt; s[i].score;</div><div class="line">	&#125;</div><div class="line">	int max = 0;</div><div class="line">	int min = 0x3f3f3f3f;</div><div class="line">	int maxi = 0;</div><div class="line">	int mini = 0;</div><div class="line">	for(int i = 0; i &lt; s.size(); i ++)&#123;</div><div class="line">		if(max &lt; s[i].score)&#123;</div><div class="line">			max = s[i].score;</div><div class="line">			maxi = i;</div><div class="line">		&#125;</div><div class="line">		if(min &gt; s[i].score)&#123;</div><div class="line">			min = s[i].score;</div><div class="line">			mini = i;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	cout &lt;&lt; s[maxi].name &lt;&lt; &quot; &quot; &lt;&lt; s[maxi].no &lt;&lt; endl;</div><div class="line">	cout &lt;&lt; s[mini].name &lt;&lt; &quot; &quot; &lt;&lt; s[mini].no &lt;&lt; endl;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">1008：</div><div class="line"></div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line">using namespace std;</div><div class="line">int main()&#123;</div><div class="line">	int n,m;</div><div class="line">	cin &gt;&gt; n &gt;&gt; m;</div><div class="line">	vector&lt;int&gt; a(n);</div><div class="line">	for(int i = 0; i &lt; n; i ++) &#123;</div><div class="line">		cin &gt;&gt; a[i];</div><div class="line">	&#125;</div><div class="line">	if(m &gt; n) &#123;</div><div class="line">		m = m - n;</div><div class="line">		for(int i = 0; i &lt; n; i ++) &#123;</div><div class="line">			cout &lt;&lt; a[(n - m + i) % n] &lt;&lt; (i == n - 1 ? &quot;&quot;: &quot; &quot;);</div><div class="line">		&#125;</div><div class="line">	&#125; else &#123;</div><div class="line">		for(int i = 0; i &lt; n; i ++) &#123;</div><div class="line">			cout &lt;&lt; a[(n - m + i) % n ] &lt;&lt; (i == n - 1 ? &quot;&quot;: &quot; &quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">1011：</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	int n;</div><div class="line">    long int a,b,c;</div><div class="line">	int result[10] ;</div><div class="line">	scanf(&quot;%d&quot;,&amp;n);</div><div class="line">	for(int i = 0; i &lt; n; i ++) &#123;</div><div class="line">		scanf(&quot;%ld&quot;,&amp;a);</div><div class="line">		scanf(&quot;%ld&quot;,&amp;b);</div><div class="line">		scanf(&quot;%ld&quot;,&amp;c);</div><div class="line">		if(a + b &gt; c) &#123;</div><div class="line">			result[i] = 1;</div><div class="line">		&#125;</div><div class="line">		printf(&quot;Case #%d: %s\n&quot;,i + 1, a + b &gt; c? &quot;true&quot;: &quot;false&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/23/高博算法第四天/" rel="next" title="高博算法第四天">
+                <i class="fa fa-chevron-left"></i> 高博算法第四天
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/21/vector容器用法/" rel="prev" title="vector容器用法">
+                vector容器用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
