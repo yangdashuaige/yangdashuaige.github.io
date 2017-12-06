@@ -1,0 +1,742 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="挖掘机技术哪家强(20)时间限制200 ms内存限制65536 kB代码长度限制8000 B判题程序Standard作者CHEN, Yue为了用事实说明挖掘机技术到底哪家强，PAT组织了一场挖掘机技能大赛。现请你根据比赛结果统计出技术最强的那个学校。  输入格式： 输入在第1行给出不超过105的正整数N，即参赛人数。随后N行，每行给出一位参赛者的信息和成绩，包括其所代表的学校的编号（从1开始连续">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高博算法第八天">
+<meta property="og:url" content="http://yoursite.com/2017/11/29/高博算法第八天/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="挖掘机技术哪家强(20)时间限制200 ms内存限制65536 kB代码长度限制8000 B判题程序Standard作者CHEN, Yue为了用事实说明挖掘机技术到底哪家强，PAT组织了一场挖掘机技能大赛。现请你根据比赛结果统计出技术最强的那个学校。  输入格式： 输入在第1行给出不超过105的正整数N，即参赛人数。随后N行，每行给出一位参赛者的信息和成绩，包括其所代表的学校的编号（从1开始连续">
+<meta property="og:updated_time" content="2017-11-29T13:10:04.918Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高博算法第八天">
+<meta name="twitter:description" content="挖掘机技术哪家强(20)时间限制200 ms内存限制65536 kB代码长度限制8000 B判题程序Standard作者CHEN, Yue为了用事实说明挖掘机技术到底哪家强，PAT组织了一场挖掘机技能大赛。现请你根据比赛结果统计出技术最强的那个学校。  输入格式： 输入在第1行给出不超过105的正整数N，即参赛人数。随后N行，每行给出一位参赛者的信息和成绩，包括其所代表的学校的编号（从1开始连续">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/29/高博算法第八天/"/>
+
+
+
+
+
+  <title> 高博算法第八天 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/29/高博算法第八天/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                高博算法第八天
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T08:48:14+08:00">
+                2017-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ol>
+<li>挖掘机技术哪家强(20)<br>时间限制<br>200 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>为了用事实说明挖掘机技术到底哪家强，PAT组织了一场挖掘机技能大赛。现请你根据比赛结果统计出技术最强的那个学校。</li>
+</ol>
+<p>输入格式：</p>
+<p>输入在第1行给出不超过105的正整数N，即参赛人数。随后N行，每行给出一位参赛者的信息和成绩，包括其所代表的学校的编号（从1开始连续编号）、及其比赛成绩（百分制），中间以空格分隔。</p>
+<p>输出格式：</p>
+<p>在一行中给出总得分最高的学校的编号、及其总分，中间以空格分隔。题目保证答案唯一，没有并列。</p>
+<p>输入样例：<br>6<br>3 65<br>2 80<br>1 100<br>2 70<br>3 40<br>3 0<br>输出样例：<br>2 150</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	int a[100000]=&#123;0&#125;;</div><div class="line">	int N;cin&gt;&gt;N;</div><div class="line">	int B,G,temp=0;</div><div class="line">	for(int i=0;i&lt;N;i++)</div><div class="line">	&#123;</div><div class="line">		cin&gt;&gt;B&gt;&gt;G;</div><div class="line">		a[B]+=G;</div><div class="line">	&#125;</div><div class="line">	for(int i=1;i&lt;100000;i++)</div><div class="line">	&#123;</div><div class="line">		if(a[i]&gt;temp)</div><div class="line">		temp=a[i];</div><div class="line">	&#125;</div><div class="line">	for(int i=0;i&lt;100000;i++)</div><div class="line">	&#123;</div><div class="line">		if(a[i]==temp)</div><div class="line">		&#123;</div><div class="line">		cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;temp;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>旧键盘打字(20)<br>时间限制<br>200 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及坏掉的那些键，打出的结果文字会是怎样？</li>
+</ol>
+<p>输入格式：</p>
+<p>输入在2行中分别给出坏掉的那些键、以及应该输入的文字。其中对应英文字母的坏键以大写给出；每段文字是不超过105个字符的串。可用的字符包括字母[a-z, A-Z]、数字0-9、以及下划线“_”（代表空格）、“,”、“.”、“-”、“+”（代表上档键）。题目保证第2行输入的文字串非空。</p>
+<p>注意：如果上档键坏掉了，那么大写的英文字母无法被打出。</p>
+<p>输出格式：</p>
+<p>在一行中输出能够被打出的结果文字。如果没有一个字符能被打出，则输出空行。</p>
+<p>输入样例：<br>7+IE.<br>7_This_is_a_test.<br>输出样例：<br>_hs_s_a_tst</p>
+<p>一开始的写法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	string str1,str2;</div><div class="line">	cin&gt;&gt;str1&gt;&gt;str2;</div><div class="line">	map&lt;char,int&gt;my_map;</div><div class="line">	for(int i=0;i&lt;str1.length();i++)</div><div class="line">	&#123;</div><div class="line">		my_map[str1[i]]=0;</div><div class="line">	&#125;</div><div class="line">	for(int i=0;i&lt;str2.length();i++)</div><div class="line">	&#123;</div><div class="line">		if(str2[i]&gt;=&apos;a&apos;&amp;&amp;str2[i]&lt;=&apos;z&apos;)</div><div class="line">		&#123;</div><div class="line">			if(my_map.count(str2[i]-32)==1)&#123;</div><div class="line">				;</div><div class="line">			&#125;</div><div class="line">			else</div><div class="line">			&#123;</div><div class="line">				cout&lt;&lt;str2[i];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		else if(str2[i]&gt;=&apos;A&apos;&amp;&amp;str2[i]&lt;=&apos;Z&apos;)</div><div class="line">		&#123;</div><div class="line">			if(my_map.count(&apos;+&apos;)==1)</div><div class="line">			&#123;</div><div class="line">				;</div><div class="line">			&#125;</div><div class="line">			else</div><div class="line">			&#123;</div><div class="line">			if(my_map.count(str2[i])==1)</div><div class="line">			&#123;</div><div class="line">				;</div><div class="line">			&#125;</div><div class="line">			else</div><div class="line">			&#123;</div><div class="line">				cout&lt;&lt;str2[i];</div><div class="line">			&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		else </div><div class="line">		&#123;</div><div class="line">			if(my_map.count(str2[i])==1)&#123;</div><div class="line">				;</div><div class="line">			&#125;</div><div class="line">			else</div><div class="line">			&#123;</div><div class="line">				cout&lt;&lt;str2[i];</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>改进后的写法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	string str1,str2;</div><div class="line">	cin&gt;&gt;str1&gt;&gt;str2;</div><div class="line">	map&lt;char,bool&gt;my_map;</div><div class="line">	for(int i=0;i&lt;str1.length();i++)</div><div class="line">	&#123;</div><div class="line">		if(!my_map.count(str1[i]))</div><div class="line">		&#123;</div><div class="line">			my_map.insert(pair&lt;char,bool&gt;(str1[i],true));</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	for(int i=0;i&lt;str2.length();i++)</div><div class="line">	&#123;</div><div class="line">		if(!my_map.count(str2[i]))</div><div class="line">		&#123;</div><div class="line">			if(isupper(str2[i])&amp;&amp;my_map.count(&apos;+&apos;))continue;</div><div class="line">			else if(islower(str2[i])&amp;&amp;my_map.count(toupper(str2[i])))continue;</div><div class="line">			else cout&lt;&lt;str2[i];	</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>两种写法都是19分，第三个测试点没有通过。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#include&lt;stdio.h&gt;  </div><div class="line">#include&lt;map&gt;  </div><div class="line">#include&lt;cstring&gt;  </div><div class="line">#include&lt;ctype.h&gt;   </div><div class="line">using namespace std;   </div><div class="line">int main(void)  </div><div class="line">&#123;  </div><div class="line">    char a[100000],b[100000];  </div><div class="line">    map&lt;char,bool&gt; map;  </div><div class="line">    gets(a);  </div><div class="line">    gets(b);  </div><div class="line">    int lena=strlen(a),lenb=strlen(b);  </div><div class="line">    if(lena==0)  </div><div class="line">    &#123;  </div><div class="line">        printf(&quot;%s&quot;,b);  </div><div class="line">        return 0;  </div><div class="line">    &#125;  </div><div class="line">    for(int i=0; i&lt;lena; i++)  </div><div class="line">    &#123;  </div><div class="line">        if(!map.count(a[i]))  </div><div class="line">        &#123;  </div><div class="line">            map.insert(pair&lt;char,bool&gt;(a[i],true));  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">    for(int ib=0;ib&lt;lenb;ib++)  </div><div class="line">    &#123;  </div><div class="line">        if(!map.count(b[ib]))  </div><div class="line">        &#123;  </div><div class="line">            if(isupper(b[ib]) &amp;&amp; map.count(&apos;+&apos;))  </div><div class="line">                continue;  </div><div class="line">            else if(islower(b[ib]) &amp;&amp; map.count(toupper(b[ib])))  </div><div class="line">                continue;  </div><div class="line">            else  </div><div class="line">                printf(&quot;%c&quot;,b[ib]);  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">    return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>网上的做法是满分。</p>
+<ol>
+<li>跟奥巴马一起编程(15)<br>时间限制<br>400 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>美国总统奥巴马不仅呼吁所有人都学习编程，甚至以身作则编写代码，成为美国历史上首位编写计算机代码的总统。2014年底，为庆祝“计算机科学教育周”正式启动，奥巴马编写了很简单的计算机代码：在屏幕上画一个正方形。现在你也跟他一起画吧！</li>
+</ol>
+<p>输入格式：</p>
+<p>输入在一行中给出正方形边长N（3&lt;=N&lt;=20）和组成正方形边的某种字符C，间隔一个空格。</p>
+<p>输出格式：</p>
+<p>输出由给定字符C画出的正方形。但是注意到行间距比列间距大，所以为了让结果看上去更像正方形，我们输出的行数实际上是列数的50%（四舍五入取整）。</p>
+<p>输入样例：<br>10 a<br>输出样例：<br>aaaaaaaaaa<br>a        a<br>a        a<br>a        a<br>aaaaaaaaaa</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()&#123;</div><div class="line"> int N;char c;</div><div class="line">  cin&gt;&gt;N&gt;&gt;c;</div><div class="line">  int x=((float)N/2+0.5);</div><div class="line">  for(int i=0;i&lt;x;i++)</div><div class="line">  &#123;</div><div class="line">   if(i==0)</div><div class="line">   &#123;</div><div class="line">     for(int i=0;i&lt;N;i++)</div><div class="line">       cout&lt;&lt;c;</div><div class="line">     cout&lt;&lt;endl;</div><div class="line">   &#125;</div><div class="line">    else if(i!=x-1)&#123;</div><div class="line">      cout&lt;&lt;c;</div><div class="line">      for(int i=1;i&lt;N-1;i++)cout&lt;&lt;&quot; &quot;;</div><div class="line">      cout&lt;&lt;c;</div><div class="line">      cout&lt;&lt;endl;</div><div class="line">    &#125;</div><div class="line">    else&#123;</div><div class="line">     for(int i=0;i&lt;N;i++)</div><div class="line">       cout&lt;&lt;c;      </div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"> return 0; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>在霍格沃茨找零钱（20）<br>时间限制<br>400 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>如果你是哈利·波特迷，你会知道魔法世界有它自己的货币系统 —— 就如海格告诉哈利的：“十七个银西可(Sickle)兑一个加隆(Galleon)，二十九个纳特(Knut)兑一个西可，很容易。”现在，给定哈利应付的价钱P和他实付的钱A，你的任务是写一个程序来计算他应该被找的零钱。</li>
+</ol>
+<p>输入格式：</p>
+<p>输入在1行中分别给出P和A，格式为“Galleon.Sickle.Knut”，其间用1个空格分隔。这里Galleon是[0, 107]区间内的整数，Sickle是[0, 17)区间内的整数，Knut是[0, 29)区间内的整数。</p>
+<p>输出格式：</p>
+<p>在一行中用与输入同样的格式输出哈利应该被找的零钱。如果他没带够钱，那么输出的应该是负数。</p>
+<p>输入样例1：<br>10.16.27 14.1.28<br>输出样例1：<br>3.2.1<br>输入样例2：<br>14.1.28 10.16.27<br>输出样例2：<br>-3.2.1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">  long long ja1,ja2;</div><div class="line"> int xi1,na1;</div><div class="line"> int xi2,na2;</div><div class="line"> scanf(&quot;%lld.%d.%d %lld.%d.%d&quot;,&amp;ja1,&amp;xi1,&amp;na1,&amp;ja2,&amp;xi2,&amp;na2);</div><div class="line">  long long a=ja1*17*29+xi1*29+na1;</div><div class="line">  long long b=ja2*17*29+xi2*29+na2;</div><div class="line">  if(a&lt;=b)</div><div class="line">  &#123;</div><div class="line">    long int c=b-a;</div><div class="line">    cout&lt;&lt;c/493&lt;&lt;&quot;.&quot;&lt;&lt;c%493/29&lt;&lt;&quot;.&quot;&lt;&lt;c%493%29;</div><div class="line">  &#125;</div><div class="line">  else&#123;</div><div class="line">   long int c=a-b; </div><div class="line">   cout&lt;&lt;&quot;-&quot;&lt;&lt;c/493&lt;&lt;&quot;.&quot;&lt;&lt;c%493/29&lt;&lt;&quot;.&quot;&lt;&lt;c%493%29;    </div><div class="line">  &#125;</div><div class="line">  return 0;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>统计同成绩学生(20)<br>时间限制<br>250 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>本题要求读入N名学生的成绩，将获得某一给定分数的学生人数输出。</li>
+</ol>
+<p>输入格式：</p>
+<p>输入在第1行给出不超过105的正整数N，即学生总人数。随后1行给出N名学生的百分制整数成绩，中间以空格分隔。最后1行给出要查询的分数个数K（不超过N的正整数），随后是K个分数，中间以空格分隔。</p>
+<p>输出格式：</p>
+<p>在一行中按查询顺序给出得分等于指定分数的学生人数，中间以空格分隔，但行末不得有多余空格。</p>
+<p>输入样例：<br>10<br>60 75 90 55 75 99 82 90 75 50<br>3 75 90 88<br>输出样例：<br>3 2 0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">  int N;int x,a[101]=&#123;0&#125;;</div><div class="line">    cin&gt;&gt;N;</div><div class="line">   for(int i=0;i&lt;N;i++)</div><div class="line">   &#123;</div><div class="line">     cin&gt;&gt;x;</div><div class="line">    a[x]++; </div><div class="line">   &#125;</div><div class="line">  int M;cin&gt;&gt;M;</div><div class="line">  cin&gt;&gt;x;</div><div class="line">  cout&lt;&lt;a[x];</div><div class="line">  for(int i=1;i&lt;M;i++)</div><div class="line">  &#123;</div><div class="line">    cin&gt;&gt;x;</div><div class="line">    cout&lt;&lt;&quot; &quot;&lt;&lt;a[x];</div><div class="line">  &#125;</div><div class="line">  return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>到底买不买（20）<br>时间限制<br>100 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>小红想买些珠子做一串自己喜欢的珠串。卖珠子的摊主有很多串五颜六色的珠串，但是不肯把任何一串拆散了卖。于是小红要你帮忙判断一下，某串珠子里是否包含了全部自己想要的珠子？如果是，那么告诉她有多少多余的珠子；如果不是，那么告诉她缺了多少珠子。</li>
+</ol>
+<p>为方便起见，我们用[0-9]、[a-z]、[A-Z]范围内的字符来表示颜色。例如在图1中，第3串是小红想做的珠串；那么第1串可以买，因为包含了全部她想要的珠子，还多了8颗不需要的珠子；第2串不能买，因为没有黑色珠子，并且少了一颗红色的珠子。</p>
+<p>图 1<br>输入格式：</p>
+<p>每个输入包含1个测试用例。每个测试用例分别在2行中先后给出摊主的珠串和小红想做的珠串，两串都不超过1000个珠子。</p>
+<p>输出格式：</p>
+<p>如果可以买，则在一行中输出“Yes”以及有多少多余的珠子；如果不可以买，则在一行中输出“No”以及缺了多少珠子。其间以1个空格分隔。</p>
+<p>输入样例1：<br>ppRYYGrrYBR2258<br>YrR8RrY<br>输出样例1：<br>Yes 8<br>输入样例2：<br>ppRYYGrrYB225<br>YrR8RrY<br>输出样例2：<br>No 2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">     string s1,s2;</div><div class="line">     cin&gt;&gt;s1&gt;&gt;s2;</div><div class="line">     int a[1001]= &#123;0&#125;,b[1001]= &#123;0&#125;;</div><div class="line">     int len;</div><div class="line">     for(int i=0; i&lt;s2.size(); i++)</div><div class="line">         a[s2[i]-&apos;0&apos;]++;</div><div class="line">     for(int i=0; i&lt;s1.size(); i++)</div><div class="line">         b[s1[i]-&apos;0&apos;]++;</div><div class="line">     len=s2.size();</div><div class="line">     for(int i=0; i&lt;123; i++)</div><div class="line">     &#123;</div><div class="line">        if(a[i]&gt;b[i])</div><div class="line">         &#123;</div><div class="line">             len=len-(a[i]-b[i]);</div><div class="line">         &#125;</div><div class="line"> </div><div class="line">     &#125;</div><div class="line">     int n=s2.size()-len;</div><div class="line">     if(n)</div><div class="line">         cout&lt;&lt;&quot;No &quot;&lt;&lt;n&lt;&lt;endl;</div><div class="line">     else</div><div class="line">         cout&lt;&lt;&quot;Yes &quot;&lt;&lt;s1.size()-s2.size()&lt;&lt;endl;</div><div class="line">     return 0;</div><div class="line"> </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>字符统计(20)<br>时间限制<br>400 ms<br>内存限制<br>65536 kB<br>代码长度限制<br>8000 B<br>判题程序<br>Standard<br>作者<br>CHEN, Yue<br>请编写程序，找出一段给定文字中出现最频繁的那个英文字母。</li>
+</ol>
+<p>输入格式：</p>
+<p>输入在一行中给出一个长度不超过1000的字符串。字符串由ASCII码表中任意可见字符及空格组成，至少包含1个英文字母，以回车结束（回车不算在内）。</p>
+<p>输出格式：</p>
+<p>在一行中输出出现频率最高的那个英文字母及其出现次数，其间以空格分隔。如果有并列，则输出按字母序最小的那个字母。统计时不区分大小写，输出小写字母。</p>
+<p>输入样例：<br>This is a simple TEST.  There ARE numbers and other symbols 1&amp;2&amp;3………..<br>输出样例：<br>e 7</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">#include&lt;bits/stdc++.h&gt;</div><div class="line">using namespace std;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line"> char a[1001];</div><div class="line"> int b[130]=&#123;0&#125;;</div><div class="line"> gets(a); int n=strlen(a);</div><div class="line">  for(int i=0;i&lt;n;i++)</div><div class="line">  &#123;</div><div class="line">   if(a[i]&gt;=&apos;A&apos;&amp;&amp;a[i]&lt;=&apos;Z&apos;)a[i]+=32;</div><div class="line">   if(a[i]&gt;=&apos;a&apos;&amp;&amp;a[i]&lt;=&apos;z&apos;)b[a[i]]++;</div><div class="line">  &#125;</div><div class="line">  int temp=0,x=-1;</div><div class="line">  for(int i=0;i&lt;130;i++)</div><div class="line">  &#123;</div><div class="line">    if(b[i]&gt;temp)&#123;temp=b[i];x=i;&#125;</div><div class="line">  &#125;</div><div class="line">  cout&lt;&lt;(char)x&lt;&lt;&quot; &quot;&lt;&lt;temp;</div><div class="line">  return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出的时候，要强制类型转换。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/30/高博算法第九天/" rel="next" title="高博算法第九天">
+                <i class="fa fa-chevron-left"></i> 高博算法第九天
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/排序/" rel="prev" title="排序">
+                排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
