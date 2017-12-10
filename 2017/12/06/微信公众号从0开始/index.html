@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="weixin,hexo,github," />
+  <meta name="keywords" content="weixin," />
 
 
 
@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="amdsffadsmfaldmfa">
-<meta name="keywords" content="weixin,hexo,github">
+<meta name="description" content="一般流程 申请服务器资源 启用微信公众平台开发模式 体验常用的接收消息和发送消息类型 了解数据收发原理  申请服务器资源  一般来说，新浪云SAE和百度云BAE是很好的一个选择，因为价格不高，且有绑定的域名，直接上传代码即可，不必操心内部的工作。具体流程可以参考以下的链接：方倍工作室 ##启用开发者模式  在申请微信公众账号以后，进入页面。选择基本配置，点击进入。这里的URL，如果是SAE或者是B">
+<meta name="keywords" content="weixin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信公众号从0开始">
 <meta property="og:url" content="http://yoursite.com/2017/12/06/微信公众号从0开始/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
-<meta property="og:description" content="amdsffadsmfaldmfa">
-<meta property="og:updated_time" content="2017-12-06T08:07:51.486Z">
+<meta property="og:description" content="一般流程 申请服务器资源 启用微信公众平台开发模式 体验常用的接收消息和发送消息类型 了解数据收发原理  申请服务器资源  一般来说，新浪云SAE和百度云BAE是很好的一个选择，因为价格不高，且有绑定的域名，直接上传代码即可，不必操心内部的工作。具体流程可以参考以下的链接：方倍工作室 ##启用开发者模式  在申请微信公众账号以后，进入页面。选择基本配置，点击进入。这里的URL，如果是SAE或者是B">
+<meta property="og:updated_time" content="2017-12-07T03:26:10.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信公众号从0开始">
-<meta name="twitter:description" content="amdsffadsmfaldmfa">
+<meta name="twitter:description" content="一般流程 申请服务器资源 启用微信公众平台开发模式 体验常用的接收消息和发送消息类型 了解数据收发原理  申请服务器资源  一般来说，新浪云SAE和百度云BAE是很好的一个选择，因为价格不高，且有绑定的域名，直接上传代码即可，不必操心内部的工作。具体流程可以参考以下的链接：方倍工作室 ##启用开发者模式  在申请微信公众账号以后，进入页面。选择基本配置，点击进入。这里的URL，如果是SAE或者是B">
 
 
 
@@ -354,8 +354,15 @@
       
 
       
-        <p>amdsffadsmfaldmfa</p>
-
+        <h2 id="一般流程"><a href="#一般流程" class="headerlink" title="一般流程"></a>一般流程</h2><ol>
+<li>申请服务器资源</li>
+<li>启用微信公众平台开发模式</li>
+<li>体验常用的接收消息和发送消息类型</li>
+<li>了解数据收发原理</li>
+</ol>
+<h2 id="申请服务器资源"><a href="#申请服务器资源" class="headerlink" title="申请服务器资源"></a>申请服务器资源</h2><p>  <em>一般来说</em>，<strong>新浪云SAE</strong>和<strong><em>百度云BAE</em></strong>是很好的一个选择，因为价格不高，<br>且有绑定的域名，直接上传代码即可，不必操心内部的工作。具体流程可以参考以下的链接：<br><a href="https://www.cnblogs.com/txw1958/p/wechat-tutorial.html" target="_blank" rel="external">方倍工作室</a></p>
+<p>##启用开发者模式<br>  在申请微信公众账号以后，进入页面。选择基本配置，点击进入。这里的URL，<br>如果是SAE或者是BAE，那么就是你创建的那个应用的地址（域名）。Token就是你在验证身份中定义的那个token值。选择提交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">header(&apos;Content-type:text&apos;);</div><div class="line">define(&quot;TOKEN&quot;, &quot;weixin&quot;);</div><div class="line">$wechatObj = new wechatCallbackapiTest();</div><div class="line">if (isset($_GET[&apos;echostr&apos;])) &#123;</div><div class="line">    $wechatObj-&gt;valid();</div><div class="line">&#125;else&#123;</div><div class="line">    $wechatObj-&gt;responseMsg();</div><div class="line">&#125;</div><div class="line"></div><div class="line">class wechatCallbackapiTest</div><div class="line">&#123;</div><div class="line">    public function valid()</div><div class="line">    &#123;</div><div class="line">        $echoStr = $_GET[&quot;echostr&quot;];</div><div class="line">        if($this-&gt;checkSignature())&#123;</div><div class="line">            header(&apos;content-type:text&apos;);</div><div class="line">            echo $echoStr;</div><div class="line">            exit;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private function checkSignature()</div><div class="line">    &#123;</div><div class="line">        $signature = $_GET[&quot;signature&quot;];</div><div class="line">        $timestamp = $_GET[&quot;timestamp&quot;];</div><div class="line">        $nonce = $_GET[&quot;nonce&quot;];</div><div class="line"></div><div class="line">        $token = TOKEN;</div><div class="line">        $tmpArr = array($token, $timestamp, $nonce);</div><div class="line">        sort($tmpArr, SORT_STRING);</div><div class="line">        $tmpStr = implode( $tmpArr );</div><div class="line">        $tmpStr = sha1( $tmpStr );</div><div class="line"></div><div class="line">        if( $tmpStr == $signature )&#123;</div><div class="line">            return true;</div><div class="line">        &#125;else&#123;</div><div class="line">            return false;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public function responseMsg()</div><div class="line">    &#123;</div><div class="line">        k$postStr = file_get_contents(&quot;php://input&quot;);</div><div class="line"></div><div class="line">        if (!empty($postStr))&#123;</div><div class="line">            $postObj = simplexml_load_string($postStr, &apos;SimpleXMLElement&apos;, LIBXML_NOCDATA);</div><div class="line">            $fromUsername = $postObj-&gt;FromUserName;</div><div class="line">            $toUsername = $postObj-&gt;ToUserName;</div><div class="line">            $keyword = trim($postObj-&gt;Content);</div><div class="line">            $time = time();</div><div class="line">            $textTpl = &quot;&lt;xml&gt;</div><div class="line">                        &lt;ToUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/ToUserName&gt;</div><div class="line">                        &lt;FromUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/FromUserName&gt;</div><div class="line">                        &lt;CreateTime&gt;%s&lt;/CreateTime&gt;</div><div class="line">                        &lt;MsgType&gt;&lt;![CDATA[%s]]&gt;&lt;/MsgType&gt;</div><div class="line">                        &lt;Content&gt;&lt;![CDATA[%s]]&gt;&lt;/Content&gt;</div><div class="line">                        &lt;FuncFlag&gt;0&lt;/FuncFlag&gt;</div><div class="line">                        &lt;/xml&gt;&quot;;</div><div class="line">            if($keyword == &quot;?&quot; || $keyword == &quot;？&quot;)</div><div class="line">            &#123;</div><div class="line">                $msgType = &quot;text&quot;;</div><div class="line">                $contentStr = date(&quot;Y-m-d H:i:s&quot;,time());</div><div class="line">                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);</div><div class="line">                echo $resultStr;</div><div class="line">            &#125;</div><div class="line">        &#125;else&#123;</div><div class="line">            echo &quot;&quot;;</div><div class="line">            exit;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -386,10 +393,6 @@
           
             <a href="/tags/weixin/" rel="tag"># weixin</a>
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
-          
-            <a href="/tags/github/" rel="tag"># github</a>
-          
         </div>
       
 
@@ -400,6 +403,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/07/svn使用/" rel="next" title="svn使用">
+                <i class="fa fa-chevron-left"></i> svn使用
+              </a>
             
           </div>
 
@@ -456,8 +463,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
@@ -472,7 +488,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -483,7 +499,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -494,7 +510,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -519,6 +535,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一般流程"><span class="nav-number">1.</span> <span class="nav-text">一般流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#申请服务器资源"><span class="nav-number">2.</span> <span class="nav-text">申请服务器资源</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
