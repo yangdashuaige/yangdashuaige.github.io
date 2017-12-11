@@ -1,0 +1,763 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="H5," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="##HTML5 ###建立原则  基于HTML CSS DOM JavaScript 尽量减少对外部插件的需求 更多的取代脚本的标记 优秀的错误处理 独立于设备 开发进程对公众透明  ##HTML5新特性  canvas元素 audio video 对本地离线存储有更好的支持 新的内容元素 header footer section nav article asid figure 新的表单元素 e">
+<meta name="keywords" content="H5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5第一课">
+<meta property="og:url" content="http://yoursite.com/2017/12/11/HTML5/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="##HTML5 ###建立原则  基于HTML CSS DOM JavaScript 尽量减少对外部插件的需求 更多的取代脚本的标记 优秀的错误处理 独立于设备 开发进程对公众透明  ##HTML5新特性  canvas元素 audio video 对本地离线存储有更好的支持 新的内容元素 header footer section nav article asid figure 新的表单元素 e">
+<meta property="og:updated_time" content="2017-12-11T02:43:01.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5第一课">
+<meta name="twitter:description" content="##HTML5 ###建立原则  基于HTML CSS DOM JavaScript 尽量减少对外部插件的需求 更多的取代脚本的标记 优秀的错误处理 独立于设备 开发进程对公众透明  ##HTML5新特性  canvas元素 audio video 对本地离线存储有更好的支持 新的内容元素 header footer section nav article asid figure 新的表单元素 e">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/11/HTML5/"/>
+
+
+
+
+
+  <title> HTML5第一课 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/11/HTML5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HTML5第一课
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T08:14:17+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##HTML5</p>
+<p>###建立原则</p>
+<ol>
+<li>基于HTML CSS DOM JavaScript</li>
+<li>尽量减少对外部插件的需求</li>
+<li>更多的取代脚本的标记</li>
+<li>优秀的错误处理</li>
+<li>独立于设备</li>
+<li>开发进程对公众透明</li>
+</ol>
+<p>##HTML5新特性</p>
+<ol>
+<li>canvas元素</li>
+<li>audio video</li>
+<li>对本地离线存储有更好的支持</li>
+<li>新的内容元素 header footer section nav article asid figure</li>
+<li>新的表单元素 email url search date time calendar</li>
+</ol>
+<p>##浏览器支持</p>
+<p>##文档类型和字符集<br>&lt;!DOCTYPE HTML&gt;</p>
+<p>##新的内容元素</p>
+<p><header></header></p>
+<p><footer>作者姓名 联系方式</footer></p>
+<p><section></section></p>
+<p><article></article></p>
+<p><nav></nav></p>
+<figure></figure>
+
+<p>##HTML5新增的内联元素<br><mark></mark><br><time datetime="" pubdate=""></time></p>
+<p><meter high="" low="" max="" min="" optimum="" value=""></meter></p>
+<p><progress value="" max="">进度条 value是当前的值 max是完成的值</progress></p>
+<p>##HTML5表单的新特性</p>
+<ol>
+<li>新增的input类型<br>email 用于应该包含email地址的输入域。在提交表单的时候会自动验证email域的值<br><input type="email"><br>url 用于应该包含URL地址的输入域。在提交表单时会自动验证URL的域的值。<br><input type="url"><br>number  用于应该包含数值的输入域。还能设定对所接受的数字的限定。<br><input type="number" min="1" max="100" value="30" step="5">默认值是30 每次跳动5 个数<br>range 用于应该包含一定范围内数字值的输入域，显示为滑动条<input type="range" name="points" min="1" max="10" step="2">
+
+</li>
+</ol>
+<p>date</p>
+<p><input type="date"></p>
+<p><input type="month"></p>
+<p><input type="week"></p>
+<p><input type="time"></p>
+<p><input type="search"></p>
+<p><input type="color"></p>
+<ol>
+<li>新增的表单元素<br>datalist 规定输入域的选项列表。列表是通过datalist内的option元素创建的。<br>当需要把datalist绑定到输入域，用输入域的list属性引用datalist的ID<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;datelist id=url_list&quot;&gt;</div><div class="line">&lt;option label=&quot;百度&quot; value=&quot;www.baidu.com&quot;&gt;</div><div class="line">&lt;option label=&quot;谷歌&quot; value=&quot;&quot;&gt;</div><div class="line">&lt;option label=&quot;啦啦&quot; value=&quot;&quot;&gt;</div><div class="line">&lt;/datalist&gt;</div><div class="line">&lt;input type=&quot;url&quot; list=&quot;url_list&quot; name=&quot;link&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>keygen表单提交时会生成两个键 私钥private key 发送到客户端<br>公钥 public key发送到服务器<br>用户名： <input type="text" name="usr_name"></p>
+<p>output  大多数浏览器不支持<br>onforminput<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE HTML&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">function resCalc()</div><div class="line">&#123;</div><div class="line">numA=document.getElementById(&quot;num_a&quot;).value;</div><div class="line">numB=document.getElementById(&quot;num_b&quot;).value;</div><div class="line">document.getElementById(&quot;result&quot;).value=Number(numA)+Number(numB);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;p&gt;使用 output 元素的简易计算器：&lt;/p&gt;</div><div class="line">&lt;form onsubmit=&quot;return false&quot;&gt;</div><div class="line"> &lt;input id=&quot;num_a&quot; /&gt; +</div><div class="line"> &lt;input id=&quot;num_b&quot; /&gt; =</div><div class="line"> &lt;output id=&quot;result&quot; onforminput=&quot;resCalc()&quot;&gt;&lt;/output&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>新的表单属性<br>####form元素</li>
+</ol>
+<ul>
+<li>autocomplete</li>
+<li>novalidate 规定在提交表单时不应该验证form或者input域<br>autocomplete：表单中的元素是否具有自动完成功能 on/off  启用或者关闭<br><form action="" method="" autocomplete="on" novalidate=""><br>novalidate 规定表单提交时不验证数据<br>####input元素的新增元素</form></li>
+<li>autocomplete</li>
+<li>autofocus</li>
+<li>form  规定输入域属于一个或者多个表单</li>
+<li>list</li>
+<li>min,max step</li>
+<li>multiple</li>
+<li>pattern 规定用于验证input域的模式</li>
+<li>required 规定输入域不能为空</li>
+</ul>
+<ol>
+<li>新增的表单验证<br>checkValidatity()检查input元素是否满足验证<br>特殊需求<br>ValidateState</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/H5/" rel="tag"># H5</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/07/贪心算法/" rel="prev" title="贪心算法">
+                贪心算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
