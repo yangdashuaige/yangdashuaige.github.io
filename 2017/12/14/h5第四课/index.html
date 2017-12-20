@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="H5,Canvas," />
+  <meta name="keywords" content="Canvas,H5," />
 
 
 
@@ -88,13 +88,13 @@
 
 
 <meta name="description" content="Canvas元素：canvas在网页中定义了一个画布Canvas API在画布中画图 Canvas元素123&amp;lt;canvas id=&amp;quot;c1&amp;quot; width=&amp;quot;200&amp;quot; height=&amp;quot;200&amp;quot;&amp;gt;	&amp;lt;/canvas&amp;gt; 使用JavaScript获取canvas对象var c=document.getElementById(">
-<meta name="keywords" content="H5,Canvas">
+<meta name="keywords" content="Canvas,H5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="h5第四课">
 <meta property="og:url" content="http://yoursite.com/2017/12/14/h5第四课/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
 <meta property="og:description" content="Canvas元素：canvas在网页中定义了一个画布Canvas API在画布中画图 Canvas元素123&amp;lt;canvas id=&amp;quot;c1&amp;quot; width=&amp;quot;200&amp;quot; height=&amp;quot;200&amp;quot;&amp;gt;	&amp;lt;/canvas&amp;gt; 使用JavaScript获取canvas对象var c=document.getElementById(">
-<meta property="og:updated_time" content="2017-12-14T09:33:42.354Z">
+<meta property="og:updated_time" content="2017-12-20T12:26:26.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="h5第四课">
 <meta name="twitter:description" content="Canvas元素：canvas在网页中定义了一个画布Canvas API在画布中画图 Canvas元素123&amp;lt;canvas id=&amp;quot;c1&amp;quot; width=&amp;quot;200&amp;quot; height=&amp;quot;200&amp;quot;&amp;gt;	&amp;lt;/canvas&amp;gt; 使用JavaScript获取canvas对象var c=document.getElementById(">
@@ -357,11 +357,13 @@
         <h1 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h1><p>元素：canvas<br>在网页中定义了一个画布<br>Canvas API在画布中画图</p>
 <h2 id="Canvas元素"><a href="#Canvas元素" class="headerlink" title="Canvas元素"></a>Canvas元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;canvas id=&quot;c1&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;</div><div class="line">	</div><div class="line">&lt;/canvas&gt;</div></pre></td></tr></table></figure>
 <p>使用JavaScript获取canvas对象<br>var c=document.getElementById(“c1”);<br>获得canvas对象的2d渲染上下文环境<br>var ctx=c.getContext(“2d”);<br>CanvasAPI在画布中画图</p>
+<p>Canvas元素本身是没有绘图能力的。所有绘制工作必须在JavaScript内部完成</p>
 <h2 id="坐标和颜色"><a href="#坐标和颜色" class="headerlink" title="坐标和颜色"></a>坐标和颜色</h2><ol>
 <li>坐标<br>远点：位于窗口客户区的左上角<br>x轴：向右为正<br>y轴：向下为正</li>
 <li>颜色<br>Windows使用红绿蓝3原色组合表示一个颜色。每个原色8位数字表示，24位表示一个颜色。<br>2.1 关键字<br>red green blue black white navy grey yellow<br>2.2 16进制的字符串<br>#RGB<br>#000<br>#FFF<br>#0F0<br>2.3 RGB颜色值<br>rgb(r,g,b)<br>(0,255,0)<br>(255,0,0)</li>
 </ol>
-<h2 id="绘制图形"><a href="#绘制图形" class="headerlink" title="绘制图形"></a>绘制图形</h2><ol>
+<h2 id="绘制图形"><a href="#绘制图形" class="headerlink" title="绘制图形"></a>绘制图形</h2><p>首先是beginPath()然后是moveTo(x,y)接着lineTo(x,y)最后是stroke()绘制图形的边界轮廓</p>
+<ol>
 <li>直线<br>canvas对象<br>context对象<br>beginPath（）开始绘图路径<br>moveTo()将坐标移至直线起点<br>lineTo()绘制直线<br>stoke()绘制图形的边界轮廓</li>
 <li>三角形</li>
 <li>贝塞尔曲线<br>参数化的曲线<br>依据N个位置任意的点坐标绘制出一条光滑的曲线<br>3.1 二次方贝塞尔曲线<br>三个给定点决定<br>quadraticCurveTo(cpX,cpY,x,y);</li>
@@ -373,7 +375,7 @@
 </ol>
 <p>4.4 clearRect<br>ctx.fillRect(20,20,100,50);<br>ctx.clearRect(40,40,60,10);</p>
 <ol>
-<li><p>圆弧<br>arc(centerX,centerY,radius,startAngle,endAngle,antiClockwise);<br>ctx.beginPath();<br>ctx.arc(50,50,50,1.1<em>Math.PI,1.9</em>Math.PI,false);</p>
+<li><p>圆弧<br>arc(centerX,centerY,radius,startAngle,endAngle,counterClockwise);//最后一个参数控制逆时针还是顺时针，FALSE为顺时针<br>ctx.beginPath();<br>ctx.arc(50,50,50,1.1<em>Math.PI,1.9</em>Math.PI,false);</p>
 </li>
 <li><p>圆</p>
 </li>
@@ -382,9 +384,10 @@
 <li>stokeStyle  指定描边的样式</li>
 <li>lineWidth   描边的宽度</li>
 <li>fill()使用fillStyle属性指定的颜色、渐变和模式来填充当前路径</li>
-<li>颜色渐变<br>渐变：在颜色采集上使用逐步抽样法<br>4.1 线性颜色渐变<br>4.2 放射性颜色渐变</li>
+<li>颜色渐变<br>渐变：在颜色采集上使用逐步抽样法<br>4.1 线性颜色渐变</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	var c=document.getElementById(&apos;myCanvas&apos;);</div><div class="line">	var ctx=c.getContext(&apos;2d&apos;);</div><div class="line">	var grd=ctx.createLinearGradient(0,0,175,50);</div><div class="line">	grd.addColorStop(0,&apos;#FF0000&apos;);</div><div class="line">	grd.addColorStop(1,&apos;#00FF00&apos;);</div><div class="line">	ctx.fillStyle-grd;</div><div class="line">	ctx.fillRect(0,0,175,50);</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;canvas id=&quot;myCanvas&quot; width=&quot;200&quot; height=&quot;100&quot; style=&quot;border:1px solid #c3c3c3;&quot;&gt;</div><div class="line">	your browser dose not support the canvas element</div><div class="line">&lt;/canvas&gt;</div></pre></td></tr></table></figure>
+<p>4.2 放射性颜色渐变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	function draw()</div><div class="line">	&#123;</div><div class="line">		var canvas=document.getElementById(&quot;myCanvas&quot;);</div><div class="line">		var ctx=canvas.getContext(&apos;2d&apos;);</div><div class="line">		var gradient=ctx.createRadialGradient(100,100,0,100,100,100);</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
 <ol>
 <li>透明<br>rgba(r,g,b,alpha);<br>alpha透明度 0-1<br>0表示完全透明，1表示不透明</li>
 </ol>
@@ -417,9 +420,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/H5/" rel="tag"># H5</a>
-          
             <a href="/tags/Canvas/" rel="tag"># Canvas</a>
+          
+            <a href="/tags/H5/" rel="tag"># H5</a>
           
         </div>
       
@@ -431,6 +434,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/15/H5第五课/" rel="next" title="H5第五课">
+                <i class="fa fa-chevron-left"></i> H5第五课
+              </a>
             
           </div>
 
@@ -512,7 +519,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-count">58</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -534,7 +541,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

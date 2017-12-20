@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/12/h5第二课/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
 <meta property="og:description" content="新增的表单校验 checkValidity()检查input元素是否满足验证要求   特殊需求  js自定义验证方法使用input元素的setCustomValidity()自定义信息的提示内容 123456789101112131415161718192021222324&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;form name=&amp;quot;form1&amp;quot; id=&amp;quot;f">
-<meta property="og:updated_time" content="2017-12-14T02:03:21.559Z">
+<meta property="og:updated_time" content="2017-12-20T11:45:05.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="h5第二课">
 <meta name="twitter:description" content="新增的表单校验 checkValidity()检查input元素是否满足验证要求   特殊需求  js自定义验证方法使用input元素的setCustomValidity()自定义信息的提示内容 123456789101112131415161718192021222324&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;form name=&amp;quot;form1&amp;quot; id=&amp;quot;f">
@@ -365,7 +365,7 @@
 <ol>
 <li>使用ValidateState对象进行表单验证</li>
 </ol>
-<p>DOM接口ValidityState代表了一个元素可以处于的与约束验证相关的有效性状态。<br>Validity对象是通过validity属性获取的，该对象有8个属性，分别针对8个方面的错误验证，属性值均为布尔值。<br>3.1 valueMissing属性（必填的表单元素值为空）<br> 如果表单元素设置了required特性，则为必填的值。如果必填的值为空，valueMissing属性返回true，否则返回false.<br> 3.2 typeMismatch属性（输入值与type类型不匹配）<br> H5新增的表单类型如email number url等，都包含一个原始的类型验证。如果用户输入的内容与表单类型不符合，则返回TRUE否则返回FALSE。<br> 3.3 patternMismatch属性（输入值与pattern特性的正则不匹配）<br> 表单元素可通过pattern特性设置正则表达式的验证模式。若不符合返回TRUE否则FALSE<br> 3.4 tooLong属性（输入的内容超过了表单元素的maxLength特性限定的字符长度）<br> 3.5 rangeUnderflow属性（输入的值小于min特性的值）<br> 3.6 rangeOverflow属性（输入的值大于max特性的值）<br> 3.7 stepMismatch属性（输入的值不符合step特性所推算出的规则）<br> 3.8 customError属性（使用自定义的验证错误提示信息）</p>
+<p>DOM接口ValidityState代表了一个元素可以处于的与约束验证相关的有效性状态。<br>Validity对象是通过validity属性获取的，该对象有8个属性，分别针对8个方面的错误验证，属性值均为布尔值。<br> 3.1 valueMissing属性（必填的表单元素值为空）<br> 如果表单元素设置了required特性，则为必填的值。如果必填的值为空，valueMissing属性返回true，否则返回false.<br> 3.2 typeMismatch属性（输入值与type类型不匹配）<br> H5新增的表单类型如email number url等，都包含一个原始的类型验证。如果用户输入的内容与表单类型不符合，则返回TRUE否则返回FALSE。<br> 3.3 patternMismatch属性（输入值与pattern特性的正则不匹配）<br> 表单元素可通过pattern特性设置正则表达式的验证模式。若不符合返回TRUE否则FALSE<br> 3.4 tooLong属性（输入的内容超过了表单元素的maxLength特性限定的字符长度）<br> 3.5 rangeUnderflow属性（输入的值小于min特性的值）<br> 3.6 rangeOverflow属性（输入的值大于max特性的值）<br> 3.7 stepMismatch属性（输入的值不符合step特性所推算出的规则）<br> 3.8 customError属性（使用自定义的验证错误提示信息）</p>
 <h2 id="HTML文件处理"><a href="#HTML文件处理" class="headerlink" title="HTML文件处理"></a>HTML文件处理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;form&gt;</div><div class="line">&lt;input type=&quot;file&quot; name=&quot;files[]&quot; id=&quot;Files&quot; multiple=&gt;&lt;/input&gt;</div><div class="line">&lt;div id=&quot;Lists&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	if (window.File&amp;&amp;window.FileList&amp;&amp;window.Blob&amp;&amp;window.FileReader) </div><div class="line">	&#123;</div><div class="line">		document.getElementById(&apos;Files&apos;).addEventListener(&apos;change&apos;,fileSelect,false);</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		document.write(&quot;buzhichiFILEAPI&quot;);</div><div class="line">	&#125;</div><div class="line">	function fileSelect(e)</div><div class="line">	&#123;</div><div class="line">		e=e||window.event;</div><div class="line">		var files=e.target.files;  //FileList对象</div><div class="line">		var output=[];</div><div class="line">		for(var i=0,f;f=files[i];i++)</div><div class="line">		&#123;</div><div class="line">			output.push(&apos;&lt;li&gt;&lt;strong&gt;&apos;+f.name+&apos;&lt;/strong&gt;(&apos;+f.type+&apos;)-&apos;+f.size+&apos;bytes&lt;/li&gt;&apos;);</div><div class="line">		&#125;</div><div class="line">		document.getElementById(&apos;Lists&apos;).innerHTML=&apos;&lt;ul&gt;&apos;+output.join(&apos;&apos;)+&apos;&lt;/ul&gt;&apos;;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <h3 id="File-API"><a href="#File-API" class="headerlink" title="File API"></a>File API</h3><p>File API是文件处理规范的基础，包含最基础的文件操作的JavaScript接口设计。其中最主要的接口定义一共有4个：</p>
 <ol>
@@ -501,7 +501,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-count">58</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -523,7 +523,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
