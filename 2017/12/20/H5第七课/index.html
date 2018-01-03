@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/12/20/H5第七课/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
 <meta property="og:description" content="Web存储传统Web程序本地存储数据Cookie/Session  Cookies: 存储在本地少量数据  4K  用户名/密码缺陷：数据大小有限制客户端可以禁用或清空Cookies，会影响程序的功能当多人共用一台计算机时使用Cookies可能会泄露隐私  Session会话，数据保存在网站服务器端为每个网站访问者分配一个会话编号SID通过SID设置和获取Session数据第一次访问–》第一次响应">
-<meta property="og:updated_time" content="2017-12-20T13:02:11.153Z">
+<meta property="og:updated_time" content="2017-12-21T07:33:36.925Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="H5第七课">
 <meta name="twitter:description" content="Web存储传统Web程序本地存储数据Cookie/Session  Cookies: 存储在本地少量数据  4K  用户名/密码缺陷：数据大小有限制客户端可以禁用或清空Cookies，会影响程序的功能当多人共用一台计算机时使用Cookies可能会泄露隐私  Session会话，数据保存在网站服务器端为每个网站访问者分配一个会话编号SID通过SID设置和获取Session数据第一次访问–》第一次响应">
@@ -382,6 +382,52 @@
 <p>3.2 对象存储空间ObjectStore<br>键-值<br>{<br>“id”:”110”<br>“name”:”李明”<br>“age”:”35”<br>“email”:”lainfah@163com”<br>}</p>
 <p>IndexedDB支持key path 和key generator两种提供键的选项<br>key path:指定某个字段作为键值<br>key generator: 自动生成的递增的数字<br>var objectStore=db.createObjectStore(“employee”,{keyPath:”id”});<br>//创建索引<br>objectStore.createIndex(“emailIndex”,”email”,{unique:true});</p>
 <p>3.3 事务<br> 只读 IDBTransaction.READ<br> 读写 IDBTransaction.READ_WHITE<br> 版本变更 IDBTransaction</p>
+<h2 id="H5离线Web应用程序"><a href="#H5离线Web应用程序" class="headerlink" title="H5离线Web应用程序"></a>H5离线Web应用程序</h2><p> 切换到离线模式<br> 创建cache manifest文件</p>
+<ol>
+<li><p>应用程序缓存<br>优势：<br>离线浏览<br>速度<br>减少服务器负载</p>
+<p>扩展名建议：.appcache<br>MIME类型：text/cache-manifest<br>demo.appcache<br><html manifest="demo.appcache"><br>manifest文件<br>文本文件，告知浏览器缓存的内容（以及不缓存的内容）<br>CACHE MANIFEST<br>/theme.css<br>/logo.gif<br>/main.js</html></p>
+<p>NETWORK:永远不会被缓存，离线也不可用<br>NETWORK<br>login.asp<br>*:除了上述CACHE MAINFEST文件列表之外，其他所有资源/文件都需要联网</p>
+<p>FALLBACK:当页面无法访问时的回退页面</p>
+<p>更新缓存<br>浏览器自动更新<br>js手动更新</p>
+<p>window.applicationCach对象<br>applicationCache.update()手动更新<br>abort()取消正在进行的缓存下载<br>swapcache()切换到本地缓存环境</p>
+<p>applicationCache定义了一组事件<br>更新缓存的不同情况下触发<br>checking:第一次尝试下载的触发<br>noupdate:检测出manifest文件没有更新<br>downloading:正在获取资源<br>progress:正在下载资源<br>cached：已经下载完成<br>updateready:已经重新下载并更新成功<br>obsolete:应用程序被取消或者更新缓存请求失败<br>error:mainfest文件没有改变，页面引用的manifset文件没有被正确下载<br>获取资源时发生致命错误<br>更新过程中mainfset发生变化</p>
+</li>
+</ol>
+<h2 id="H5-Web-Worker"><a href="#H5-Web-Worker" class="headerlink" title="H5 Web Worker"></a>H5 Web Worker</h2><p>运行在后台的JavaScript脚本<br>不影响页面的性能<br>工作过程</p>
+<p>例子：变量的递增，回传到我们的HTML文档<br>window.postMessage();</p>
+<ol>
+<li>判断浏览器是否支持<br>if(typeof(Worker)!=”undefined”)<br>{<br>//支持</li>
+</ol>
+<p>}<br>else{<br>    //不支持<br>}</p>
+<ol>
+<li>创建Web Worker文件<br>demo_worker.js</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var i=0;</div><div class="line">function timeCount()</div><div class="line">&#123;</div><div class="line">i=i+1;</div><div class="line">window.postMessage(i);</div><div class="line">setTimeout(&quot;timedCount()&quot;,500);</div><div class="line">&#125;</div><div class="line">timecount();</div></pre></td></tr></table></figure>
+<ol>
+<li>创建Web Worker对象<br>var w;<br>if(typeof(w)==”undefined”)<br>{<br>w=new Worker(“demo_worker.js”);<br>}</li>
+</ol>
+<p>向Web Worker添加一个onmessage事件监听器<br>w.onmessage=function(event){</p>
+<p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;output id=&quot;result&quot;&gt;&lt;/output&gt;&lt;br/&gt;</div><div class="line">&lt;button onclick=&quot;startWorker()&quot;&gt;启动Worker&lt;/button&gt;</div><div class="line">&lt;button onclick=&quot;stopWorker()&quot;&gt;终止Worker&lt;/button&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">	var w;</div><div class="line">	function startWorker()&#123;</div><div class="line">		if(typeof(Worker)!=&quot;undefined&quot;)</div><div class="line">		&#123;</div><div class="line">			if(typeof(w)==&quot;undefined&quot;)</div><div class="line">			&#123;</div><div class="line">				w=new Worker(&quot;demo_worker.js&quot;)</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">		&#123;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="Web通信"><a href="#Web通信" class="headerlink" title="Web通信"></a>Web通信</h2><ol>
+<li><p>跨文档消息机制<br>typeof(window.postMessage)!=”undefined”;<br>window.postMessage(data,url);<br>url:允许通信的域名</p>
+</li>
+<li><p>XMLHttpRequset Level2<br>浏览器接口<br>使用它提出HTTP 或HTTPS请求<br>不用刷新页面就可=可以修改页面内容</p>
+</li>
+</ol>
+<p>应用：提交表单  获取额外内容<br>功能：<br>在不重新加载页面的情况下<br>在页面已加载后从服务器请求数据<br>在页面已加载后从服务器接收数据<br>在后台向服务器发送数据</p>
+<p>过程，经历了若干状态<br>XMLHttpRequest.readyState</p>
+<p>404  file not found<br>505   server error</p>
+<p>XMLHttpRequset.statusText</p>
+<p>var xmlhttp=null;<br>if(window.XMLHttpRequset)<br>{<br>xmlhttp=new XMLHttpRequest();<br>}<br>else if(window.ActiveXObject)<br>{<br>xmlhttp=new ActiveXObject(“Microsoft.XMLHTTP”);<br>}<br>else<br>{</p>
+<p>}</p>
+<ol>
+<li>WebSocket<br>WebSocket API<br>Web应用程序与服务器保持双向通信</li>
+</ol>
+<p>var socket=new WebSocket(“ws://localhost://8080”);<br>socket.send(“……”);<br>socket.onopen=function(){</p>
+<p>}<br>socket.onmessage=function(){</p>
+<p>}<br>socket.onclose(){</p>
+<p>}</p>
 
       
     </div>
@@ -423,6 +469,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/23/web第三次作业编程题/" rel="next" title="web第三次作业编程题">
+                <i class="fa fa-chevron-left"></i> web第三次作业编程题
+              </a>
             
           </div>
 
@@ -504,7 +554,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">64</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -526,7 +576,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -561,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web存储"><span class="nav-number">1.</span> <span class="nav-text">Web存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统Web程序本地存储数据"><span class="nav-number">1.1.</span> <span class="nav-text">传统Web程序本地存储数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H5本地存储技术"><span class="nav-number">1.2.</span> <span class="nav-text">H5本地存储技术</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web存储"><span class="nav-number">1.</span> <span class="nav-text">Web存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#传统Web程序本地存储数据"><span class="nav-number">1.1.</span> <span class="nav-text">传统Web程序本地存储数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H5本地存储技术"><span class="nav-number">1.2.</span> <span class="nav-text">H5本地存储技术</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H5离线Web应用程序"><span class="nav-number">2.</span> <span class="nav-text">H5离线Web应用程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H5-Web-Worker"><span class="nav-number">3.</span> <span class="nav-text">H5 Web Worker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web通信"><span class="nav-number">4.</span> <span class="nav-text">Web通信</span></a></li></ol></div>
             
 
           </div>
@@ -584,7 +634,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
