@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/01/03/jQuery第三课/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
 <meta property="og:description" content="jQuery提供的函数$.map(array,fn)$.each(array.fn)$.each(dict.fn) var arr=[3,5,8];$.map(arr,function(item){    return item*2;}); var dict={“tom”:20,”jerry”:29,”jim”:23};$.each(dict,function(key,value){    ale">
-<meta property="og:updated_time" content="2018-01-03T07:31:25.783Z">
+<meta property="og:updated_time" content="2018-01-11T13:48:45.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery第三课">
 <meta name="twitter:description" content="jQuery提供的函数$.map(array,fn)$.each(array.fn)$.each(dict.fn) var arr=[3,5,8];$.map(arr,function(item){    return item*2;}); var dict={“tom”:20,”jerry”:29,”jim”:23};$.each(dict,function(key,value){    ale">
@@ -363,12 +363,12 @@
 <ol>
 <li>注册页面<br><textarea><br></textarea><br><input type="button" id="btn" value="同意"><br>启用计时器，倒计时读秒10为零时按钮启用<br>setInterval(“countDown”,1000);<br>clearInterval(id);</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;xxx.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;script &gt;</div><div class="line">		$(function()&#123;</div><div class="line">			$(&quot;#btn&quot;).attr(&quot;disabled&quot;,true);</div><div class="line">			var id=setInterval</div><div class="line">		&#125;)</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;&lt;/title&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.8.3.js&quot;&gt;&lt;/script&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">    var id;</div><div class="line">    $(function()&#123;</div><div class="line">        $(&quot;#btn&quot;).attr(&quot;disable&quot;,true);</div><div class="line">        id = setInterval(&quot;countDown()&quot;,1000);  </div><div class="line">    &#125;) </div><div class="line">    var leftSeconds = 10;</div><div class="line">    function countDown()&#123;</div><div class="line">        if(leftSeconds&lt;=0)&#123;</div><div class="line">            $(&quot;#btn&quot;).val(&quot;同意&quot;);</div><div class="line">            $(&quot;#btn&quot;).attr(&quot;disable&quot;,false);</div><div class="line">            clearInterval(id);</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        leftSeconds--;</div><div class="line">        $(&quot;#btn&quot;).val(&quot;请仔细阅读&quot;+leftSeconds+&quot;秒&quot;);</div><div class="line">    &#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;textarea name=&quot;&quot; id=&quot;&quot; cols=&quot;30&quot; rows=&quot;10&quot;&gt;&lt;/textarea&gt;</div><div class="line">    &lt;input type=&quot;button&quot; id=&quot;btn&quot; value=&quot;同意&quot;&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <ol>
 <li>搜索框效果<br>blur()<br>文本框提示：请输入关键词<br>灰色<br>.waiting{<br> color:grey;<br>}<br>focus()<br>文本框提示删除<br>黑色</li>
 </ol>
 <p>移除样式</p>
-<p><input type="text" id="kw"><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.wating&#123;</div><div class="line">	color:grey;</div><div class="line">&#125;</div><div class="line">$(function()&#123;</div><div class="line">	$(&quot;#kw&quot;).val(&quot;请输入关键字&quot;).addClass(&quot;wating&quot;).blur(function()&#123;</div><div class="line">	if($(this).val()==&quot;&quot;)&#123;$(&quot;#kw&quot;).val(&quot;请输入关键词&quot;).addClass(&quot;waiting&quot;);&#125;</div><div class="line">	&#125;).focus(fuction()&#123;</div><div class="line">	if($(this).val()==&quot;请输入关键字&quot;)&#123;$(&quot;#kw&quot;).val(&quot;&quot;).removeClass(&quot;waiting&quot;)&#125;</div><div class="line">	&#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p><input type="text" id="kw"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;&lt;/title&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.8.3.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;style&gt;</div><div class="line">    .waiting&#123;</div><div class="line">        color: rgb(184, 179, 179);</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;input type=&quot;text&quot; id=&quot;kw&quot;&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    $(function()&#123;</div><div class="line">        $(&quot;#kw&quot;).val(&quot;请输入关键字&quot;).addClass(&quot;waiting&quot;).blur(function()&#123;</div><div class="line">            if($(this).val() == &quot;&quot;)&#123;</div><div class="line">                $(&quot;#kw&quot;).val(&quot;请输入关键字&quot;).addClass(&quot;waiting&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;).focus(function()&#123;</div><div class="line">            if($(this).val()==&quot;请输入关键字&quot;)&#123;</div><div class="line">                $(&quot;#kw&quot;).val(&quot;&quot;).removeClass(&quot;waiting&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;)</div><div class="line">    &#125;)</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 <ol>
 <li>全选，全不选 反选</li>
 </ol>
@@ -376,7 +376,7 @@
 <ol>
 <li>Tooptips<br>结合了mouseover 和mouseout<br>hover(function(){},function(){});</li>
 </ol>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;&lt;/title&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.8.3.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;span id=&quot;myspan&quot;&gt;放我头上&lt;/span&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    $(function()&#123;</div><div class="line">        $(&quot;#myspan&quot;).hover(function(e)&#123;</div><div class="line">            $(&quot;&lt;div id=&apos;tooltip&apos; style=&apos;color:red;width:100px;height:30px;position:absolute&apos;&gt;我是提示&lt;/div&gt;&quot;).insertAfter(this);</div><div class="line">            $(&quot;#tooltip&quot;).css(&#123;&quot;display&quot;:&quot;block&quot;,&quot;left&quot;:e.pageX,&quot;top&quot;:e.pageY+18&#125;);</div><div class="line">        &#125;,function()&#123;</div><div class="line">            $(&quot;#tooltip&quot;).remove();</div><div class="line">        &#125;);</div><div class="line">    &#125;)</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -417,6 +417,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/04/AJAX/" rel="next" title="AJAX">
+                <i class="fa fa-chevron-left"></i> AJAX
+              </a>
             
           </div>
 
@@ -489,7 +493,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -511,7 +515,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
