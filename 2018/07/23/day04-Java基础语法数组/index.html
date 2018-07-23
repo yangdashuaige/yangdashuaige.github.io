@@ -1,0 +1,748 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="提问环节 JDK和JRE 如何利用JDK编译和运行程序 classpath的作用 java为什么不需要delete 变量的数据类型 java提供了哪些循环结构，各自的区别 java的注释 &amp;amp;和&amp;amp;&amp;amp;的区别 break和continue的区别 下面两种方式有区别吗  123float f1=12.345f;float f2=(float)12.345; 答：内存中所占的空间不一">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day04-Java基础语法数组">
+<meta property="og:url" content="http://yoursite.com/2018/07/23/day04-Java基础语法数组/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="提问环节 JDK和JRE 如何利用JDK编译和运行程序 classpath的作用 java为什么不需要delete 变量的数据类型 java提供了哪些循环结构，各自的区别 java的注释 &amp;amp;和&amp;amp;&amp;amp;的区别 break和continue的区别 下面两种方式有区别吗  123float f1=12.345f;float f2=(float)12.345; 答：内存中所占的空间不一">
+<meta property="og:updated_time" content="2018-07-23T13:25:00.480Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day04-Java基础语法数组">
+<meta name="twitter:description" content="提问环节 JDK和JRE 如何利用JDK编译和运行程序 classpath的作用 java为什么不需要delete 变量的数据类型 java提供了哪些循环结构，各自的区别 java的注释 &amp;amp;和&amp;amp;&amp;amp;的区别 break和continue的区别 下面两种方式有区别吗  123float f1=12.345f;float f2=(float)12.345; 答：内存中所占的空间不一">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/23/day04-Java基础语法数组/"/>
+
+
+
+
+
+  <title> day04-Java基础语法数组 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/23/day04-Java基础语法数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                day04-Java基础语法数组
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-23T21:23:29+08:00">
+                2018-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/洗心革面学Java/" itemprop="url" rel="index">
+                    <span itemprop="name">洗心革面学Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="提问环节"><a href="#提问环节" class="headerlink" title="提问环节"></a>提问环节</h3><ol>
+<li>JDK和JRE</li>
+<li>如何利用JDK编译和运行程序</li>
+<li>classpath的作用</li>
+<li>java为什么不需要delete</li>
+<li>变量的数据类型</li>
+<li>java提供了哪些循环结构，各自的区别</li>
+<li>java的注释</li>
+<li>&amp;和&amp;&amp;的区别</li>
+<li>break和continue的区别</li>
+<li>下面两种方式有区别吗</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">float f1=12.345f;</div><div class="line">float f2=(float)12.345;</div></pre></td></tr></table></figure>
+<h1 id="答：内存中所占的空间不一样"><a href="#答：内存中所占的空间不一样" class="headerlink" title="答：内存中所占的空间不一样"></a>答：内存中所占的空间不一样</h1><h2 id="方法-函数"><a href="#方法-函数" class="headerlink" title="方法/函数"></a>方法/函数</h2><p>一种封装的思想。将特定的功能指令封装成一个模块。</p>
+<h3 id="好处如下："><a href="#好处如下：" class="headerlink" title="好处如下："></a>好处如下：</h3><ul>
+<li>增加了代码的可读性</li>
+<li>提高了代码的反复利用率</li>
+<li>是封装的一种体现</li>
+</ul>
+<h3 id="函数和函数之间是同级的，所以函数的定义不能写在其他函数内部"><a href="#函数和函数之间是同级的，所以函数的定义不能写在其他函数内部" class="headerlink" title="函数和函数之间是同级的，所以函数的定义不能写在其他函数内部"></a>函数和函数之间是同级的，所以函数的定义不能写在其他函数内部</h3><h3 id="函数的重载：方法名相同，但是参数的类型或者参数的个数不一样，返回值不考虑"><a href="#函数的重载：方法名相同，但是参数的类型或者参数的个数不一样，返回值不考虑" class="headerlink" title="函数的重载：方法名相同，但是参数的类型或者参数的个数不一样，返回值不考虑"></a>函数的重载：方法名相同，但是参数的类型或者参数的个数不一样，返回值不考虑</h3><h2 id="递归算法"><a href="#递归算法" class="headerlink" title="递归算法"></a>递归算法</h2><p>递归调用是一种特殊的嵌套调用，</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组的定义：是一种复杂的数据类型 []，一组数据都是相同数据类型。除了基本数据类型之外的所有类型，都需要手动在堆里开辟空间。通过下标来取数据元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">int a=8;</div><div class="line">int[] array1=new int[] &#123;1,2,3,4,5,6&#125;;</div><div class="line">//new的内存空间都存在堆里，堆里的东西有GC来回收</div><div class="line">System.out.println(array1);//输出的是16进制的内存地址</div><div class="line"></div><div class="line">int[] array2=&#123;1,2,3,4&#125;//存在堆里</div><div class="line"></div><div class="line">		char[] carray=&#123;&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;&#125;;</div><div class="line">		//数组长度为4，每个元素占两个字节，数组的内存8个字节</div><div class="line">		System.out.println(carray.length);</div><div class="line">		for(int i=0;i&lt;carray.length;i++)</div><div class="line">		&#123;</div><div class="line">			System.out.println(carray[i]);</div><div class="line">		&#125;</div><div class="line">		System.out.println(&quot;增强的for循环=======&quot;);</div><div class="line">		for(char element:carray)</div><div class="line">		&#123;</div><div class="line">			System.out.println(element);</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<h3 id="栈里存储的变量一定要初始化。而在对于在堆里面的东西，java虚拟机会自动为其赋值"><a href="#栈里存储的变量一定要初始化。而在对于在堆里面的东西，java虚拟机会自动为其赋值" class="headerlink" title="栈里存储的变量一定要初始化。而在对于在堆里面的东西，java虚拟机会自动为其赋值"></a>栈里存储的变量一定要初始化。而在对于在堆里面的东西，java虚拟机会自动为其赋值</h3><ul>
+<li>整型 0</li>
+<li>浮点型 0.0</li>
+<li>char  ‘\u0000’</li>
+<li>boolean  false</li>
+<li>其他   null</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//数组定义时就有了初始值。这种定义的方式叫做数组的静态初始化</div><div class="line">//动态初始化：因为数组需要开辟空间的，所以必须要告诉内存开辟多大的空间</div><div class="line">//数组在内存空间是连续的</div><div class="line">int[] array=new int[10];//需要开辟40个字节的内存空间</div><div class="line">//java虚拟机对于堆里面的东西会自动赋值</div><div class="line">//在栈里面的东西一定要初始化</div></pre></td></tr></table></figure>
+<h3 id="数组一旦定义了长度，那么长度不可改变"><a href="#数组一旦定义了长度，那么长度不可改变" class="headerlink" title="数组一旦定义了长度，那么长度不可改变"></a>数组一旦定义了长度，那么长度不可改变</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">int []arr1=&#123;1,2,3,4,5,6&#125;;</div><div class="line">int []arr2=&#123;1,2,3,4&#125;;</div><div class="line">System.out.println(arr1.length);</div><div class="line">arr1=arr2;</div><div class="line">System.out.println(arr2.length);</div></pre></td></tr></table></figure>
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public static int  add(char[] arr,char element,int curlen,int index) &#123;</div><div class="line">	</div><div class="line">	if(curlen==arr.length)&#123;</div><div class="line">		System.out.println(&quot;数组满了，无法插入&quot;);</div><div class="line">		return curlen;</div><div class="line">	&#125;</div><div class="line">       if(index&gt;curlen)</div><div class="line">	&#123;</div><div class="line">		System.out.println(&quot;插入位置不正确&quot;);</div><div class="line">		return curlen;</div><div class="line">	&#125;</div><div class="line">       for(int i=curlen-1;i&gt;=index;i--)</div><div class="line">       &#123;</div><div class="line">       	arr[i+1]=arr[i];</div><div class="line">      	</div><div class="line">       &#125;</div><div class="line">       arr[index]=element;</div><div class="line">	</div><div class="line">      curlen++;</div><div class="line">      return curlen;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public static void update(char[] arr,char element,int index,int curlen) &#123;</div><div class="line">	if (index&gt;=curlen) &#123;</div><div class="line">		System.out.println(&quot;修改位置不正确&quot;);</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		arr[index]=element;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">public static int delete(char[] arr,int curlen,int index)</div><div class="line">&#123;</div><div class="line">	if(curlen==0)</div><div class="line">	&#123;</div><div class="line">		System.out.println(&quot;不能删除&quot;);</div><div class="line">		return curlen;</div><div class="line">	&#125;</div><div class="line">	if(index&lt;curlen)</div><div class="line">	&#123;</div><div class="line">		System.out.println(&quot;位置不正确&quot;);</div><div class="line">		return curlen;</div><div class="line">	&#125;</div><div class="line">	for(int i=index;i&lt;curlen-1;i++)</div><div class="line">	&#123;</div><div class="line">		arr[i]=arr[i+1];//i+1是最后一个元素（curlen-1)</div><div class="line">	&#125;</div><div class="line">	curlen--;</div><div class="line">	return curlen;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="查找-顺序和二分）"><a href="#查找-顺序和二分）" class="headerlink" title="查找(顺序和二分）"></a>查找(顺序和二分）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">public static int  find(char[] arr,char element,int curlen ) &#123;</div><div class="line">	for(int i=0;i&lt;curlen;i++)</div><div class="line">	&#123;</div><div class="line">		if(arr[i]==element)</div><div class="line">		&#123;</div><div class="line">			return i;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	//没有找到。返回下标。结束函数</div><div class="line">	return -1;		</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">public static int  find(char[] arr,char element,int low,int high) &#123;</div><div class="line">	</div><div class="line">	int mid=(low+high)/2;</div><div class="line">	if(arr[mid]==element)</div><div class="line">	&#123;</div><div class="line">		return mid;</div><div class="line">	&#125;</div><div class="line">	if(low&gt;=high)</div><div class="line">	&#123;</div><div class="line">		return -1;</div><div class="line">	&#125;</div><div class="line">	if(arr[mid]&gt;element)</div><div class="line">	&#123;</div><div class="line">		return find(arr, element, low,mid-1);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">		return find(arr, element, mid+1,high);</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/21/day03编程题解答/" rel="prev" title="day03编程题解答">
+                day03编程题解答 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#提问环节"><span class="nav-number">1.</span> <span class="nav-text">提问环节</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#答：内存中所占的空间不一样"><span class="nav-number"></span> <span class="nav-text">答：内存中所占的空间不一样</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法-函数"><span class="nav-number"></span> <span class="nav-text">方法/函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#好处如下："><span class="nav-number">1.</span> <span class="nav-text">好处如下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数和函数之间是同级的，所以函数的定义不能写在其他函数内部"><span class="nav-number">2.</span> <span class="nav-text">函数和函数之间是同级的，所以函数的定义不能写在其他函数内部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的重载：方法名相同，但是参数的类型或者参数的个数不一样，返回值不考虑"><span class="nav-number">3.</span> <span class="nav-text">函数的重载：方法名相同，但是参数的类型或者参数的个数不一样，返回值不考虑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归算法"><span class="nav-number"></span> <span class="nav-text">递归算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number"></span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈里存储的变量一定要初始化。而在对于在堆里面的东西，java虚拟机会自动为其赋值"><span class="nav-number">1.</span> <span class="nav-text">栈里存储的变量一定要初始化。而在对于在堆里面的东西，java虚拟机会自动为其赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组一旦定义了长度，那么长度不可改变"><span class="nav-number">2.</span> <span class="nav-text">数组一旦定义了长度，那么长度不可改变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入"><span class="nav-number">3.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改"><span class="nav-number">4.</span> <span class="nav-text">修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">5.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找-顺序和二分）"><span class="nav-number">6.</span> <span class="nav-text">查找(顺序和二分）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
