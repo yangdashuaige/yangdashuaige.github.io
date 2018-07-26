@@ -1,0 +1,775 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="复习题 OOP的概念 static 局部变量和属性的区别 对象实例化的过程 单例模式 类变量和属性的区别 静态方法能不能调用非静态的变量，为什么 代码块的类型和作用 什么是重载 类和对象 的关系 import关键字的作用  解答 面向对象 啦啦啦 区别：  类中的位置不一样 内存位置不一样：栈   、堆 生命周期：方法的生命周期一致，对象的生命周期一致 初始值：局部变量必须赋初始值，而属性可以不赋">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day07-Java基础面向对象3">
+<meta property="og:url" content="http://yoursite.com/2018/07/26/day07-Java基础面向对象3/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="复习题 OOP的概念 static 局部变量和属性的区别 对象实例化的过程 单例模式 类变量和属性的区别 静态方法能不能调用非静态的变量，为什么 代码块的类型和作用 什么是重载 类和对象 的关系 import关键字的作用  解答 面向对象 啦啦啦 区别：  类中的位置不一样 内存位置不一样：栈   、堆 生命周期：方法的生命周期一致，对象的生命周期一致 初始值：局部变量必须赋初始值，而属性可以不赋">
+<meta property="og:updated_time" content="2018-07-26T12:06:25.979Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day07-Java基础面向对象3">
+<meta name="twitter:description" content="复习题 OOP的概念 static 局部变量和属性的区别 对象实例化的过程 单例模式 类变量和属性的区别 静态方法能不能调用非静态的变量，为什么 代码块的类型和作用 什么是重载 类和对象 的关系 import关键字的作用  解答 面向对象 啦啦啦 区别：  类中的位置不一样 内存位置不一样：栈   、堆 生命周期：方法的生命周期一致，对象的生命周期一致 初始值：局部变量必须赋初始值，而属性可以不赋">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/26/day07-Java基础面向对象3/"/>
+
+
+
+
+
+  <title> day07-Java基础面向对象3 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/26/day07-Java基础面向对象3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                day07-Java基础面向对象3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-26T20:05:03+08:00">
+                2018-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/洗心革面学Java/" itemprop="url" rel="index">
+                    <span itemprop="name">洗心革面学Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="复习题"><a href="#复习题" class="headerlink" title="复习题"></a>复习题</h2><ol>
+<li>OOP的概念</li>
+<li>static</li>
+<li>局部变量和属性的区别</li>
+<li>对象实例化的过程</li>
+<li>单例模式</li>
+<li>类变量和属性的区别</li>
+<li>静态方法能不能调用非静态的变量，为什么</li>
+<li>代码块的类型和作用</li>
+<li>什么是重载</li>
+<li>类和对象 的关系</li>
+<li>import关键字的作用</li>
+</ol>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><ol>
+<li>面向对象</li>
+<li>啦啦啦</li>
+<li><p>区别：</p>
+<ul>
+<li>类中的位置不一样</li>
+<li>内存位置不一样：栈   、堆</li>
+<li>生命周期：方法的生命周期一致，对象的生命周期一致</li>
+<li>初始值：局部变量必须赋初始值，而属性可以不赋（JVM帮忙赋值）</li>
+</ul>
+</li>
+<li><p>类的加载》执行静态代码块》new》堆里面开辟空间》调用构造代码块和构造方法<br>5.单例模式</p>
+<ol>
+<li>只有一个实例</li>
+<li>构造方法私有化(让外部无法实例化)</li>
+<li>本类私有的静态的属性（自己内部调用构造私有的构造方法实例化，在类加载的时候创建该对象，以后再也不创建了，static，为了防止用户修改，设置private）</li>
+<li>给属性设置getter（为了保证用户获得，get方法）</li>
+</ol>
+</li>
+<li><p>区别：</p>
+<ol>
+<li>在类中的位置：都在类中，类变量是static修饰的</li>
+<li>在内存中的位置：类变量在方法区的静态池，属性在堆中</li>
+<li>生命周期：与类一致，与对象一致</li>
+<li>调用的方式：类名.<strong>*;对象名.</strong></li>
+</ol>
+</li>
+<li><p>不能，生命周期不对</p>
+</li>
+<li>静态代码块，构造代码块，局部代码块</li>
+<li>在一个类中，方法名相同，参数类型或者个数不一样</li>
+<li>如果一个包中用到另一个包中的类，那么需要将该类导入</li>
+<li>构造方法：无返回值，方法名与类相同，没有jvm会添加默认的，对象实例化的时候调用</li>
+</ol>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>孩子享受父亲所有的特性(private)，孩子会优于父亲，父亲无法享受孩子的特性。</p>
+<h3 id="访问权限：protected-受保护的，同包或异包子类可以访问吗，同一包中其他类也能访问"><a href="#访问权限：protected-受保护的，同包或异包子类可以访问吗，同一包中其他类也能访问" class="headerlink" title="访问权限：protected 受保护的，同包或异包子类可以访问吗，同一包中其他类也能访问"></a>访问权限：protected 受保护的，同包或异包子类可以访问吗，同一包中其他类也能访问</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">User.java</div><div class="line">public class User &#123;</div><div class="line"></div><div class="line">	//用户</div><div class="line">	protected String name;</div><div class="line">	protected String pwd;</div><div class="line">	public void login()  //非静态的方法，属于对象的</div><div class="line">	&#123;</div><div class="line">		System.out.println(&quot;登入成功！&quot;);</div><div class="line">	&#125;</div><div class="line">	public User() &#123;</div><div class="line">		System.out.println(&quot;我是爸爸&quot;);</div><div class="line">	&#125;</div><div class="line">	public void  show() &#123;</div><div class="line">		System.out.println(this.name+&quot;,&quot;+this.pwd);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line">SuperUser.java</div><div class="line"></div><div class="line">public class SuperUser extends User &#123;</div><div class="line"></div><div class="line">	public SuperUser() &#123;</div><div class="line">		System.out.println(&quot;我是儿子&quot;);</div><div class="line">	&#125;</div><div class="line">	//SuperUser是User对象的孩子</div><div class="line">	</div><div class="line">	</div><div class="line">	//继承User的全部非private 的属性和方法</div><div class="line">	</div><div class="line">	public void  show() &#123;//为什么static和this不能共存</div><div class="line">		System.out.println(&quot;this:&quot;+this.name+&quot;,&quot;+this.pwd);</div><div class="line">	System.out.println(&quot;super&quot;+super.name+&quot;, &quot;+super.pwd);</div><div class="line">	//用super访问父亲对象</div><div class="line">	super.show();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">Test.java</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		//实例化孩子对象</div><div class="line">		SuperUser user=new SuperUser();</div><div class="line">		user.login();//继承父类的</div><div class="line">		user.name=&quot;杨&quot;;</div><div class="line">		user.pwd=&quot;123&quot;;</div><div class="line">		user.login();  //调用的父亲的 ，隐含的父类对象（让父类对象调用他的非static方法）</div><div class="line">	</div><div class="line">		user.show();</div><div class="line">		</div><div class="line">		User user2=new User();</div><div class="line">		user2.show();</div><div class="line">	</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="this-super和static都不能共存。this代表本类对象，相当于我的意思，super代表对象的父亲，相当于我的父亲。static是类，抽象的，与this和super的具体对象是冲突的，不能共存。"><a href="#this-super和static都不能共存。this代表本类对象，相当于我的意思，super代表对象的父亲，相当于我的父亲。static是类，抽象的，与this和super的具体对象是冲突的，不能共存。" class="headerlink" title="this,super和static都不能共存。this代表本类对象，相当于我的意思，super代表对象的父亲，相当于我的父亲。static是类，抽象的，与this和super的具体对象是冲突的，不能共存。"></a>this,super和static都不能共存。this代表本类对象，相当于我的意思，super代表对象的父亲，相当于我的父亲。static是类，抽象的，与this和super的具体对象是冲突的，不能共存。</h3><h3 id="一个对象那个的实例化的过程"><a href="#一个对象那个的实例化的过程" class="headerlink" title="一个对象那个的实例化的过程"></a>一个对象那个的实例化的过程</h3><p>父亲有静态代码块，有构造代码块，有构造方法。孩子有静态代码块，有构造代码块，有构造方法。</p>
+<pre><code>首先是父亲的静态代码块》孩子的静态代码块》父亲的构造代码块》父亲的构造方法》孩子的构造代码块》孩子的构造方法
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class Student &#123;</div><div class="line"></div><div class="line">	protected String name; </div><div class="line">	protected int age;</div><div class="line">	public Student(String name, int age) &#123;</div><div class="line">		super();</div><div class="line">		this.name = name;</div><div class="line">		this.age = age;</div><div class="line">	&#125;</div><div class="line">	public Student() &#123;</div><div class="line">		super();</div><div class="line">		// TODO Auto-generated constructor stub</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public String toString() &#123;</div><div class="line">		return &quot;Student [name=&quot; + name + &quot;, age=&quot; + age + &quot;]&quot;;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">public class SStudent extends Student&#123;</div><div class="line"></div><div class="line">	private String name;</div><div class="line">	private int age;</div><div class="line">	public String getName() &#123;</div><div class="line">		return name;</div><div class="line">	&#125;</div><div class="line">	public void setName(String name) &#123;</div><div class="line">		this.name = name;</div><div class="line">	&#125;</div><div class="line">	public int getAge() &#123;</div><div class="line">		return age;</div><div class="line">	&#125;</div><div class="line">	public void setAge(int age) &#123;</div><div class="line">		this.age = age;</div><div class="line">	&#125;</div><div class="line">	public SStudent() &#123;</div><div class="line">		super();</div><div class="line">		// TODO Auto-generated constructor stub</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public String toString() &#123;</div><div class="line">		return &quot;SStudent [name=&quot; + name + &quot;, age=&quot; + age + &quot;]&quot;;</div><div class="line">	&#125;</div><div class="line">	public SStudent(String name, int age) &#123;</div><div class="line">		super(name, age);</div><div class="line">		// TODO Auto-generated constructor stub</div><div class="line">	&#125;</div><div class="line">	public SStudent(String name, int age, String name2, int age2) &#123;</div><div class="line">		super(name, age);</div><div class="line">		name = name2;</div><div class="line">		age = age2;</div><div class="line">	&#125;</div><div class="line">	public void  show() &#123;</div><div class="line">		System.out.println(this.name+&quot;,&quot;+this.age);</div><div class="line">		System.out.println(super.name+&quot;,&quot;+super.age);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		SStudent sStudent=new SStudent();</div><div class="line">		sStudent.setAge(12);</div><div class="line">		sStudent.setName(&quot;张无忌&quot;);</div><div class="line">		</div><div class="line">		//因为父亲的属性和孩子的属性同名，所以孩子覆盖父亲的属性</div><div class="line">		//sStudent.name=&quot;&quot;;其实也继承了，只是同名 所以报错</div><div class="line">		sStudent.show();//孩子用的是自己的，父亲享受不到了</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>super（） 与this（）不共存。</p>
+<h2 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h2><p>子类对父类中的方法重写。</p>
+<h3 id="重写规则：两同两小一大"><a href="#重写规则：两同两小一大" class="headerlink" title="重写规则：两同两小一大"></a>重写规则：两同两小一大</h3><ol>
+<li>两同：方法名相同，参数类型也必须相同</li>
+<li>两小：返回类型必须是父亲返回类型的子类或者本身；子类抛出的异常必须是父类抛出异常的子类或者相同</li>
+<li>一大：访问权限，孩子的访问权限一定大于等于父亲的访问权限</li>
+</ol>
+<h3 id="访问权限：public（所有都可以访问）-、protected（除了同包下的，只有异包子类）、默认（只有同包）、private（私有）"><a href="#访问权限：public（所有都可以访问）-、protected（除了同包下的，只有异包子类）、默认（只有同包）、private（私有）" class="headerlink" title="访问权限：public（所有都可以访问） 、protected（除了同包下的，只有异包子类）、默认（只有同包）、private（私有）"></a>访问权限：public（所有都可以访问） 、protected（除了同包下的，只有异包子类）、默认（只有同包）、private（私有）</h3><h3 id="重载：同一个类，方法名相同，参数的个数和参数的类型不同。"><a href="#重载：同一个类，方法名相同，参数的个数和参数的类型不同。" class="headerlink" title="重载：同一个类，方法名相同，参数的个数和参数的类型不同。"></a>重载：同一个类，方法名相同，参数的个数和参数的类型不同。</h3><h2 id="Final"><a href="#Final" class="headerlink" title="Final"></a>Final</h2><p>最终的，不可改变。修饰变量：变量值不发生改变。<br>修饰类：不能被继承。修饰方法：修饰的方法不能被重写。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>父类引用指向子类对象，以继承为基础。方法的编译看左边，如果父类没有这个方法，那么方法不能调用。方法运行看右边</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/25/day06-Java基础面向对象2/" rel="prev" title="day06-Java基础面向对象2">
+                day06-Java基础面向对象2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">80</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#复习题"><span class="nav-number">1.</span> <span class="nav-text">复习题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解答"><span class="nav-number">2.</span> <span class="nav-text">解答</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">3.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问权限：protected-受保护的，同包或异包子类可以访问吗，同一包中其他类也能访问"><span class="nav-number">3.1.</span> <span class="nav-text">访问权限：protected 受保护的，同包或异包子类可以访问吗，同一包中其他类也能访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-super和static都不能共存。this代表本类对象，相当于我的意思，super代表对象的父亲，相当于我的父亲。static是类，抽象的，与this和super的具体对象是冲突的，不能共存。"><span class="nav-number">3.2.</span> <span class="nav-text">this,super和static都不能共存。this代表本类对象，相当于我的意思，super代表对象的父亲，相当于我的父亲。static是类，抽象的，与this和super的具体对象是冲突的，不能共存。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个对象那个的实例化的过程"><span class="nav-number">3.3.</span> <span class="nav-text">一个对象那个的实例化的过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重写"><span class="nav-number">4.</span> <span class="nav-text">重写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重写规则：两同两小一大"><span class="nav-number">4.1.</span> <span class="nav-text">重写规则：两同两小一大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问权限：public（所有都可以访问）-、protected（除了同包下的，只有异包子类）、默认（只有同包）、private（私有）"><span class="nav-number">4.2.</span> <span class="nav-text">访问权限：public（所有都可以访问） 、protected（除了同包下的，只有异包子类）、默认（只有同包）、private（私有）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重载：同一个类，方法名相同，参数的个数和参数的类型不同。"><span class="nav-number">4.3.</span> <span class="nav-text">重载：同一个类，方法名相同，参数的个数和参数的类型不同。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Final"><span class="nav-number">5.</span> <span class="nav-text">Final</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">6.</span> <span class="nav-text">多态</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
