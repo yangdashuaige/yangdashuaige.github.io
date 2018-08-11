@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="新增的表单校验 checkValidity()检查input元素是否满足验证要求   特殊需求  js自定义验证方法使用input元素的setCustomValidity()自定义信息的提示内容 123456789101112131415161718192021222324&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;form name=&amp;quot;form1&amp;quot; id=&amp;quot;f">
+<meta name="description" content="新增的表单校验 checkValidity()检查input元素是否满足验证要求  特殊需求   js自定义验证方法使用input元素的setCustomValidity()自定义信息的提示内容 123456789101112131415161718192021222324&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;form name=&amp;quot;form1&amp;quot; id=&amp;quot;f">
 <meta name="keywords" content="H5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="h5第二课">
 <meta property="og:url" content="http://yoursite.com/2017/12/12/h5第二课/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
-<meta property="og:description" content="新增的表单校验 checkValidity()检查input元素是否满足验证要求   特殊需求  js自定义验证方法使用input元素的setCustomValidity()自定义信息的提示内容 123456789101112131415161718192021222324&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;form name=&amp;quot;form1&amp;quot; id=&amp;quot;f">
-<meta property="og:updated_time" content="2017-12-20T11:45:05.367Z">
+<meta property="og:description" content="新增的表单校验 checkValidity()检查input元素是否满足验证要求  特殊需求   js自定义验证方法使用input元素的setCustomValidity()自定义信息的提示内容 123456789101112131415161718192021222324&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;form name=&amp;quot;form1&amp;quot; id=&amp;quot;f">
+<meta property="og:updated_time" content="2018-08-11T07:25:00.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="h5第二课">
-<meta name="twitter:description" content="新增的表单校验 checkValidity()检查input元素是否满足验证要求   特殊需求  js自定义验证方法使用input元素的setCustomValidity()自定义信息的提示内容 123456789101112131415161718192021222324&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;form name=&amp;quot;form1&amp;quot; id=&amp;quot;f">
+<meta name="twitter:description" content="新增的表单校验 checkValidity()检查input元素是否满足验证要求  特殊需求   js自定义验证方法使用input元素的setCustomValidity()自定义信息的提示内容 123456789101112131415161718192021222324&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;form name=&amp;quot;form1&amp;quot; id=&amp;quot;f">
 
 
 
@@ -355,10 +355,10 @@
 
       
         <h2 id="新增的表单校验"><a href="#新增的表单校验" class="headerlink" title="新增的表单校验"></a>新增的表单校验</h2><ol>
-<li>checkValidity()检查input元素是否满足验证要求</li>
-</ol>
-<ol>
-<li>特殊需求</li>
+<li><p>checkValidity()检查input元素是否满足验证要求</p>
+</li>
+<li><p>特殊需求</p>
+</li>
 </ol>
 <p>js自定义验证方法<br>使用input元素的setCustomValidity()自定义信息的提示内容</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;form name=&quot;form1&quot; id=&quot;form1&quot;&gt;</div><div class="line">输入密码：&lt;input type=&quot;password&quot; id=&quot;password1&quot;&gt;&lt;/input&gt;</div><div class="line">确认密码：&lt;input type=&quot;password&quot; id=&quot;password2&quot;&gt;&lt;/input&gt;</div><div class="line">&lt;button onclick=&quot;checkPass()&quot;&gt;验证&lt;/button&gt;		</div><div class="line">&lt;/form&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	function checkPass()</div><div class="line">	&#123;</div><div class="line">		var pass1=document.getElementById(&quot;password1&quot;);</div><div class="line">		var pass2=document.getElementById(&quot;password2&quot;);</div><div class="line">		if(pass1.value==&quot;&quot;)</div><div class="line">		&#123;</div><div class="line">			pass1.setCustomValidity(&quot;请输入密码&quot;);</div><div class="line">		&#125;</div><div class="line">		else&#123;</div><div class="line">			pass1.setCustomValidity(&quot;&quot;);</div><div class="line">		&#125;</div><div class="line">		if(pass1.value!=pass2.value)</div><div class="line">		&#123;</div><div class="line">			pass2.setCustomValidity(&quot;两次输入密码不一致&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
