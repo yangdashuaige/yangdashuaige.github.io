@@ -1,0 +1,795 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="复习 List和Set的区别 AarrayList和vector的区别 LinkedList和AarrayList的区别 比较器排序和自然排序的区别 Hashtble和HashMap的区别 什么是泛型 说出几个常用的异常 运行时异常和编译异常的区别 String里面常用的方法 正则中?和* 的区别  解答 他们的父接口都是Collection。List中存放的是有序可重复的数据，存放的元素都有一个">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day17Java基础线程">
+<meta property="og:url" content="http://yoursite.com/2018/08/11/day17Java基础线程/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="复习 List和Set的区别 AarrayList和vector的区别 LinkedList和AarrayList的区别 比较器排序和自然排序的区别 Hashtble和HashMap的区别 什么是泛型 说出几个常用的异常 运行时异常和编译异常的区别 String里面常用的方法 正则中?和* 的区别  解答 他们的父接口都是Collection。List中存放的是有序可重复的数据，存放的元素都有一个">
+<meta property="og:updated_time" content="2018-08-11T01:48:53.692Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day17Java基础线程">
+<meta name="twitter:description" content="复习 List和Set的区别 AarrayList和vector的区别 LinkedList和AarrayList的区别 比较器排序和自然排序的区别 Hashtble和HashMap的区别 什么是泛型 说出几个常用的异常 运行时异常和编译异常的区别 String里面常用的方法 正则中?和* 的区别  解答 他们的父接口都是Collection。List中存放的是有序可重复的数据，存放的元素都有一个">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/11/day17Java基础线程/"/>
+
+
+
+
+
+  <title> day17Java基础线程 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/11/day17Java基础线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                day17Java基础线程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-11T09:48:09+08:00">
+                2018-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/洗心革面学Java/" itemprop="url" rel="index">
+                    <span itemprop="name">洗心革面学Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h2><ol>
+<li>List和Set的区别</li>
+<li>AarrayList和vector的区别</li>
+<li>LinkedList和AarrayList的区别</li>
+<li>比较器排序和自然排序的区别</li>
+<li>Hashtble和HashMap的区别</li>
+<li>什么是泛型</li>
+<li>说出几个常用的异常</li>
+<li>运行时异常和编译异常的区别</li>
+<li>String里面常用的方法</li>
+<li>正则中?和* 的区别</li>
+</ol>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><ol>
+<li><p>他们的父接口都是Collection。<br>List中存放的是有序可重复的数据，存放的元素都有一个整型的下标，可以根据下标访问。<br>set中存放的是无序不重复数据。</p>
+</li>
+<li><p>ArrayList是线程不安全的，vector是线程安全的。</p>
+</li>
+<li><p>LinkedList底层用双循环链表实现，查询效率低，增删效率高。<br>ArrayList底层用数组实现，查询效率高，增伤效率低，线程不安全</p>
+</li>
+</ol>
+<ol>
+<li><p>自然排序implements Comparable接口，强行对实现该接口的类进行整体排序。<br>比较器排序implements Comparator。集合容器构造方法中传进一个Comparator实现类对象。优先级高<br>提倡使用比较器排序。</p>
+</li>
+<li><p>HashTable实现Map接口。线程安全，速度慢；HashMap继承AbstractMap类。线程不安全，速度快。</p>
+</li>
+<li><p>编译的过程中检查对象的数据类型是否合格。集合框架中可以存储Object对象，任何对象</p>
+</li>
+<li><p>NullPointerException<br>ArrayIndexOutOfBoundsException<br>ArithmeticException<br>ClassCastException<br>IOException</p>
+</li>
+<li><p>编译异常一般是指Java语法错误，编译不过去。需要用try catch捕获或者throws抛<br>运行异常是指程序在运行过程中出现错误，一定是代码错了</p>
+</li>
+<li>concat()；<br>compareTo()；<br>contains()；<br>equals()<br>indexOf()<br>replace()<br>split()<br>toCharArray()<br>trim()<br>string.ValueOf()<br>string.substring</li>
+</ol>
+<p>10.<br>?:0或1次<br>*:0或多次</p>
+<h3 id="复习-1"><a href="#复习-1" class="headerlink" title="复习"></a>复习</h3><p>字节流  InputStream  OutputStream      一个字节读取   一个字节数组读取</p>
+<pre><code>FileInputStream   FileOutputStream   文件字节流
+ObjectInputStream   ObjectOutputStream   对象序列化和反序列化
+                    PrintStream   标准输出流 向控制台写数据,向网页写数据
+ BufferInputStream   BufferOutputStream   高效字节流   (缓冲区)
+ 缓冲区大小   private static int DEFAULT_BUFFER_SIZE = 8192;  8Kb
+</code></pre><p>字符流   Reader             Writer    一个字符char读取     一个字符数组    主要目的解决中文乱码</p>
+<pre><code>InputStreamReader   OutputStreamWriter  字节字符流的转换流
+FileReader           FileWriter   文件字符流
+BufferReader          BufferReader   高效字符流   (缓冲区)  readLine
+                      PrintWriter  标准输出流 向控制台写数据,向网页写数据
+
+RandomAccessFile    随机输入输出流
+</code></pre><h2 id="设计模式（装饰者设计模式）"><a href="#设计模式（装饰者设计模式）" class="headerlink" title="设计模式（装饰者设计模式）"></a>设计模式（装饰者设计模式）</h2><ol>
+<li>抽取出公共接口，让组合关系替代继承关系</li>
+<li>类中传进接口对象，降低耦合度。</li>
+<li>装饰者模式就是为了解决继承双刃剑的问题。在I/O中全部是装饰者模式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">手机&#123;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>继承的手段去编写子类，新类就会具备老手机的原有功能，并在其基础上添加了两个新功能。</p>
+<h3 id="缺陷：手机类和新手机类耦合度太高了。继承关系，完全的耦合"><a href="#缺陷：手机类和新手机类耦合度太高了。继承关系，完全的耦合" class="headerlink" title="缺陷：手机类和新手机类耦合度太高了。继承关系，完全的耦合"></a>缺陷：手机类和新手机类耦合度太高了。继承关系，完全的耦合</h3><h3 id="改进："><a href="#改进：" class="headerlink" title="改进："></a>改进：</h3><h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ol>
+<li>sleep，线程进入睡眠阻塞，时间到了后，醒来进入就绪状态</li>
+<li>join线程，加入，如果线程获得CPU，那么必须等join线程执行完，被加入的线程才能执行。</li>
+<li>yield线程：礼让，CPU让出去，就绪状态。</li>
+</ol>
+<h3 id="start和run方法的区别：run方法里面是线程执行的业务，如果直接调用，线程没有开启，只是个普通方法。start表示启动一个线程，启动后，会调用该线程的run方法。"><a href="#start和run方法的区别：run方法里面是线程执行的业务，如果直接调用，线程没有开启，只是个普通方法。start表示启动一个线程，启动后，会调用该线程的run方法。" class="headerlink" title="start和run方法的区别：run方法里面是线程执行的业务，如果直接调用，线程没有开启，只是个普通方法。start表示启动一个线程，启动后，会调用该线程的run方法。"></a>start和run方法的区别：run方法里面是线程执行的业务，如果直接调用，线程没有开启，只是个普通方法。start表示启动一个线程，启动后，会调用该线程的run方法。</h3><h3 id="后台线程：GC，主线程开启，后台线程开启，死亡就死亡。"><a href="#后台线程：GC，主线程开启，后台线程开启，死亡就死亡。" class="headerlink" title="后台线程：GC，主线程开启，后台线程开启，死亡就死亡。"></a>后台线程：GC，主线程开启，后台线程开启，死亡就死亡。</h3><h3 id="线程不安全的条件："><a href="#线程不安全的条件：" class="headerlink" title="线程不安全的条件："></a>线程不安全的条件：</h3><ol>
+<li>多线程</li>
+<li>线程间资源共享，多线程共同操作同一个变量</li>
+<li>对该变量做多步运算。</li>
+<li>只要满足以上三个条件，一定会出现不安全的现象。</li>
+</ol>
+<p>原因：CPU原子性，一次只做一个运算，做完后就去调度线程</p>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><ol>
+<li>多线程-》解决不了</li>
+<li>多线程操作一个变量-》解决不了</li>
+<li>多不操作-》CPU被抢。synchronized同步锁。锁是唯一的</li>
+</ol>
+<p>同步代码块：加锁的代码块。可以将代码块封装成方法，同步方法。<br>同步方法的锁：如果是非静态方法，锁对象是this。如果是静态方法，锁对象是该类的管理对象。</p>
+<h3 id="实现线程的方式"><a href="#实现线程的方式" class="headerlink" title="实现线程的方式"></a>实现线程的方式</h3><ol>
+<li>继承Thread类，但是java是单继承，如果继承了线程类就不能再继承其他了</li>
+<li>实现runnable()接口</li>
+<li>实现Callable（）接口，call()方法有返回值</li>
+</ol>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><h2 id="JDK1-5-Lock接口"><a href="#JDK1-5-Lock接口" class="headerlink" title="JDK1.5 Lock接口"></a>JDK1.5 Lock接口</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">package com.yanghuan.ticket2;</div><div class="line"></div><div class="line">import java.util.concurrent.locks.Lock;</div><div class="line">import java.util.concurrent.locks.ReentrantLock;</div><div class="line"></div><div class="line">public class MyRunnable implements Runnable &#123;</div><div class="line">	private int ticket=1;</div><div class="line"></div><div class="line">	private Lock lock=new ReentrantLock();</div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		//模拟卖票</div><div class="line">		while(ticket&lt;=100)</div><div class="line">		&#123;</div><div class="line">			lock.lock();</div><div class="line">			</div><div class="line">				if (ticket &lt;= 100) &#123;</div><div class="line">					System.out.println(Thread.currentThread().getName() + &quot;正在卖第&quot; + ticket + &quot;张票&quot;);</div><div class="line">					ticket++;</div><div class="line">					try &#123;</div><div class="line">						Thread.sleep(1);</div><div class="line">					&#125; catch (InterruptedException e) &#123;</div><div class="line">						// TODO Auto-generated catch block</div><div class="line">						e.printStackTrace();</div><div class="line">					&#125;</div><div class="line">				lock.unlock();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	public class tTest &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Runnable runnable=new MyRunnable();</div><div class="line">		Thread thread=new Thread(runnable);</div><div class="line">		Thread thread2=new Thread(runnable);</div><div class="line">		Thread thread3=new Thread(runnable);</div><div class="line"></div><div class="line">		thread.setName(&quot;窗口1&quot;);</div><div class="line">		thread2.setName(&quot;窗口1&quot;);</div><div class="line">		thread3.setName(&quot;窗口1&quot;);</div><div class="line">		 </div><div class="line">		thread.start();</div><div class="line">		thread2.start();</div><div class="line">		thread3.start();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/11/day18Java基础网络编程/" rel="next" title="day18Java基础网络编程">
+                <i class="fa fa-chevron-left"></i> day18Java基础网络编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/11/day16Java基础I-O流-2/" rel="prev" title="day16Java基础I-O流(2)">
+                day16Java基础I-O流(2) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">91</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#复习"><span class="nav-number">1.</span> <span class="nav-text">复习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解答"><span class="nav-number">1.1.</span> <span class="nav-text">解答</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复习-1"><span class="nav-number">1.2.</span> <span class="nav-text">复习</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式（装饰者设计模式）"><span class="nav-number">2.</span> <span class="nav-text">设计模式（装饰者设计模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺陷：手机类和新手机类耦合度太高了。继承关系，完全的耦合"><span class="nav-number">2.1.</span> <span class="nav-text">缺陷：手机类和新手机类耦合度太高了。继承关系，完全的耦合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改进："><span class="nav-number">2.2.</span> <span class="nav-text">改进：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">3.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#start和run方法的区别：run方法里面是线程执行的业务，如果直接调用，线程没有开启，只是个普通方法。start表示启动一个线程，启动后，会调用该线程的run方法。"><span class="nav-number">3.1.</span> <span class="nav-text">start和run方法的区别：run方法里面是线程执行的业务，如果直接调用，线程没有开启，只是个普通方法。start表示启动一个线程，启动后，会调用该线程的run方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后台线程：GC，主线程开启，后台线程开启，死亡就死亡。"><span class="nav-number">3.2.</span> <span class="nav-text">后台线程：GC，主线程开启，后台线程开启，死亡就死亡。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程不安全的条件："><span class="nav-number">3.3.</span> <span class="nav-text">线程不安全的条件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法："><span class="nav-number">3.4.</span> <span class="nav-text">解决方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现线程的方式"><span class="nav-number">3.5.</span> <span class="nav-text">实现线程的方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁"><span class="nav-number">4.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK1-5-Lock接口"><span class="nav-number">5.</span> <span class="nav-text">JDK1.5 Lock接口</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
