@@ -1,0 +1,798 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="复习题 break和continue的区别 String和StringBuilder的区别 类名是否一定要和文件名同名 char占几个字节 有哪几种访问修饰符，范围是什么 如果想跳出多层循环，应该怎么办 如果catch里面有return返回值，finally是否执行，什么时候执行 定义一个Student类，有学号，姓名，班级，年龄，性别等，写出无参和有参构造函数，同时写出get和set方法，写一个">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day24数据库其他对象">
+<meta property="og:url" content="http://yoursite.com/2018/08/22/day24数据库其他对象/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="复习题 break和continue的区别 String和StringBuilder的区别 类名是否一定要和文件名同名 char占几个字节 有哪几种访问修饰符，范围是什么 如果想跳出多层循环，应该怎么办 如果catch里面有return返回值，finally是否执行，什么时候执行 定义一个Student类，有学号，姓名，班级，年龄，性别等，写出无参和有参构造函数，同时写出get和set方法，写一个">
+<meta property="og:updated_time" content="2018-08-22T09:51:37.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day24数据库其他对象">
+<meta name="twitter:description" content="复习题 break和continue的区别 String和StringBuilder的区别 类名是否一定要和文件名同名 char占几个字节 有哪几种访问修饰符，范围是什么 如果想跳出多层循环，应该怎么办 如果catch里面有return返回值，finally是否执行，什么时候执行 定义一个Student类，有学号，姓名，班级，年龄，性别等，写出无参和有参构造函数，同时写出get和set方法，写一个">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/22/day24数据库其他对象/"/>
+
+
+
+
+
+  <title> day24数据库其他对象 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/day24数据库其他对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                day24数据库其他对象
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T17:51:01+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/洗心革面学Java/" itemprop="url" rel="index">
+                    <span itemprop="name">洗心革面学Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="复习题"><a href="#复习题" class="headerlink" title="复习题"></a>复习题</h2><ol>
+<li>break和continue的区别</li>
+<li>String和StringBuilder的区别</li>
+<li>类名是否一定要和文件名同名</li>
+<li>char占几个字节</li>
+<li>有哪几种访问修饰符，范围是什么</li>
+<li>如果想跳出多层循环，应该怎么办</li>
+<li>如果catch里面有return返回值，finally是否执行，什么时候执行</li>
+<li>定义一个Student类，有学号，姓名，班级，年龄，性别等，写出无参和有参构造函数，同时写出get和set方法，写一个主函数，定义一个学生对象，同时为其赋初始值，但是年龄必须在1到100之间，性别必须为男或女</li>
+</ol>
+<p>9 .有如下代码：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class Bean&#123;</div><div class="line">	private int beanI;</div><div class="line">	private String beanS;</div><div class="line">	.......</div><div class="line">&#125;</div><div class="line">Set&lt;Bean&gt; set=new Hash&lt;Bean&gt;();</div><div class="line">Bean bean1=new Bean(1,&quot;A&quot;);</div><div class="line">Bean bean2=new Bean(2,&quot;A&quot;);</div><div class="line">Bean bean3=new Bean(3,&quot;A&quot;);</div><div class="line">set.add(bean1);</div><div class="line">set.add(bean2);</div><div class="line">set.add(bean3);</div><div class="line">当bean1添加进去之后，如何使bean2不能被添加进去</div></pre></td></tr></table></figure>
+</code></pre><h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><ol>
+<li>break跳出离他最近的循环，continue跳出这一次循环执行下次</li>
+<li>一个是字符常量，一个是可变字符序列</li>
+<li>不一定，public修饰的要同名</li>
+<li>2个字节</li>
+<li>public，protected，default，private</li>
+<li>break</li>
+<li>执行</li>
+<li>重写equals方法和hashcode方法。</li>
+</ol>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@Override</div><div class="line">public int hashCode() &#123;</div><div class="line">	final int prime = 31;</div><div class="line">	int result = 1;</div><div class="line">	result = prime * result + beanI;</div><div class="line">	result = prime * result + ((beanS == null) ? 0 : beanS.hashCode());</div><div class="line">	return 0;</div><div class="line">&#125;</div><div class="line">	</div><div class="line">@Override</div><div class="line">public boolean equals(Object obj) &#123;</div><div class="line">	if (this == obj)</div><div class="line">		return true;</div><div class="line">	if (obj == null)</div><div class="line">		return false;</div><div class="line">	if (getClass() != obj.getClass())</div><div class="line">		return false;</div><div class="line">	Bean other = (Bean) obj;</div><div class="line">	if (this.beanS.equals(other.beanS)) &#123;// &quot;A&quot;  &quot;A&quot;</div><div class="line">		</div><div class="line">		if((this.beanI==2&amp;&amp;other.beanI==1 )|| (this.beanI==1&amp;&amp;other.beanI==2)) &#123;</div><div class="line">			return true;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre><h3 id="多表连接"><a href="#多表连接" class="headerlink" title="多表连接"></a>多表连接</h3><pre><code>-- 1. 外表连接，当两张表没有主外键，这时想要两张表的信息绑定在一起。即使没有主外键关系也可以绑定在一起。
+-- 查询员工号为7369的员工所在的部门的名称
+select emp.empno,emp.ename,dept.dname from emp,dept where emp.deptno=dept.deptno and emp.empno=7369;
+
+-- 左外连接
+select e.ename,d.dname from emp e left join  dept d on e.deptno=d.deptno
+
+-- 右连接
+select e.ename,d.dname from dept d left join  emp e on e.deptno=d.deptno
+-- 自连接
+-- 查询每个员工领导的姓名，没有就是null，自己查自己。
+select e1.ename 员工,e2.ename 领导 from emp e1,emp e2 where e1.mgp=e2.empno
+-- 查询财务部门里面员工的姓名和工资
+select e.ename,e.sal from emp e ,dept d where e.deptno=d.deptno and d.dname=&apos;ACCOUNTING&apos;
+select e.ename ,e.sal from emp e LEFT JOIN dept d on e.deptno=d.deptno and d.dname=&apos;ACCOUNTING&apos;
+-- 查询每个部门的平均工资，显示的是部门名。平均工资
+select d.dname,AVG(sal) 平均工资 from emp e,dept d where e.deptno=d.deptno GROUP BY e.deptno
+select d.dname,AVG(sal) 平均工资 from emp e LEFT JOIN dept d on e.deptno=d.deptno GROUP BY e.deptno
+-- 查询部门地址为null部门里的员工的个数
+select dept.dname 部门, count(*) 部门总人数 from emp,dept where dept.deptno=emp.deptno and dept.loc=&apos;NEWTORK&apos;;
+select dept.dname 部门, count(*) 部门总人数 from emp LEFT JOIN dept on dept.deptno=emp.deptno where  dept.loc is null group by dept.dname
+-- 查询比史密斯工资高的员工的姓名和工资。（子查询）首先要确定史密斯的工资
+select ename,sal from emp where sal&gt;(select sal from emp where ename=&apos;SMITH&apos;)
+-- 上述的过程称为子查询
+
+
+
+-- 查询平均工资低于4000的部门及其员工信息
+SELECT * from emp where deptno in(select deptno from emp GROUP BY deptno HAVING AVG(sal)&lt;4000 )
+</code></pre><h2 id="数据库中的其他对象"><a href="#数据库中的其他对象" class="headerlink" title="数据库中的其他对象"></a>数据库中的其他对象</h2><h3 id="索引：提高查询效率，给列的字段建立索引"><a href="#索引：提高查询效率，给列的字段建立索引" class="headerlink" title="索引：提高查询效率，给列的字段建立索引"></a>索引：提高查询效率，给列的字段建立索引</h3><p>注意点：经常变动的列不建议建立索引。<br>create index job_index on emp(job)</p>
+<h3 id="视图：是一张虚表：安全"><a href="#视图：是一张虚表：安全" class="headerlink" title="视图：是一张虚表：安全"></a>视图：是一张虚表：安全</h3><p>是依赖于具体表提取出来的部分数据，视图一般不建议修改，只能查看。</p>
+<pre><code>给emp这张表创建一个视图，全部字段
+
+create index job_index on emp(job)
+
+create view vemp as (select * from emp)
+select * from vemp
+
+
+-- 查询job为clerk员工的全部信息
+select * from vemp where job=&apos;CLERK&apos;
+</code></pre><h3 id="事务：多个数据库操作语句，要么全部成功，要么全部不成功。"><a href="#事务：多个数据库操作语句，要么全部成功，要么全部不成功。" class="headerlink" title="事务：多个数据库操作语句，要么全部成功，要么全部不成功。"></a>事务：多个数据库操作语句，要么全部成功，要么全部不成功。</h3><ol>
+<li>原子性：要么全部成功，要么全部不成功</li>
+<li>隔离性：一个事务的操作不影响另一个事务</li>
+<li>一致性：数据的结果是一致的，转账前总和和转账后总和一致。</li>
+<li>持久性：只要事务commit以后，永久保存不回退</li>
+</ol>
+<h4 id="数据库语言"><a href="#数据库语言" class="headerlink" title="数据库语言"></a>数据库语言</h4><ol>
+<li>DCL：定义语言 create ,drop ,alter, truncate 自动提交，运行后永久保存结果，不可回退</li>
+<li>DML：操作语言，insert update delete需要手动提交的，如果事务不提交，会回滚。mysql默认是开启自动提交的事务，关闭该功能</li>
+</ol>
+<h3 id="mysql的隔离级别："><a href="#mysql的隔离级别：" class="headerlink" title="mysql的隔离级别："></a>mysql的隔离级别：</h3><ol>
+<li>Read uncommitted 读未提交的事务；可以读到脏数据。读到中间状态的数据</li>
+<li>Read commit 读已提交的数据。可以提交的数据（默认）：在同一个书屋里读到另一个客户端修改以后提交的数据</li>
+<li>Read repeat： 读重复数据，幻读。在同一个事务里读到另一个客户端，增加和修改提交数据</li>
+<li>Serializable:串读。只有提交后才能读到另一个线程修改或者删除的数据，</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/22/day25数据库JDBC/" rel="next" title="day25数据库JDBC">
+                <i class="fa fa-chevron-left"></i> day25数据库JDBC
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/22/sql注入/" rel="prev" title="sql注入">
+                sql注入 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">111</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#复习题"><span class="nav-number">1.</span> <span class="nav-text">复习题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解答"><span class="nav-number">2.</span> <span class="nav-text">解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多表连接"><span class="nav-number">2.1.</span> <span class="nav-text">多表连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库中的其他对象"><span class="nav-number">3.</span> <span class="nav-text">数据库中的其他对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引：提高查询效率，给列的字段建立索引"><span class="nav-number">3.1.</span> <span class="nav-text">索引：提高查询效率，给列的字段建立索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视图：是一张虚表：安全"><span class="nav-number">3.2.</span> <span class="nav-text">视图：是一张虚表：安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务：多个数据库操作语句，要么全部成功，要么全部不成功。"><span class="nav-number">3.3.</span> <span class="nav-text">事务：多个数据库操作语句，要么全部成功，要么全部不成功。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库语言"><span class="nav-number">3.3.1.</span> <span class="nav-text">数据库语言</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql的隔离级别："><span class="nav-number">3.4.</span> <span class="nav-text">mysql的隔离级别：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

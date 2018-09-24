@@ -1,0 +1,798 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="git基本操作本地库初始化进入工作目录，git bash here。mkdir新建一个目录，在目录里面初始化：git init。ls -lA显示隐藏目录。  命令：git add 效果： 注意：ll .git/可以看见目录中存放的本地库相关的子目录和文件，不要删除和修改。  设置签名： 形式：用户名：tom Email地址：xxx@xx.com 作用：区分不同开发人员 辨析：这里设置的签名和等哦路">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git相关操作">
+<meta property="og:url" content="http://yoursite.com/2018/09/24/git相关操作/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="git基本操作本地库初始化进入工作目录，git bash here。mkdir新建一个目录，在目录里面初始化：git init。ls -lA显示隐藏目录。  命令：git add 效果： 注意：ll .git/可以看见目录中存放的本地库相关的子目录和文件，不要删除和修改。  设置签名： 形式：用户名：tom Email地址：xxx@xx.com 作用：区分不同开发人员 辨析：这里设置的签名和等哦路">
+<meta property="og:updated_time" content="2018-09-24T06:39:25.833Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git相关操作">
+<meta name="twitter:description" content="git基本操作本地库初始化进入工作目录，git bash here。mkdir新建一个目录，在目录里面初始化：git init。ls -lA显示隐藏目录。  命令：git add 效果： 注意：ll .git/可以看见目录中存放的本地库相关的子目录和文件，不要删除和修改。  设置签名： 形式：用户名：tom Email地址：xxx@xx.com 作用：区分不同开发人员 辨析：这里设置的签名和等哦路">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/24/git相关操作/"/>
+
+
+
+
+
+  <title> git相关操作 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/24/git相关操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                git相关操作
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-24T14:39:02+08:00">
+                2018-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目相关/" itemprop="url" rel="index">
+                    <span itemprop="name">项目相关</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="git基本操作"><a href="#git基本操作" class="headerlink" title="git基本操作"></a>git基本操作</h2><h3 id="本地库初始化"><a href="#本地库初始化" class="headerlink" title="本地库初始化"></a>本地库初始化</h3><p>进入工作目录，git bash here。mkdir新建一个目录，在目录里面初始化：git init。ls -lA显示隐藏目录。</p>
+<ol>
+<li>命令：git add</li>
+<li>效果：</li>
+<li>注意：ll .git/可以看见目录中存放的本地库相关的子目录和文件，不要删除和修改。</li>
+</ol>
+<h3 id="设置签名："><a href="#设置签名：" class="headerlink" title="设置签名："></a>设置签名：</h3><ol>
+<li>形式：用户名：tom Email地址：xxx@xx.com</li>
+<li>作用：区分不同开发人员</li>
+<li>辨析：这里设置的签名和等哦路远程仓库的账号密码没有任何关系</li>
+<li>命令：<ol>
+<li>项目、仓库级别：仅在当前本地仓库范围内有效git config user.name tom。git config user.email xxx@xx.com</li>
+<li>系统、用户级别：登录当前操作系统用户范围 git config  –global user.name tom。git config –global  xxx@xx.com</li>
+</ol>
+</li>
+</ol>
+<h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><ol>
+<li>git status  工作区和缓存区的状态</li>
+<li>git add filename  加入缓存区</li>
+<li>git commit -m “commit message” filename 提交缓存区的文件</li>
+<li>git log  查看历史记录操作.git log –pretty=oneline;git log oneline;git reflog</li>
+<li><p>前进或者后退版本。通过HEAD指针移动。 </p>
+<ol>
+<li>基于索引值git reset –hard bb9e8c6。</li>
+<li>基于^符号。只能往后不能往前git reset –hard HEAD^^几个代表回去几部</li>
+<li>基于~符号 git reset –hard HEAD~n</li>
+</ol>
+</li>
+<li><p>git diff filename 比较问价差异。</p>
+<ol>
+<li>将工作区的文件和暂存区的文件进行比较。git diff [文件名]</li>
+<li>git diff HEAD/本地库中历史版本 [文件名] 。将工作区和本地库历史记录比较</li>
+<li>不带文件名比较多个。</li>
+</ol>
+</li>
+</ol>
+<h2 id="git分支管理"><a href="#git分支管理" class="headerlink" title="git分支管理"></a>git分支管理</h2><ol>
+<li>什么是分支：使用多条线同时推进多个任务</li>
+<li>分支好处：同时并行开发多个功能，提高效率；如果有分支开发失败，不会对其他分支有影响，删除即可。</li>
+<li>分支操作<ol>
+<li>创建分支 git branch [分支名]</li>
+<li>查看分支 git branch -v</li>
+<li>切换分支 git checkout [分支名]</li>
+<li>合并分支 首先切换到接收修改的分支上，git checkout [分支名];第二步，执行merge命令，git merge [有新内容的分支名]</li>
+<li>解决冲突。对于分支的修改，如果该的是同一个文件同一位置，这时git就拿不定主意，以冲突的形式展现出来。<ol>
+<li>第一步编辑文件，删除特殊符号</li>
+<li>把文件修改到满意程度，保存退出</li>
+<li>git add文件名</li>
+<li>git commit不能带文件名</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><a href="https://github.com/yangdashuaige/test.git" target="_blank" rel="external">https://github.com/yangdashuaige/test.git</a></p>
+<h2 id="创建远程仓库"><a href="#创建远程仓库" class="headerlink" title="创建远程仓库"></a>创建远程仓库</h2><ol>
+<li>在本地创建远程仓库别名 git remote add origin<br><a href="https://github.com/yangdashuaige/test.git" target="_blank" rel="external">https://github.com/yangdashuaige/test.git</a></li>
+<li>将本地的信息推送到远程仓库git push origin master</li>
+<li><p>克隆。git clone <a href="https://github.com/yangdashuaige/test.git" target="_blank" rel="external">https://github.com/yangdashuaige/test.git</a></p>
+<ol>
+<li>完整的把远程的库下载到本地</li>
+<li>创建origin远程地址别名</li>
+<li>初始化本地库</li>
+</ol>
+</li>
+<li><p>拉取</p>
+<ol>
+<li>pull=fetch+merge</li>
+<li>git fetch 远程仓库别名 远程分支名</li>
+<li>git merge 远程仓库地址别名 远程分支名</li>
+<li>git pull 远程地址别名 远程分支名</li>
+</ol>
+</li>
+<li><p>解决冲突</p>
+<ol>
+<li>如果不是基于GitHub远程库最新版做的修改，必须先拉取。</li>
+<li>拉取下来如果进入冲突状态，按照分支冲突解决操作即可</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/24/J2EE第一天/" rel="next" title="J2EE第一天">
+                <i class="fa fa-chevron-left"></i> J2EE第一天
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/24/Hive的搭建/" rel="prev" title="Hive的搭建">
+                Hive的搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">111</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git基本操作"><span class="nav-number">1.</span> <span class="nav-text">git基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地库初始化"><span class="nav-number">1.1.</span> <span class="nav-text">本地库初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置签名："><span class="nav-number">1.2.</span> <span class="nav-text">设置签名：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本命令"><span class="nav-number">1.3.</span> <span class="nav-text">基本命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git分支管理"><span class="nav-number">2.</span> <span class="nav-text">git分支管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建远程仓库"><span class="nav-number">3.</span> <span class="nav-text">创建远程仓库</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

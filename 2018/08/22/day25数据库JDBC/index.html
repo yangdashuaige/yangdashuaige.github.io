@@ -1,0 +1,745 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="JDBC 开发步骤  导入jar包 加载驱动com.mysql.jdbc.Driver.class 获得连接Connection,和什么库连接 。所在机器的ip地址，端口号，库名 编写SQL语句 发送SQL到数据库mysql  获得statement对象 放SQL语句 statement发送并执行SQL语句，获得结果集   解析结果集 关闭资源      123456789101112//1. 连">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="day25数据库JDBC">
+<meta property="og:url" content="http://yoursite.com/2018/08/22/day25数据库JDBC/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="JDBC 开发步骤  导入jar包 加载驱动com.mysql.jdbc.Driver.class 获得连接Connection,和什么库连接 。所在机器的ip地址，端口号，库名 编写SQL语句 发送SQL到数据库mysql  获得statement对象 放SQL语句 statement发送并执行SQL语句，获得结果集   解析结果集 关闭资源      123456789101112//1. 连">
+<meta property="og:updated_time" content="2018-08-22T09:53:55.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="day25数据库JDBC">
+<meta name="twitter:description" content="JDBC 开发步骤  导入jar包 加载驱动com.mysql.jdbc.Driver.class 获得连接Connection,和什么库连接 。所在机器的ip地址，端口号，库名 编写SQL语句 发送SQL到数据库mysql  获得statement对象 放SQL语句 statement发送并执行SQL语句，获得结果集   解析结果集 关闭资源      123456789101112//1. 连">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/22/day25数据库JDBC/"/>
+
+
+
+
+
+  <title> day25数据库JDBC | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/day25数据库JDBC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                day25数据库JDBC
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T17:53:23+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/洗心革面学Java/" itemprop="url" rel="index">
+                    <span itemprop="name">洗心革面学Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><ol>
+<li><p>开发步骤</p>
+<ol>
+<li>导入jar包</li>
+<li>加载驱动com.mysql.jdbc.Driver.class</li>
+<li>获得连接Connection,和什么库连接 。所在机器的ip地址，端口号，库名</li>
+<li>编写SQL语句</li>
+<li><p>发送SQL到数据库mysql</p>
+<ol>
+<li>获得statement对象</li>
+<li>放SQL语句 statement发送并执行SQL语句，获得结果集</li>
+</ol>
+<ol>
+<li>解析结果集</li>
+<li>关闭资源</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//1. 连接数据库</div><div class="line">	//1. 加载驱动 com.mysql.jdbc.Driver.class</div><div class="line">	//实例化一个数据可驱动对象</div><div class="line">	//Driver driver=new Driver();//看源码会发现在静态代码块中new了一个自身，所以如果new就会有两个对象</div><div class="line"></div><div class="line">	//静态代码块在类加载的时候调用，所以通过获取管理对象来获得该类的对象</div><div class="line">Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</div><div class="line">		String url=&quot;jdbc:mysql://localhost:3306/d17&quot;;</div><div class="line">		String user=&quot;root&quot;;</div><div class="line">		String pwd=&quot;82482647&quot;;</div><div class="line">		java.sql.Connection connection= DriverManager.getConnection(url,user,pwd);//去驱动的管理者中拿到驱动，获得连接</div><div class="line">		System.out.println(connection);</div></pre></td></tr></table></figure>
+<p>下面是 com.mysql.jdbc.Driver.class代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package com.mysql.jdbc;</div><div class="line"></div><div class="line">import java.sql.DriverManager;</div><div class="line">import java.sql.SQLException;</div><div class="line"></div><div class="line">public class Driver extends NonRegisteringDriver implements java.sql.Driver &#123;</div><div class="line">    public Driver() throws SQLException &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    static &#123;</div><div class="line">        try &#123;</div><div class="line">            DriverManager.registerDriver(new Driver());</div><div class="line">        &#125; catch (SQLException var1) &#123;</div><div class="line">            throw new RuntimeException(&quot;Can&apos;t register driver!&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>允许别人访问你的数据库,四句话分别执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos; IDENTIFIED BY &apos;root&apos; WITH GRANT OPTION;</div><div class="line">flush PRIVILEGES ;</div><div class="line">use mysql;</div><div class="line">select host,user from user;</div></pre></td></tr></table></figure>
+<h3 id="注意点：字符串拼接"><a href="#注意点：字符串拼接" class="headerlink" title="注意点：字符串拼接"></a>注意点：字符串拼接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@Test</div><div class="line">  //根据部门号查询所在部门的全部员工,姓名,工资,入职时间</div><div class="line">	public void getEmpsByDeptno() &#123;</div><div class="line">		int[] deptno= &#123;20,30&#125;;//部门号20</div><div class="line">		Connection connection=JdbcUtil.getConnetion();</div><div class="line">		String sql=&quot;select ename,sal,hiredate from emp where deptno in(&quot;+deptno[0]+&quot; ,&quot;+deptno[1]+&quot; )&quot;;</div><div class="line">		Statement statement=null;</div><div class="line">		ResultSet set=null;</div><div class="line">		try &#123;</div><div class="line">			statement=connection.createStatement();</div><div class="line">			set=statement.executeQuery(sql);</div><div class="line">			while(set.next()) &#123;</div><div class="line">				String name=set.getString(1);</div><div class="line">				double sal=set.getDouble(2);</div><div class="line">				Date hDate=set.getDate(3);</div><div class="line">				System.out.println(name+&quot; &quot;+sal+&quot; &quot;+hDate);</div><div class="line">			&#125;</div><div class="line">		&#125; catch (SQLException e) &#123;</div><div class="line">			// TODO Auto-generated catch block</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;finally &#123;</div><div class="line">			 JdbcUtil.close(set, statement, connection);</div><div class="line">		&#125;	</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	String sql=&quot;insert into emp(empno,ename,job,hiredate,sal,deptno) values(&quot;+empno+&quot;,&quot;+ename+&quot;,&quot;+job+&quot;,now(),&quot;+sal+&quot;,&quot;+deptno+&quot;)&quot;;</div></pre></td></tr></table></figure>
+<h3 id="将CLERK的员工薪资加100"><a href="#将CLERK的员工薪资加100" class="headerlink" title="将CLERK的员工薪资加100"></a>将CLERK的员工薪资加100</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//修改，将clerk的工资上调100</div><div class="line">@Test</div><div class="line">public void deleteEmp()</div><div class="line">&#123;</div><div class="line">	Connection connection=JdbcUtil.getConnection();</div><div class="line">	//update 工资表 set 工资 = 工资 + 100 where id = 3</div><div class="line">	String sql=&quot;update emp set sal=sal+100 where job=&apos;CLERK&apos; &quot;;</div><div class="line">	System.out.println(sql);</div><div class="line">	Statement statement=null;</div><div class="line">	try &#123;</div><div class="line">		statement=connection.createStatement();</div><div class="line">		int count=statement.executeUpdate(sql);</div><div class="line">		if(count&gt;0)</div><div class="line">		&#123;</div><div class="line">			System.out.println(&quot;成功&quot;);</div><div class="line">		&#125;</div><div class="line">		else&#123;</div><div class="line">			System.out.println(&quot;失败&quot;);</div><div class="line">		&#125;</div><div class="line">	&#125; catch (SQLException e) &#123;</div><div class="line">		// TODO Auto-generated catch block</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">	finally &#123;</div><div class="line">		JdbcUtil.close(null, statement, connection);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/22/day26数据库JDBC存储与读取/" rel="next" title="day26数据库JDBC存储与读取">
+                <i class="fa fa-chevron-left"></i> day26数据库JDBC存储与读取
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/22/day24数据库其他对象/" rel="prev" title="day24数据库其他对象">
+                day24数据库其他对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">111</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC"><span class="nav-number">1.</span> <span class="nav-text">JDBC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意点：字符串拼接"><span class="nav-number">1.1.</span> <span class="nav-text">注意点：字符串拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将CLERK的员工薪资加100"><span class="nav-number">1.2.</span> <span class="nav-text">将CLERK的员工薪资加100</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
