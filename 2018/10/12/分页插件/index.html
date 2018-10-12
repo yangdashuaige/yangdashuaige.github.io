@@ -1,0 +1,1128 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Mybatis分页插件PageHelper因为项目中用到了分页，自己试着写了一下，总是这边或者那边的问题。求助Google大神的时候发现了这个插件。真香！  查询某页的数据  public interface GoodsService { //    查询某页的数据  PageInfo&amp;lt;Goods&amp;gt; getPageInfor(int curPage,SearchBean searchB">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分页插件">
+<meta property="og:url" content="http://yoursite.com/2018/10/12/分页插件/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="Mybatis分页插件PageHelper因为项目中用到了分页，自己试着写了一下，总是这边或者那边的问题。求助Google大神的时候发现了这个插件。真香！  查询某页的数据  public interface GoodsService { //    查询某页的数据  PageInfo&amp;lt;Goods&amp;gt; getPageInfor(int curPage,SearchBean searchB">
+<meta property="og:updated_time" content="2018-10-12T12:05:34.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分页插件">
+<meta name="twitter:description" content="Mybatis分页插件PageHelper因为项目中用到了分页，自己试着写了一下，总是这边或者那边的问题。求助Google大神的时候发现了这个插件。真香！  查询某页的数据  public interface GoodsService { //    查询某页的数据  PageInfo&amp;lt;Goods&amp;gt; getPageInfor(int curPage,SearchBean searchB">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/12/分页插件/"/>
+
+
+
+
+
+  <title> 分页插件 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/12/分页插件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                分页插件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-12T20:04:05+08:00">
+                2018-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目相关/" itemprop="url" rel="index">
+                    <span itemprop="name">项目相关</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Mybatis分页插件PageHelper"><a href="#Mybatis分页插件PageHelper" class="headerlink" title="Mybatis分页插件PageHelper"></a>Mybatis分页插件PageHelper</h2><p>因为项目中用到了分页，自己试着写了一下，总是这边或者那边的问题。求助Google大神的时候发现了这个插件。真香！</p>
+<ol>
+<li>查询某页的数据</li>
+</ol>
+<pre><code>public interface GoodsService {
+//    查询某页的数据
+
+PageInfo&lt;Goods&gt; getPageInfor(int curPage,SearchBean searchBean);//按照条件显示内容
+
+
+//    查询所有的商品类别
+List&lt;GoodsCatory&gt; getAllGoodsCatory();
+
+
+Goods getGoodsById(int id);
+
+  boolean removeGooods(int id);
+
+boolean removeManyGooods(int[] gou);
+}
+</code></pre><ol>
+<li><p>具体的实现方法</p>
+<pre><code>@Service
+public class GoodsServiceImpl implements GoodsService {
+@Autowired
+private GoodsMapper mapper; //商品的mapper
+
+@Autowired
+private GoodsCatoryMapper catoryMappermapper;//商品类别的mapper
+
+@Override
+public PageInfo&lt;Goods&gt; getPageInfor(int curPage,SearchBean searchBean) {
+//         查询的起始页
+//          每页的条数  5条
+//            总条数
+      int count =mapper.selectcount(searchBean);
+//          拦截添加分页
+    PageHelper.startPage(curPage,5);
+    List&lt;Goods&gt; goodsList=mapper.selectAllGoods(searchBean);//按条件查询全部的商品
+    PageInfo&lt;Goods&gt; pageInfo=new PageInfo&lt;&gt;(goodsList);
+    //当前页
+    pageInfo.setPageNum(curPage);
+    //每页显示的条数
+    pageInfo.setPageSize(5);
+    //总条数
+    pageInfo.setTotal(count);
+    return pageInfo;
+}
+</code></pre></li>
+</ol>
+<pre><code>@Override
+public List&lt;GoodsCatory&gt; getAllGoodsCatory() {
+    return catoryMappermapper.selectAllCatory();
+}
+
+@Override
+public Goods getGoodsById(int id) {
+    return mapper.selectById(id);
+}
+
+@Override
+public boolean removeGooods(int id) {
+    return mapper.deleteById(id);
+}
+
+//数据的数据不存在 返回false
+//有一个删除不成功,返回false
+//    多删除,多delete
+@Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRED)
+@Override
+public boolean removeManyGooods(int[] gou) {
+    //
+     if(gou.length&lt;=0){
+         return  false;
+     }
+     boolean b=true;//默认删除成功
+    for (int i=0;i&lt;gou.length;i++){
+        b&amp;=mapper.deleteById(gou[i]);
+    }
+    return b;
+    }
+
+}
+</code></pre><ol>
+<li><p>Mapper层</p>
+<pre><code>public interface GoodsMapper {
+
+//显示所有的商品
+List&lt;Goods&gt; selectAllGoods(SearchBean searchBean);
+
+//获得商品的总数
+int selectcount(SearchBean searchBean);
+</code></pre></li>
+</ol>
+<pre><code>Goods selectById(int i);
+
+boolean deleteById(int id);
+
+}
+</code></pre><ol>
+<li>GoodsMapper.xml</li>
+<li><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;com.gem.mapper.GoodsMapper&quot;&gt;
+    &lt;!--List&lt;Goods&gt; selectAllGoods();--&gt;
+    &lt;resultMap id=&quot;selectAllGoodsMap&quot; type=&quot;Goods&quot;&gt;
+        &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+        &lt;result column=&quot;name&quot; property=&quot;name&quot;/&gt;
+        &lt;result column=&quot;price&quot; property=&quot;price&quot;/&gt;
+        &lt;result column=&quot;pic&quot; property=&quot;pic&quot;/&gt;
+        &lt;result column=&quot;createtime&quot; property=&quot;createtime&quot;/&gt;
+        &lt;association property=&quot;catory&quot; javaType=&quot;GoodsCatory&quot;&gt;
+            &lt;result column=&quot;cname&quot; property=&quot;cname&quot;/&gt;
+        &lt;/association&gt;
+    &lt;/resultMap&gt;
+    &lt;!--List&lt;Goods&gt; selectAllGoodsBySearchBean(SearchBean searchBean);
+     不定条件
+     mybatis 动态sql  sql语句动态生成
+    --&gt;
+    &lt;!--sql片段--&gt;
+    &lt;sql id=&quot;dong&quot;&gt;
+       from goods g,catory c
+        &lt;where&gt;
+            g.catory_id=c.id AND   g.status=1
+            &lt;if test=&quot;gid !=null and gid!=0&quot;&gt;
+                AND g.id=#{gid}
+            &lt;/if&gt;
+            &lt;if test=&quot;gname !=null&quot;&gt;
+                AND g.name like concat(&apos;%&apos;,#{gname},&apos;%&apos;)
+            &lt;/if&gt;
+            &lt;if test=&quot;minprice !=null and minprice!=0.0&quot;&gt;
+                AND g.price &amp;gt;= #{minprice}
+            &lt;/if&gt;
+            &lt;if test=&quot;maxprice !=null and maxprice!=0.0&quot;&gt;
+                AND g.price &amp;lt;=  #{maxprice}
+            &lt;/if&gt;
+            &lt;if test=&quot;cid!=null and cid!=0&quot; &gt;
+                AND c.id=#{cid}
+            &lt;/if&gt;
+        &lt;/where&gt;
+    &lt;/sql&gt;
+
+    &lt;delete id=&quot;deleteById&quot;&gt;
+        UPDATE  goods  SET  status=0 where id=#{param1}
+    &lt;/delete&gt;
+
+    &lt;select id=&quot;selectAllGoods&quot;  parameterType=&quot;SearchBean&quot; resultMap=&quot;selectAllGoodsMap&quot;&gt;
+         SELECT  g.id,g.name,g.price,g.pic,g.createtime,c.cname
+         &lt;include refid=&quot;dong&quot;/&gt;
+     &lt;/select&gt;
+
+    &lt;!--int selectcount();--&gt;
+    &lt;select id=&quot;selectcount&quot;  parameterType=&quot;SearchBean&quot;  resultType=&quot;int&quot;&gt;
+        select count(g.id)
+        &lt;include refid=&quot;dong&quot;/&gt;
+    &lt;/select&gt;
+
+    &lt;select id=&quot;selectById&quot; resultType=&quot;com.gem.pojo.Goods&quot;&gt;
+        select * from goods where id=#{param1}
+    &lt;/select&gt;
+
+&lt;/mapper&gt;
+</code></pre></li>
+<li><p>Control层</p>
+</li>
+</ol>
+<pre><code>import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+import java.util.List;
+@RequestMapping(&quot;/goods&quot;) //访问路径
+@Controller//实例化处理器
+public class GoodsControl {
+
+@Autowired
+ private GoodsService goodsService;
+
+//method = RequestMethod.GET 限定请求的方式
+@RequestMapping(value = &quot;/list.action&quot;)
+//    RequestParam 如果为空,添加默认值
+//出现400的原因,参数没有办法封装实体类,类型转换不正确    String
+public String main(@RequestParam(value =&quot;currentPage&quot;,defaultValue = &quot;1&quot;) int currentPage,SearchBean bean, Model model, HttpServletRequest request){//请求的参数名和属性一致
+     List&lt;GoodsCatory&gt; goodsCatoryList=goodsService.getAllGoodsCatory();
+      PageInfo&lt;Goods&gt; pageInfo= goodsService.getPageInfor(currentPage,bean);
+      model.addAttribute(&quot;catoryList&quot;,goodsCatoryList);
+      model.addAttribute(&quot;pageBean&quot;,pageInfo);
+//      &lt;input name=&quot;maxprice&quot; type=&quot;text&quot; class=&quot;allInput&quot;  value=&quot;${searchBean.maxprice}&quot;/&gt;
+//     只要属性值一致,那么就相当于放在model里面 (参数 封装请求的参数,jsp的域对象也会在此取)
+//    表单回显 (pojo属性名     表的类名一致  mybatis      form 表单的 name一致   spring会封装       value值也要一致  )
+       return &quot;/jsp/list.jsp&quot;;
+}
+
+    @RequestMapping(&quot;/goodInfor.action&quot;)
+  public String GoodInfor(int id,Model model){
+     Goods goods=goodsService.getGoodsById(id);//关于查询+数据库磁盘(缓存(redis ))  [体现]
+     model.addAttribute(&quot;goods&quot;,goods);
+     return &quot;/jsp/GoodInfor.jsp&quot;;
+ }
+
+
+   @RequestMapping(&quot;/delete.action&quot;) //变量,对象封装
+   public String delete(int[] gou){
+      boolean b=goodsService.removeManyGooods(gou);
+      if (b){
+          return &quot;redirect:/goods/list.action&quot;;
+      }else{
+          return &quot;redirect:/goods/list.action?error=1&quot;;//删除不成功
+      }
+   }
+
+
+}
+</code></pre><ol>
+<li><p>JSP页面</p>
+<pre><code>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
+&lt;%@ taglib prefix=&quot;fmt&quot; uri=&quot;http://java.sun.com/jsp/jstl/fmt&quot; %&gt;
+&lt;%--&lt;%@  %&gt;  jsp的指令:page taglib 导入核心标签库    include 一个jsp里面包含另个jsp的页面--%&gt;
+&lt;%@page isELIgnored=&quot;false&quot; %&gt;
+
+&lt;%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+&quot;://&quot;+request.getServerName()+&quot;:&quot;+request.getServerPort()+path+&quot;/&quot;;
+    //java 和 js 域对象 el表达式 js  java 也识别
+    request.setAttribute(&quot;paths&quot;,basePath);
+%&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+        &lt;meta http-equiv=&quot;X-UA-Compatible&quot;content=&quot;IE=9; IE=8; IE=7; IE=EDGE&quot; /&gt;
+        &lt;title&gt;商品列表页面&lt;/title&gt;
+        &lt;link href=&quot;&lt;%= basePath %&gt;css/all.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+        &lt;script src=&quot;&lt;%= basePath%&gt;js/jquery-1.9.0.min.js&quot;&gt;&lt;/script&gt;
+
+        &lt;script&gt;
+
+                function formclick(page) {
+                    document.getElementById(&quot;currentPage&quot;).value=page;//即将展示页面的数存在隐藏域里
+                    document.getElementById(&quot;mainForm&quot;).submit();
+                }
+
+                function  adelete() {
+                    //判断一下有没有勾选,如果没有勾选,什么事情也不做
+                    var checkes=document.getElementsByClassName(&quot;gou&quot;);
+                    var count=0;
+                    for(var i=0;i &lt; checkes.length;i++){
+                        if (checkes[i].checked){
+                            count++;
+                        }
+                    }
+                    if (count==0){
+                        return ;
+                    }
+</code></pre></li>
+</ol>
+<pre><code>                    document.getElementById(&quot;mainForm&quot;).action=&quot;${paths}goods/delete.action&quot;;
+                    document.getElementById(&quot;mainForm&quot;).submit();
+                }
+
+                window.onload=function () {
+                    document.getElementById(&quot;all&quot;).onchange=function () {
+                   var checkes=document.getElementsByClassName(&quot;gou&quot;);
+                   for(var i=0;i &lt; checkes.length;i++){
+                       checkes[i].checked= document.getElementById(&quot;all&quot;).checked;
+                   }
+                    }
+                };
+        &lt;/script&gt;
+
+
+    &lt;/head&gt;
+    &lt;body style=&quot;background: #e1e9eb;&quot;&gt;
+
+
+        &lt;jsp:include page=&quot;hello.jsp&quot;&gt;&lt;/jsp:include&gt;
+
+        &lt;form action=&quot;&lt;%= basePath %&gt;goods/list.action&quot; id=&quot;mainForm&quot; method=&quot;post&quot;&gt;
+            &lt;input type=&quot;hidden&quot; name=&quot;currentPage&quot; id=&quot;currentPage&quot; value=&quot;${page.currentPage}&quot;/&gt;
+
+            &lt;div class=&quot;right&quot;&gt;
+                &lt;div class=&quot;current&quot;&gt;当前位置：&lt;a href=&quot;javascript:void(0)&quot; style=&quot;color:#6E6E6E;&quot; onclick=&quot;&quot;&gt;商品管理&lt;/a&gt; &amp;gt; 商品列表&lt;/div&gt;
+                &lt;div class=&quot;rightCont&quot;&gt;
+                    &lt;p class=&quot;g_title fix&quot;&gt;商品列表 &lt;a class=&quot;btn03&quot; href=&quot;#&quot;&gt;新 增&lt;/a&gt;&lt;/p&gt;
+                    &lt;table class=&quot;tab1&quot;&gt;
+                        &lt;tbody&gt;
+                            &lt;tr&gt;
+                                &lt;td width=&quot;90&quot; align=&quot;right&quot;&gt;商品号:
+                                &lt;/td&gt;
+
+                                &lt;td&gt;
+                                    &lt;input name=&quot;gid&quot; type=&quot;text&quot; class=&quot;allInput&quot;  value=&quot;${searchBean.gid}&quot; /&gt;
+                                &lt;/td&gt;
+                                &lt;td width=&quot;90&quot; align=&quot;right&quot;&gt;商品名：&lt;/td&gt;
+                                &lt;td&gt;
+                                    &lt;input name=&quot;gname&quot; type=&quot;text&quot; class=&quot;allInput&quot; value=&quot;${searchBean.gname}&quot; /&gt;
+                                &lt;/td&gt;
+                                &lt;td width=&quot;90&quot; align=&quot;right&quot;&gt;价格：&lt;/td&gt;
+                                &lt;td&gt;
+                                    &lt;input name=&quot;minprice&quot; type=&quot;text&quot; class=&quot;allInput&quot;  value=&quot;${searchBean.minprice}&quot;/&gt; &amp;nbsp;~ &amp;nbsp;
+                                &lt;/td&gt;
+                                &lt;td&gt;
+                                    &lt;input name=&quot;maxprice&quot; type=&quot;text&quot; class=&quot;allInput&quot;  value=&quot;${searchBean.maxprice}&quot;/&gt;
+                                &lt;/td&gt;
+
+                                &lt;td width=&quot;90&quot; align=&quot;right&quot;&gt;类别：&lt;/td&gt;
+                                &lt;td&gt;
+                                    &lt;select name=&quot;cid&quot;&gt;
+                                        &lt;%--${searchBean.cid}}--%&gt;
+                                        &lt;c:choose&gt;
+                                            &lt;c:when test=&quot;${searchBean.cid==0}&quot;&gt;
+                                                &lt;option value=&quot;0&quot; selected&gt;--请输入类别--&lt;/option&gt;
+                                            &lt;/c:when&gt;
+                                             &lt;c:otherwise&gt;
+                                                 &lt;option value=&quot;0&quot;&gt;--请输入类别--&lt;/option&gt;
+                                             &lt;/c:otherwise&gt;
+                                        &lt;/c:choose&gt;
+
+                                        &lt;c:forEach items=&quot;${catoryList}&quot; var=&quot;catory&quot;&gt;
+                                            &lt;c:choose&gt;
+                                                &lt;c:when test=&quot;${searchBean.cid==catory.id}&quot;&gt;
+                                                    &lt;option value=&quot;${catory.id}&quot; selected&gt;${catory.cname}&lt;/option&gt;
+                                                &lt;/c:when&gt;
+                                                &lt;c:otherwise&gt;
+                                                    &lt;option value=&quot;${catory.id}&quot;&gt;${catory.cname}&lt;/option&gt;
+                                                &lt;/c:otherwise&gt;
+                                            &lt;/c:choose&gt;
+
+                                        &lt;/c:forEach&gt;
+                                    &lt;/select&gt;
+                                &lt;/td&gt;
+
+                                &lt;td width=&quot;100&quot; align=&quot;right&quot;&gt;
+
+                                    &lt;input type=&quot;submit&quot; class=&quot;tabSub&quot; value=&quot;查 询&quot; /&gt;
+
+                                    &lt;%--不要真的删   字段 status 1   0 --%&gt;
+                                    &lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;adelete()&quot;&gt;删除&lt;/a&gt;
+                                &lt;/td&gt;
+                               &lt;/tr&gt;
+                        &lt;/tbody&gt;
+                    &lt;/table&gt;
+                    &lt;div class=&quot;zixun fix&quot;&gt;
+                        &lt;table class=&quot;tab2&quot; width=&quot;100%&quot;&gt;
+                            &lt;tbody&gt;
+                                &lt;tr&gt;
+                                    &lt;th&gt;&lt;input type=&quot;checkbox&quot; id=&quot;all&quot;/&gt;&lt;/th&gt;
+                                    &lt;th&gt;商品号&lt;/th&gt;
+                                    &lt;th&gt;商品名&lt;/th&gt;
+                                    &lt;th&gt;价格&lt;/th&gt;
+                                    &lt;th&gt;图片&lt;/th&gt;
+                                    &lt;th&gt;上架时间&lt;/th&gt;
+                                    &lt;th&gt;类别&lt;/th&gt;
+                                    &lt;th&gt;操作&lt;/th&gt;
+                                &lt;/tr&gt;
+                             &lt;%--显示数据 el取域对象 核心标签库 导入--%&gt;
+                               &lt;%--循环 foreache  items 访问哪个集合(el表达式域对象取出)  var 取出一个对象取的名字--%&gt;
+                            &lt;c:forEach items=&quot;${pageBean.list}&quot; var=&quot;good&quot;&gt;
+                             &lt;tr&gt;
+
+                                 &lt;td&gt;&lt;input type=&quot;checkbox&quot; class=&quot;gou&quot; name=&quot;gou&quot; value=&quot;${good.id}&quot;/&gt;&lt;/td&gt;
+                                 &lt;td&gt;${good.id}&lt;/td&gt;
+                                 &lt;td&gt;${good.name}&lt;/td&gt;
+                                 &lt;td&gt;${good.price}&lt;/td&gt;
+                                 &lt;%--http://localhost:8080/web项目名/images/1.jps
+                                 jsp application  相当于servlet的 context
+                                 --%&gt;
+                                 &lt;td&gt;&lt;img src=&quot;&lt;%= basePath %&gt;/${good.pic}&quot; height=&quot;40px&quot; width=&quot;40px&quot;/&gt;&lt;/td&gt;
+                                 &lt;td&gt;
+                                         &lt;fmt:formatDate value=&quot;${good.createtime}&quot; pattern=&quot;yyyy年MM月dd日 HH:mm:ss&quot;/&gt;
+                                         &lt;%--${good.createtime}--%&gt;
+                                 &lt;/td&gt;
+                                 &lt;td&gt;${good.catory.cname}&lt;/td&gt;
+                                 &lt;td&gt;
+                                     &lt;a href=&quot;&lt;%= basePath %&gt;/goods/goodInfor.action?id=${good.id}&quot;&gt;查看&lt;/a&gt;  |
+                                     &lt;a href=&quot;&lt;%= basePath %&gt;/buy?id=${good.id} &quot;&gt;直接购买&lt;/a&gt;
+                                 &lt;/td&gt;
+                             &lt;/tr&gt;
+                            &lt;/c:forEach&gt;
+                            &lt;/tbody&gt;
+                        &lt;/table&gt;
+                        &lt;div class=&apos;page fix&apos;&gt;
+                            共 &lt;b&gt;${pageBean.total}&lt;/b&gt; 条 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+
+                            &lt;%--当前页是否是第一页 ,不是第一页 显示上一页和首页--%&gt;
+                            &lt;c:if test=&quot;${!pageBean.isFirstPage}&quot;&gt;
+
+                                &lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;formclick(1)&quot; &gt;首页&lt;/a&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                &lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;formclick(${pageBean.prePage})&quot;&gt;上一页&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                            &lt;/c:if&gt;
+                            当前第&lt;span&gt;${pageBean.pageNum}/${pageBean.pages}&lt;/span&gt;页&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                            &lt;%--如果不是尾页,显示尾页和下一页--%&gt;
+                            &lt;c:if test=&quot;${!pageBean.isLastPage}&quot;&gt;
+                                &lt;a href=&quot;javascript:void(0)&quot; onclick=&quot;formclick(${pageBean.nextPage})&quot;&gt;下一页&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                &lt;a href=&quot;javascript:void(0)&quot;  onclick=&quot;formclick(${pageBean.pages})&quot;&gt;末页&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                            &lt;/c:if&gt;
+
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+           &lt;c:if test=&quot;${param.error==1}&quot;&gt;
+               &lt;script &gt;
+                   alert(&quot;删除不成功&quot;);
+               &lt;/script&gt;
+           &lt;/c:if&gt;
+
+
+
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/12/项目相关/" rel="next" title="项目相关">
+                <i class="fa fa-chevron-left"></i> 项目相关
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/12/SpringMVC第一天/" rel="prev" title="SpringMVC第一天">
+                SpringMVC第一天 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis分页插件PageHelper"><span class="nav-number">1.</span> <span class="nav-text">Mybatis分页插件PageHelper</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

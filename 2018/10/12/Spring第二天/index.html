@@ -1,0 +1,828 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="复习题 http status:  200  正确 300 重定向 400 无此资源 500 服务器错误   resultType和resultMap：当实体类的属性和结果集的属性名一致，直接用resultType,单表的时候，如果结果集和实体属性一致，直接resultType;多表的时候，如果我自定义一个实体类，将查询的结果的属性直接封装。如果结果集和属性不一致，resultMap，多表查询，一">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring第二天">
+<meta property="og:url" content="http://yoursite.com/2018/10/12/Spring第二天/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="复习题 http status:  200  正确 300 重定向 400 无此资源 500 服务器错误   resultType和resultMap：当实体类的属性和结果集的属性名一致，直接用resultType,单表的时候，如果结果集和实体属性一致，直接resultType;多表的时候，如果我自定义一个实体类，将查询的结果的属性直接封装。如果结果集和属性不一致，resultMap，多表查询，一">
+<meta property="og:updated_time" content="2018-10-12T11:58:43.530Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring第二天">
+<meta name="twitter:description" content="复习题 http status:  200  正确 300 重定向 400 无此资源 500 服务器错误   resultType和resultMap：当实体类的属性和结果集的属性名一致，直接用resultType,单表的时候，如果结果集和实体属性一致，直接resultType;多表的时候，如果我自定义一个实体类，将查询的结果的属性直接封装。如果结果集和属性不一致，resultMap，多表查询，一">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/12/Spring第二天/"/>
+
+
+
+
+
+  <title> Spring第二天 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/12/Spring第二天/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Spring第二天
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-12T19:57:57+08:00">
+                2018-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/框架/" itemprop="url" rel="index">
+                    <span itemprop="name">框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="复习题"><a href="#复习题" class="headerlink" title="复习题"></a>复习题</h2><ol>
+<li><p>http status:</p>
+<ol>
+<li>200  正确</li>
+<li>300 重定向</li>
+<li>400 无此资源</li>
+<li>500 服务器错误</li>
+</ol>
+</li>
+<li><p>resultType和resultMap：当实体类的属性和结果集的属性名一致，直接用resultType,单表的时候，如果结果集和实体属性一致，直接resultType;多表的时候，如果我自定义一个实体类，将查询的结果的属性直接封装。如果结果集和属性不一致，resultMap，多表查询，一对多关系（collection ofType），还是一对一关系（association javaType）</p>
+</li>
+<li>mybatis的接口不会出现方法的重载，id就是方法名，必须唯一。</li>
+</ol>
+<h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><p>Spring是一个开源框架，是一个轻量级的控制反转IOC和面向切面AOP的容器框架。它是为了解决企业应用开发的复杂性而创建的。Spring使用基本的JavaBean来完成以前只可能由EJB完成的事情。然而Spring的用途不仅限于服务器端的开发，从简单性，可测试性，和松耦合的角度而言，任何Java应用都可以从Spring中收益。</p>
+<ol>
+<li>轻量级：所需内存小，依赖于别人的资源少，自己的功能简单，所能做的事情比较少。与别人合作而达到重量级的水平。</li>
+<li>重量级：重量级到轻量级EJB(企业JavaBean)</li>
+<li>控制反转：对象的生命周期交由Spring控制，实例化对象，调用对象，对象的销毁。控制反转是框架的重要特征，并非面向对象编程的专用术语。它包括依赖注入和依赖查找。</li>
+<li>面向切面编程：动态的横向切入系统功能，（事务的控制，日志控制[log4j]）</li>
+</ol>
+<h3 id="Spring核心体系"><a href="#Spring核心体系" class="headerlink" title="Spring核心体系"></a>Spring核心体系</h3><ol>
+<li>IOC控制反转：将你设计好的对象交给容器控制而不是传统的在你的对象内部直接控制。</li>
+<li>导入四个核心包beans,context,core,expression<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">	&lt;!--bean 代表实例化对象,对象默认是单例,通过id去获取,实例化对象</div><div class="line">  applicationContext1.xml  spring的bean工厂,里面有一个个对象(bean代表一个对象)</div><div class="line">--&gt;</div><div class="line">&lt;bean id=&quot;UserDaoId&quot; class=&quot;com.gem.IOC.UserDaoImpl&quot;&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line"></div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">//        实例化一个UserDaoImpl对象(去pring容器中取)</div><div class="line">//        UserDao userDao=new UserDaoImpl();</div><div class="line">        //实例化一个Spring容器(工厂),以后可以去这个容器中取javabean[xml的模板取实例化工厂]</div><div class="line">//        Test和UserDaoImpl完全没有关系,完全解耦</div><div class="line">        ApplicationContext context=new ClassPathXmlApplicationContext(&quot;com.gem.IOC/applicationContext1.xml&quot;);</div><div class="line">        UserDao userDao= (UserDao) context.getBean(&quot;UserDaoId&quot;);</div><div class="line">        userDao.insertUser();</div><div class="line">        userDao.deleteUser();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</code></pre></li>
+</ol>
+<p>默认是单例,如果容器中有对象,那么直接调用该对象</p>
+<ol>
+<li>setter依赖注入</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</div><div class="line">       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</div><div class="line"></div><div class="line">    &lt;!--bean 代表实例化对象,对象默认是单例,通过id去获取,实例化对象</div><div class="line">      applicationContext1.xml  spring的bean工厂,里面有一个个对象(bean代表一个对象)</div><div class="line">      scope=&quot;prototype&quot; 多例</div><div class="line">      id起名随意</div><div class="line">    --&gt;</div><div class="line">    &lt;bean id=&quot;UserDaoId&quot;  class=&quot;com.gem.IOC.UserDaoImpl&quot; &gt;</div><div class="line">    &lt;/bean&gt;</div><div class="line"></div><div class="line"></div><div class="line">     &lt;!--依赖注入DI 将两个javaBean之间的依赖关系注入,给属性赋值 ,会调用setter方法</div><div class="line">     ref 引用指向,指向的是spring容器里面的对象</div><div class="line">     value就是普通值--&gt;</div><div class="line">    &lt;bean id=&quot;UserServiceId&quot; class=&quot;com.gem.IOC.UserServiceImpl&quot;&gt;</div><div class="line">     &lt;property name=&quot;userDao&quot;    ref=&quot;UserDaoId&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;/bean&gt;</div><div class="line"></div><div class="line">&lt;/beans&gt;</div><div class="line"></div><div class="line">package com.gem.IOC;</div><div class="line"></div><div class="line">public class UserServiceImpl implements UserService &#123;</div><div class="line">    private UserDao userDao;</div><div class="line"></div><div class="line">    public void setUserDao(UserDao userDao) &#123;</div><div class="line">        this.userDao = userDao;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean addUser() &#123;</div><div class="line">        return userDao.insertUser();</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public boolean deleteUser() &#123;</div><div class="line">        return userDao.deleteUser();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>构造方法注入</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">	&lt;!--构造方法注入--&gt;</div><div class="line">&lt;bean id=&quot;UserServiceId&quot; class=&quot;com.gem.IOC.UserServiceImpl&quot;&gt;</div><div class="line">    &lt;constructor-arg name=&quot;userDao&quot; ref=&quot;UserDaoId&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>自动注入：按照类别注入<br>首先default-autowire=”byType”默认按照类型装配。从工厂里面找该类型，如果有这个类型的属性，直接绑定注入。自动绑定的话，一定是唯一的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">default-autowire=&quot;byType&quot;</div><div class="line"></div><div class="line">//下面就只用写</div><div class="line">&lt;bean id=&quot;UserServiceId&quot; class=&quot;com.yanghuan.IOC.UserServiceImpl&quot;&gt;&lt;/bean&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>自动注入：按照名称。属性名和id一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">属性名称为pirvate UserDao userDao;</div><div class="line">&lt;bean id=&quot;userDao&quot; class=&quot;com.yanghuna.IOC.UserDaoImpl&quot;&gt;&lt;/bean&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="ApplicationContext-和BeanFactory"><a href="#ApplicationContext-和BeanFactory" class="headerlink" title="ApplicationContext 和BeanFactory"></a>ApplicationContext 和BeanFactory</h3><ol>
+<li>ApplicationContext 继承BeanFactory</li>
+<li>BeanFactory采取延迟加载，第一次getBean时才会初始化Bean，ApplicationContext是饿汉模式</li>
+<li>ApplicationContext支持国际化以及其他特性，功能比Beanfactory更加强大<ol>
+<li>国际化处理</li>
+<li>事件传递</li>
+<li>Bean自动装配</li>
+<li>各种不同应用层的Context的实现</li>
+</ol>
+</li>
+</ol>
+<h3 id="JavaBean的生命周期"><a href="#JavaBean的生命周期" class="headerlink" title="JavaBean的生命周期"></a>JavaBean的生命周期</h3><ol>
+<li>实例化对象</li>
+<li>属性赋值</li>
+<li>如果Bean实现BeanNameAware执行setBeanName</li>
+<li>如果Bean实现BeanFactoryAware或者ApplicationContextAware设置工厂setBeanFactory或者上下文对象applicationContext</li>
+<li>如果存在类实现BeanPostProcessor（后处理Bean），执行postProcessBeforeInitialization</li>
+<li>如果Bean实现Initialization执行afterPropertiesSet</li>
+<li>调用<bean init-method="init">指定初始化方法init</bean></li>
+<li>如果存在类实现BeanPostProcessor（处理Bean）执行postProcessAfterInitialization</li>
+<li>执行业务处理</li>
+<li>如果Bean实现DisposableBean执行destory</li>
+<li>调用<bean destroy-method="customerDestory">执行销毁方法customerDestroy</bean></li>
+</ol>
+<h3 id="Bean的实例化的方式"><a href="#Bean的实例化的方式" class="headerlink" title="Bean的实例化的方式"></a>Bean的实例化的方式</h3><ol>
+<li>使用类构造器实例化（在applicationContext.xml中配置）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;bean id=&quot;personService&quot; class=&quot;com.yanghuan.Service.impl.personServiceImpl&quot;&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>使用静态工厂方法实例化：<ol>
+<li>要有工厂类以及工厂方法</li>
+<li>工厂方法是静态的</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">首先创建工厂类</div><div class="line">public class PersonServiceFactory&#123;</div><div class="line">	//创建静态方法</div><div class="line">	public static PersonServiceBean createPersonServiceBean()&#123;</div><div class="line">	//返回实例化的类的对象</div><div class="line">	return new PersonServiceBean();</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">然后在去配置Spring的配置文件</div><div class="line">&lt;bean id=&quot;personService1&quot; class=&quot;cn.mytest.service.impl.PersonServiceFactory&quot; factory-method=&quot;createPersonServiceBean&quot;&gt;&lt;/bean&gt; </div><div class="line"></div><div class="line"></div><div class="line">最后按照正常方法区调用即可</div><div class="line">public void instanceSpring()&#123;  </div><div class="line">                //加载spring配置文件  </div><div class="line">        ApplicationContext ac = new ClassPathXmlApplicationContext(  </div><div class="line">                new String[]&#123;  </div><div class="line">                        &quot;/conf/applicationContext.xml&quot;  </div><div class="line">                &#125;);  </div><div class="line">        //调用getBean方法取得被实例化的对象。  </div><div class="line">        PersonServiceBean psb = (PersonServiceBean) ac.getBean(&quot;personService1&quot;);  </div><div class="line">          </div><div class="line">        psb.save();  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>使用实例工厂方法实例化:这个方法和上面方法的区别是，使用该实例化方式工厂不需要静态的，当思在Spring的配置文件中需要配置更多的内容。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">首先创建工厂类以及工厂方法</div><div class="line">public class PersonServiceFactory&#123;</div><div class="line">	//创建静态方法</div><div class="line">	public PersonServiceBean createPersonServiceBean1()&#123;</div><div class="line"></div><div class="line"></div><div class="line">		//返回实例化的类的对象</div><div class="line">		return new PersonServiceBean();</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">然后再去配置Spring配置文件</div><div class="line"></div><div class="line"></div><div class="line">&lt;!--applicationContext.xml配置：--&gt;  </div><div class="line">  </div><div class="line">&lt;bean id=&quot;personServiceFactory&quot; class=&quot;cn.mytest.service.impl.PersonServiceFactory&quot;&gt;&lt;/bean&gt;  </div><div class="line">  </div><div class="line">&lt;bean id=&quot;personService2&quot; factory-bean=&quot;personServiceFactory&quot; factory-method=&quot;createPersonServiceBean1&quot;&gt;&lt;/bean&gt; </div><div class="line"></div><div class="line">这里需要配置两个bean。第一个bean使用的构造器方法实例化工厂类，第二个bean中的id是实例化对象的名称，factory-bean对应的实例化的工厂类的对象名称，也就是第一个bean的id，factory-method是非静态方法。</div><div class="line"></div><div class="line"></div><div class="line">接着按照正常方法去调用即可</div><div class="line"></div><div class="line"></div><div class="line">public void instanceSpring()&#123;  </div><div class="line">                //加载spring配置文件  </div><div class="line">        ApplicationContext ac = new ClassPathXmlApplicationContext(  </div><div class="line">                new String[]&#123;  </div><div class="line">                        &quot;/conf/applicationContext.xml&quot;  </div><div class="line">                &#125;);  </div><div class="line">        //调用getBean方法取得被实例化的对象。  </div><div class="line">        PersonServiceBean psb = (PersonServiceBean) ac.getBean(&quot;personService2&quot;);  </div><div class="line">          </div><div class="line">        psb.save();  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Bean的作用域"><a href="#Bean的作用域" class="headerlink" title="Bean的作用域"></a>Bean的作用域</h3><ol>
+<li>singleton:在SpringIOC容器中仅存在一个Bean实例，Bean以单例方式存在，默认值</li>
+<li>prototype：每次从容器中调用Bean时，都返回一个新的实例，即每次调用getBean时相当于执行new XXXBean()</li>
+<li>request：每次Http请求都会创建一个新的Bean，该作用域仅返回适用于WebApplicationContext环境</li>
+<li>session：同一个HTTPSession共享一个Bean，不同Session使用不同Bean，仅适用于WebApplicationContext环境</li>
+<li>globalSession：一般用于Portlet应用环境，该作用域仅适用于WebApplicationContext环境。</li>
+</ol>
+<h2 id="依赖注入方式"><a href="#依赖注入方式" class="headerlink" title="依赖注入方式"></a>依赖注入方式</h2><h3 id="使用属性注入"><a href="#使用属性注入" class="headerlink" title="使用属性注入"></a>使用属性注入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;bean id=”……” class=”……”&gt;  </div><div class="line">    &lt;property name=”属性1” value=”……”/&gt;  </div><div class="line">    &lt;property name=”属性2” value=”……”/&gt;  </div><div class="line">    ……  </div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<h3 id="构造函数注入-是除属性注入之外的另一种常用的注入方式。它保证一些必要的属性在Bean实例化的时候就得到设置，并且确保了Bean实例在实例化后就可以使用。使用方法："><a href="#构造函数注入-是除属性注入之外的另一种常用的注入方式。它保证一些必要的属性在Bean实例化的时候就得到设置，并且确保了Bean实例在实例化后就可以使用。使用方法：" class="headerlink" title="构造函数注入:是除属性注入之外的另一种常用的注入方式。它保证一些必要的属性在Bean实例化的时候就得到设置，并且确保了Bean实例在实例化后就可以使用。使用方法："></a>构造函数注入:是除属性注入之外的另一种常用的注入方式。它保证一些必要的属性在Bean实例化的时候就得到设置，并且确保了Bean实例在实例化后就可以使用。使用方法：</h3><pre><code>1. 在类中，不用为属性设置setter方法，但是需要生成该类的构造方法。
+2. 在配置文件中配置该类的bean，并且配置构造器，在配置构造器中用到了&lt;constructor-arg&gt;结点。该结点有四个属性
+    1. index是索引，指定注入的属性
+    2. type是指该属性所对应的类型
+    3. ref是指引用的依赖对象
+    4. value当注入的不是依赖对象，而是基本数据类型的时候，就用value
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">（1.）按类型匹配入参</div><div class="line">public class Car &#123;</div><div class="line">    </div><div class="line">    private int maxSpeed;</div><div class="line">    private String brand;</div><div class="line">    private double price;</div><div class="line">    </div><div class="line">    //带参构造方法</div><div class="line">    public Car(int maxSpeed,String brand, double price)&#123;</div><div class="line">        this.maxSpeed=maxSpeed;</div><div class="line">        this.brand=brand;</div><div class="line">        this.price=price;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public void run()&#123;</div><div class="line">        System.out.println(&quot;brand:&quot;+brand+&quot;,maxSpeed:&quot;+maxSpeed+&quot;,price:&quot;+price);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">然后是配置文件</div><div class="line"></div><div class="line">&lt;!-- 构造函数注入(按类型匹配) --&gt;</div><div class="line">&lt;bean id=&quot;car1&quot; class=&quot;com.spring.model.Car&quot;&gt;  </div><div class="line">    &lt;constructor-arg type=&quot;int&quot; value=&quot;300&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">    &lt;constructor-arg type=&quot;java.lang.String&quot; value=&quot;宝马&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">    &lt;constructor-arg type=&quot;double&quot; value=&quot;300000.00&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">(2)按索引匹配入参</div><div class="line"></div><div class="line">public Car(String brand, String corp,double price)&#123;</div><div class="line">    this.brand=brand;</div><div class="line">    this.corp=corp;</div><div class="line">    this.price=price;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">&lt;!-- 构造函数注入(按索引匹配) --&gt;</div><div class="line">&lt;bean id=&quot;car2&quot; class=&quot;com.spring.model.Car&quot;&gt; </div><div class="line">    &lt;!-- 注意索引从0开始 --&gt; </div><div class="line">    &lt;constructor-arg index=&quot;0&quot; value=&quot;宝马&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">    &lt;constructor-arg index=&quot;1&quot; value=&quot;中国一汽&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">    &lt;constructor-arg index=&quot;2&quot; value=&quot;300000.00&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line"></div><div class="line">(3)联合使用类型和索引匹配入参</div><div class="line"></div><div class="line">public Car(String brand, String corp,double price)&#123;</div><div class="line">    this.brand=brand;</div><div class="line">    this.corp=corp;</div><div class="line">    this.price=price;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public Car(String brand, String corp,int maxSpeed)&#123;</div><div class="line">    this.brand=brand;</div><div class="line">    this.corp=corp;</div><div class="line">    this.maxSpeed=maxSpeed;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&lt;!-- 构造函数注入(通过入参类型和位置索引确定对应关系) --&gt;</div><div class="line">&lt;!-- 对应public Car(String brand, String corp,int maxSpeed)构造函数 --&gt;</div><div class="line">&lt;bean id=&quot;car3&quot; class=&quot;com.spring.model.Car&quot;&gt;  </div><div class="line">    &lt;constructor-arg index=&quot;0&quot; type=&quot;java.lang.String&quot; value=&quot;奔驰&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">    &lt;constructor-arg index=&quot;1&quot; type=&quot;java.lang.String&quot; value=&quot;中国一汽&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">    &lt;constructor-arg index=&quot;2&quot; type=&quot;int&quot; value=&quot;200&quot;&gt;&lt;/constructor-arg&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<h3 id="注解式"><a href="#注解式" class="headerlink" title="注解式"></a>注解式</h3><ol>
+<li><p>@Component代表所有的JavaBean  实例化对象</p>
+<ol>
+<li>@Repository用于对DAO实现类进行标注</li>
+<li>@Service用于对Service实现类进行标注</li>
+<li>@Controller用于对Controller实现类进行标注</li>
+<li>如果一个对象确定用哪层，不确定就用@Component</li>
+</ol>
+</li>
+<li><p>@Autowired<br>@Qualifier(“studao1”)<br>//多实现类对象的情况</p>
+<p>@Resource(name=”studao1”)</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/12/Spring第三天/" rel="next" title="Spring第三天">
+                <i class="fa fa-chevron-left"></i> Spring第三天
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/12/Spring第一天/" rel="prev" title="Spring第一天">
+                Spring第一天 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">120</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#复习题"><span class="nav-number">1.</span> <span class="nav-text">复习题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring"><span class="nav-number">2.</span> <span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring核心体系"><span class="nav-number">2.1.</span> <span class="nav-text">Spring核心体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationContext-和BeanFactory"><span class="nav-number">2.2.</span> <span class="nav-text">ApplicationContext 和BeanFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaBean的生命周期"><span class="nav-number">2.3.</span> <span class="nav-text">JavaBean的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean的实例化的方式"><span class="nav-number">2.4.</span> <span class="nav-text">Bean的实例化的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bean的作用域"><span class="nav-number">2.5.</span> <span class="nav-text">Bean的作用域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖注入方式"><span class="nav-number">3.</span> <span class="nav-text">依赖注入方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用属性注入"><span class="nav-number">3.1.</span> <span class="nav-text">使用属性注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数注入-是除属性注入之外的另一种常用的注入方式。它保证一些必要的属性在Bean实例化的时候就得到设置，并且确保了Bean实例在实例化后就可以使用。使用方法："><span class="nav-number">3.2.</span> <span class="nav-text">构造函数注入:是除属性注入之外的另一种常用的注入方式。它保证一些必要的属性在Bean实例化的时候就得到设置，并且确保了Bean实例在实例化后就可以使用。使用方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解式"><span class="nav-number">3.3.</span> <span class="nav-text">注解式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
