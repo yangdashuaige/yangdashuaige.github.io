@@ -1,0 +1,1380 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="快速排序123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051package Day06;import javax.naming.ldap.SortControl;public class demo01 &amp;#123;	//快速排序，要求时间最快。	//选择第一个数为p">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试相关">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/面试相关/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="快速排序123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051package Day06;import javax.naming.ldap.SortControl;public class demo01 &amp;#123;	//快速排序，要求时间最快。	//选择第一个数为p">
+<meta property="og:updated_time" content="2018-11-22T11:30:16.366Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试相关">
+<meta name="twitter:description" content="快速排序123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051package Day06;import javax.naming.ldap.SortControl;public class demo01 &amp;#123;	//快速排序，要求时间最快。	//选择第一个数为p">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/22/面试相关/"/>
+
+
+
+
+
+  <title> 面试相关 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/22/面试相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面试相关
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-22T19:29:13+08:00">
+                2018-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package Day06;</div><div class="line"></div><div class="line">import javax.naming.ldap.SortControl;</div><div class="line"></div><div class="line">public class demo01 &#123;</div><div class="line"></div><div class="line">	//快速排序，要求时间最快。</div><div class="line">	//选择第一个数为p。将小于p的数放左边，大于p的数放右边。递归的将p左边的 和右边的数都按照第一步进行，直到不能递归</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		int []arr=&#123;11,23,21,54,32&#125;;</div><div class="line">		int start=0;</div><div class="line">		int end=arr.length-1;</div><div class="line">		Sort(arr,start,end);</div><div class="line">		for(int i=0;i&lt;arr.length;i++)</div><div class="line">		&#123;</div><div class="line">			System.out.println(arr[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	public static void Sort(int []arr,int low,int high)</div><div class="line">	&#123;</div><div class="line">		</div><div class="line">		int start=low;</div><div class="line">		int end=high;</div><div class="line">		int key=arr[start];  //这边选择第一个数字作为key</div><div class="line">		</div><div class="line">		while(end&gt;start)</div><div class="line">		&#123;</div><div class="line">			while(end&gt;start&amp;&amp;arr[end]&gt;=key)</div><div class="line">				end--;</div><div class="line">			if(arr[end]&lt;=key)</div><div class="line">			&#123;</div><div class="line">				int temp=arr[end];</div><div class="line">				arr[end]=arr[start];</div><div class="line">				arr[start]=temp;</div><div class="line">			&#125;</div><div class="line">			while(end&gt;start&amp;&amp;arr[start]&lt;=key)</div><div class="line">				start++;</div><div class="line">			if(arr[start]&gt;=key)&#123;</div><div class="line">				int temp=arr[start];</div><div class="line">				arr[start]=arr[end];</div><div class="line">				arr[end]=temp;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		if(start&gt;low)</div><div class="line">			Sort(arr, low, start-1);</div><div class="line">		if(end&lt;high)</div><div class="line">			Sort(arr, end+1, high);</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package Day06;</div><div class="line"></div><div class="line">public class demo02 &#123;</div><div class="line">	</div><div class="line">	</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		int []arr=&#123;11,23,21,54,32&#125;;</div><div class="line">		int start=0;</div><div class="line">		int end=arr.length-1;</div><div class="line">		bubbleSort(arr);</div><div class="line">		for(int i=0;i&lt;arr.length;i++)</div><div class="line">		&#123;</div><div class="line">			System.out.println(arr[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	//冒泡排序</div><div class="line">	//将序列中的所有元素，两两比较。将最大的放在最后面。</div><div class="line">	//将剩余序列中所有元素两两比较，将最大的放在后面</div><div class="line">	//重复第二步，直到剩下一个数</div><div class="line">	public static void  bubbleSort(int []arr)</div><div class="line">	&#123;</div><div class="line">		int len=arr.length;</div><div class="line">		for(int i=0;i&lt;len;i++)</div><div class="line">		&#123;</div><div class="line">			for(int j=0;j&lt;len-i-1;j++)  //这部循环的条件要注意一下</div><div class="line">			&#123;</div><div class="line">				if(arr[j]&gt;arr[j+1])</div><div class="line">				&#123;</div><div class="line">					int temp=arr[j];</div><div class="line">					arr[j]=arr[j+1];</div><div class="line">					arr[j+1]=temp;</div><div class="line">				&#125;</div><div class="line">				</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><ol>
+<li>二叉树：二叉树是每个节点最多有两个子树的树结构。通常子树被称作为左子树和右子树。二叉树常被用于实现二叉查找树和二叉堆。二叉树的每个结点至多只有两棵子树，子树有左右之分，次序不能颠倒。第i层至多有2的i次方-1个结点；深度为k的二叉树至多有2的k次方-1个结点，对于任何一棵二叉树T，如果其终端结点数为n0,度为2的结点数为n2,则n0=n2+1</li>
+<li><p>树和二叉树的三个主要差别：</p>
+<ol>
+<li>树的结点个数至少为1，而二叉树的结点个数可以为0</li>
+<li>数中结点的最大度数没有限制，而二叉树最多为2</li>
+<li>树的结点无左，右之分，而二叉树的结点有左右之分。</li>
+</ol>
+</li>
+<li><p>二叉树分为完全二叉树和满二叉树</p>
+<ol>
+<li>满二叉树：一棵深度为k,且有2的k次方-1个结点称为满二叉树</li>
+<li>完全二叉树：深度为k，有n个节点的二叉树，当且仅当其每一个结点都与深度为k 的满二叉树中序号为1至n的节点对应时，称之为完全二叉树</li>
+</ol>
+</li>
+<li><p>什么是堆？：可以视为一棵完全的二叉树，完全二叉树 的一个优秀性质是，除了最底层外，每一层都是满的，这使得堆可以利用数组来表示，每一个结点对应数组中的一个元素。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">package Day06;</div><div class="line"></div><div class="line">public class demo03 &#123;</div><div class="line"></div><div class="line">	//堆排序</div><div class="line">	//将序列构建成大根堆</div><div class="line">	//将根节点与最后一个结点进行交换，然后断开最后一个结点</div><div class="line">	//重复第一、第二步，直到所有的结点断开</div><div class="line">	</div><div class="line">//	堆是具有下列性质的完全二叉树：每个结点的值都大于或者等于其左右孩子结点的值,称为大根堆</div><div class="line">//	每个结点的值都小于或等于其左右孩子结点的值，称为小根堆</div><div class="line">/*	算法思想：将待排序的序列构造成一个大根堆，此时，整个序列的最大值就是堆顶的根节点</div><div class="line">	将它移走，然后将剩余的n-1个序列重新构造成一个堆，这样就会得到n个元素中的次最大值。</div><div class="line">	如此，反复执行，就能得到一个有序序列了。*/</div><div class="line">	</div><div class="line">/*	问题：1、如何由一个无序序列构建成一个堆？2.如何在输出堆顶元素后，调整剩余元素称为一个新的堆</div><div class="line">	*/</div><div class="line">	</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		int[] arr = &#123; 50, 10, 90, 30, 70, 40, 80, 60, 20 &#125;;</div><div class="line">		System.out.println(&quot;排序之前：&quot;);</div><div class="line">		for (int i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">			System.out.print(arr[i] + &quot; &quot;);</div><div class="line">		&#125;</div><div class="line"> </div><div class="line">		// 堆排序</div><div class="line">		heapSort(arr);</div><div class="line"> </div><div class="line">		System.out.println();</div><div class="line">		System.out.println(&quot;排序之后：&quot;);</div><div class="line">		for (int i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">			System.out.print(arr[i] + &quot; &quot;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	public static void heapSort(int []arr)</div><div class="line">	&#123;</div><div class="line">		//将带排序的序列构建成一个大根堆</div><div class="line">		for(int i=arr.length/2;i&gt;=0;i--)</div><div class="line">		&#123;</div><div class="line">			heapAdjust(arr,i,arr.length);</div><div class="line">		&#125;</div><div class="line">		//逐步将每个最大值的根节点与末尾元素进行交换，并且再调整二叉树，使其成为大根堆</div><div class="line">		for(int i=arr.length-1;i&gt;0;i--)</div><div class="line">		&#123;</div><div class="line">			swap(arr,0,i);</div><div class="line">			heapAdjust(arr,0,i);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	private static void heapAdjust(int[] arr, int i, int n) &#123;</div><div class="line">		int child;</div><div class="line">		int father; </div><div class="line">		for (father = arr[i]; leftChild(i) &lt; n; i = child) &#123;</div><div class="line">			child = leftChild(i);</div><div class="line">			</div><div class="line">			// 如果左子树小于右子树，则需要比较右子树和父节点</div><div class="line">			if (child != n - 1 &amp;&amp; arr[child] &lt; arr[child + 1]) &#123;</div><div class="line">				child++; // 序号增1，指向右子树</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			// 如果父节点小于孩子结点，则需要交换</div><div class="line">			if (father &lt; arr[child]) &#123;</div><div class="line">				arr[i] = arr[child];</div><div class="line">			&#125; else &#123;</div><div class="line">				break; // 大顶堆结构未被破坏，不需要调整</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		arr[i] = father;</div><div class="line">	&#125;</div><div class="line"> </div><div class="line">	// 获取到左孩子结点</div><div class="line">	private static int leftChild(int i) &#123;</div><div class="line">		return 2 * i + 1;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	// 交换元素位置</div><div class="line">	private static void swap(int[] arr, int index1, int index2) &#123;</div><div class="line">		int tmp = arr[index1];</div><div class="line">		arr[index1] = arr[index2];</div><div class="line">		arr[index2] = tmp;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>二分查找</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package Day06;</div><div class="line"></div><div class="line">public class demo04 &#123;</div><div class="line">	</div><div class="line">	</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		int []arr=&#123;10,20,32,33,35,36,44&#125;;</div><div class="line">		int key=32;</div><div class="line">		int low=0;</div><div class="line">		int high=arr.length-1;</div><div class="line">		System.out.println(recursionBinarySearch(arr, key, low, high));</div><div class="line">		System.out.println(commonBinarySearch(arr, key));</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	</div><div class="line">	//二分查找</div><div class="line">	public static int recursionBinarySearch(int []arr,int key,int low,int high)&#123;</div><div class="line">		</div><div class="line">		if(key&lt;arr[low]||key&gt;arr[high]||low&gt;high)</div><div class="line">		&#123;</div><div class="line">			return -1;</div><div class="line">		&#125;</div><div class="line">		int middle=(low+high)/2;</div><div class="line">		if(arr[middle]&gt;key)&#123;</div><div class="line">			return recursionBinarySearch(arr, key, low, middle-1);</div><div class="line">		&#125;else if(arr[middle]&lt;key)&#123;</div><div class="line">			return recursionBinarySearch(arr, key, middle+1, high);</div><div class="line">		&#125;else &#123;</div><div class="line">			return middle;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static int commonBinarySearch(int []arr,int key)&#123;</div><div class="line">		int low=0;</div><div class="line">		int high=arr.length-1;</div><div class="line">		int middle=0;  //定义middle</div><div class="line">		if(key&lt;arr[low]||key&gt;arr[high]||low&gt;high)</div><div class="line">		&#123;</div><div class="line">			return -1;</div><div class="line">		&#125;</div><div class="line">		while(low&lt;=high)</div><div class="line">		&#123;</div><div class="line">			middle=(low+high)/2;</div><div class="line">			if(arr[middle]&gt;key)&#123;</div><div class="line">				high=middle-1;</div><div class="line">			&#125;else if (arr[middle]&lt;key) &#123;</div><div class="line">				low=middle+1;</div><div class="line">			&#125;else&#123;</div><div class="line">				return middle;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return -1;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="面试题汇总"><a href="#面试题汇总" class="headerlink" title="面试题汇总"></a>面试题汇总</h3><ol>
+<li><p>为什么静态方法不能调用实例方法，反之可以？</p>
+<ol>
+<li>存储位置：static存在方法区，静态池。而</li>
+<li>生命周期不一样，static在类加载的时候初始化，非静态对象在实例化之后才有。</li>
+<li>调用方式</li>
+</ol>
+</li>
+<li><p>Java中的String类可以被继承吗？为什么？是否了解java的类加载器。</p>
+<ol>
+<li>不能，被final修饰。不能被继承主要是为了安全。</li>
+<li>类加载器是Java语言的一个创新，也是Java语言流行的重要原因之一。它使得Java类可以被动态加载到Java虚拟机中并执行。Java源程序在经过编译以后，就转换成了Java字节码文件。类加载器负责读取Java字节码，并且转换成java.lang.Class类的一个实例。每个这样的实例可以表示一个Java类。通过此实例的newInstance方法就可以创建出各类的一个对象。类加载器有三种：1.根加载器2.扩展类加载器3.应用类加载器</li>
+</ol>
+</li>
+<li><p>转发和重定向</p>
+</li>
+<li><p>JSP和Servlet的异同</p>
+<ol>
+<li>JSP的本质就是servlet，JSP在编译以后就变成了servlet</li>
+<li>servlet擅长逻辑的控制，重点做业务逻辑的编写；JSP擅长页面的展示，</li>
+<li>JSP是servlet的一个简化，使用JSP只需要位按成程序员需输出到客户端的内容，</li>
+</ol>
+</li>
+<li><p>乱码产生的根本原因，解决方法</p>
+<ol>
+<li>编码方式不统一数据库的编码方式，服务器的编码方式，浏览器的编码方式。</li>
+<li>在mysql中有一个ini文件，可以修改mysql默认的编码方式，在数据库创建和表创建的时候选择合适的编码方式</li>
+<li>Tomcat中的server文件可以修改Tomcat的编码；另外request.setCharacterEncoding(),response.setCharacterEncoding()</li>
+<li>在数据库连接时候设置编码方式</li>
+<li>过滤器设置编码过滤</li>
+</ol>
+</li>
+<li><p>Servlet是线程安全的吗？Structs2.x中的Action是线程安全的吗？SpringMVC默认单例请求使用一个Controller，线程安全吗？</p>
+<ol>
+<li>servlet是单例多线程的，多线程在共享实例的时候就会发生线程不安全。（尽量不要有属性）</li>
+<li>Action是安全的，多例。每个用户的请求都实例化一个Action，</li>
+<li>不安全。当请求是多线程请求的时候，每次请求过来调用的Controller对象都是同一个，而不是一个请求过来就创建一个controller对象。原因就在于如果这个controller对象是单例的，那么如果不小心在类中定义了类变量，那么这个类变量是被所有的请求共享的，这可能会造成多个请求修改该变量的值，出现与预期结果不符合的异常。在单例的情况下相当于所有类变量对于每次请求都是共享的，每一次请求对于类变量的修改都是有效的。解决方法：<br> ①在类上添加注解@Scope(“prototype”)即可，这样每次请求调用的类都是重新生成的。<br> ②使用ThreadLocal来保存类变量，将类变量保存在线程的变量域中，让不同的请求隔离开来。</li>
+<li>线程不安全产生的原因：<ol>
+<li>资源共享</li>
+<li>多线程</li>
+<li>多步操作</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>说说连接池的作用和实现思路。</p>
+<ol>
+<li><p>一般来说，包括两种。数据库连接池和线程池（Tomcat自带线程池）。步骤是三步：</p>
+<ol>
+<li>创建资源</li>
+<li>使用资源</li>
+<li>销毁资源</li>
+</ol>
+</li>
+<li><p>连接池是将已经创建好的连接保存在池中，当有请求来的时候，直接使用已经创建好的连接对数据库进行访问，这样省略了创建连接和销毁连接的过程。</p>
+</li>
+<li>现在假设：最大维持连接数是10，最大连接数是20，最大等待时间是10000（毫秒）其过程：最开始在连接池中有10个连接（最大连接数），当有用户申请连接时，其将一个连接分配用户，直到连接池中的10个连接全都分配出去，当第11个用户申请连接时，它将创建第11个连接并分配给该用户，直到把第20个连接（最大连接数）分配给第20个用户，当第21个用户申请连接时，它需要等待，直到前面的20个用户中某一个断开了连接，才会把那个连接分配给第21个用户，当用户断开连接时（第11至20个连接），该连接不会立刻被释放而是需要等待10000毫秒（最大等待时间），才被释放，当没有用户连接时，连接池内还保持10个连接。</li>
+</ol>
+</li>
+<li><p>spring是一个轻量级的IOC和AOP容器，分别谈一谈Spring的IOC和AOP。是否能够列举出Aspect相关的一些名词并金安达解释。说说它的高明之处。解决了我们以往的哪些难题。</p>
+<ol>
+<li>IOC：控制反转和DI依赖注入是同一个概念。具体的讲：当某个角色需要另外一个角色协助的时候，在传统的程序设计过程中，通常是由调用者来创建被调用者的实例。但在Spring中创建被调用者的工作不再由调用者完成，因此称为控制反转。创建被调用者的工作由Spring来完成，然后注入调用者因此也称为依赖注入。Spring工厂负责对象的整个生命周期。Spring以动态灵活的方式来管理对象，注入的两种方式，设置注入和构造注入。</li>
+<li><p>AOP：给多个业务模块在运行期间或者编译期间，动态切入统一功能。面向切面编程是对面向对象编程的补充。面向对象将程序分解为各个层次的对象，面向切面编程将程序运行过程分解成为各个切面。面向切面编程AOP完善了Spring的依赖注入，面向切面编程在Spring中主要表现为两个方面</p>
+<ol>
+<li>面向切面编程提供声明式事务管理</li>
+<li>Spring支持用户自定义的切面。</li>
+</ol>
+</li>
+<li><p>Spring的事务管理机制的实现的原理。通过这样的一个动态代理对所有需要事务管理的Bean进行加载，并根据配置在invoke方法中对当前调用的方法名进行判定，并在method.invoke方法前后为其加上合适的事务管理代码，这样就实现了Spring式的事务管理。Spring中的AOP实现更加复杂和灵活，不过基本原理是一致的。一组指令的集合，要么全部成功，要么全部失败：原子性，一致性，隔离性，持久性。</p>
+</li>
+<li>Spring的优点：<ol>
+<li>降低了组件之间的耦合性，实现了软件各层之间的解耦</li>
+<li>可以使用容易提供的众多服务，如事务管理，消息服务等</li>
+<li>容器提供单例模式支持</li>
+<li>容器提供了AOP技术，利用它很容易实现如权限拦截，运行期监控等功能</li>
+<li>容器提供了众多的辅助类，能加快应用的开发</li>
+<li>Spring对于主流的应用框架提供了集成支持，如hibernate，JPA,Structs等。</li>
+<li>Spring属于低侵入式设计，代码的污染极低。</li>
+<li>独立于各种应用服务器</li>
+<li>Spring的DI机制降低了业务对象替换的复杂性</li>
+<li>Spring的高度开放性，并不强制应用完全依赖于Spring，开发者可以自由选择Spring的部分或者全部。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Hibernate有延迟加载，级联操作，以及控制权反转</p>
+<ol>
+<li>延迟加载。这种技术被广泛的运用，这种延迟加载能够保证应用只有在需要的时候才去数据库抓取相应的数据记录，通过延迟加载技术能够避免过多，过早的加载数据库表中的数据，从而减少应用内存的开销。延迟加载实际上是一个代理模式的运用，当程序通过hibernate装载一个实体时，默认情况下hibernate不会马上抓取它的集合属性，关联实体所对应的记录。而是通过一个代理来生成这些集合属性和关联实体，这就是代理的优势。</li>
+<li>级联操作。是用来说明数据库中两个表之间的相互关系，当对主对象做出某种操作的时候，是否对其相关联的子对象也做出相对应的操作。常见的级联cascade有：1.none2.save-update3.delete4.all5.delete-orphan</li>
+<li>控制权反转</li>
+</ol>
+</li>
+<li><p>什么是MVC？请描述Structs2的工作流程和请描述SpringMVC的工作流程</p>
+<ol>
+<li>MVC全名是Model ，View，Controller是模型，视图，控制器的缩写。是一种软件设计典范，用一种业务逻辑，数据，界面显示分离的方法组织代码，将业务逻辑聚集到一个部件里面。</li>
+<li><p>Struts2处理请求：</p>
+<ol>
+<li>客户端发出一个指向servlet容器的请求</li>
+<li>这个请求会经过几个过滤器，最后会到达FilterDispatcher过滤器</li>
+<li>过滤器FilterDispatcher是Structs2的框架的心脏，在处理用户请求时，它和请求一起相互配合访问struts2 的底层框架结构。在web容器启动时，struts2框架会自动加载配置文件里相关参数，并转换成相应的类</li>
+</ol>
+</li>
+<li><p>SpringMVC流程：</p>
+<ol>
+<li>客户端发送请求到服务器</li>
+<li>DispatcherServlet收到请求调用HandlerMapping处理器映射器</li>
+<li>处理器映射器根据请求的URL找到具体的处理器，生成处理器对象以及处理器拦截器（如果有则生成）一并返回给DispatcherServlet</li>
+<li>DispatcherServlet通过HandlerAdapter处理器适配器调用处理器。</li>
+<li>执行处理器</li>
+<li>Controller执行并返回ModelAndView</li>
+<li>HandlerAdapter将controller执行结果ModelAndView返回给DispatcherServlet</li>
+<li>DispatcherServlet将ModelAndView传给ViewReslover视图解析器</li>
+<li>ViewResolver解析后返回给具体的VIew</li>
+<li>DIspatcherServlet对View进行渲染</li>
+<li>响应客户端。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>列举你使用过的设计模式，描述他们在你项目中那个场景使用过。<ol>
+<li>单例设计模式：</li>
+<li>MVC设计模式：</li>
+<li>工厂模式：</li>
+<li>代理模式：</li>
+</ol>
+</li>
+<li>介绍一下你的项目；对你的项目做一个评价；在这个项目中你碰到了哪些难点，你是如何解决的？你觉得你的项目还有哪些不足之处？</li>
+<li><p>简述java语言的线程池以及为什么要使用线程池？请任意列举两个常用的线程池。</p>
+<ol>
+<li>为了提高服务器性能，假设一个服务器完成一项任务所需时间为：T1 创建线程时间，T2 在线程中执行任务的时间，T3 销毁线程时间。 如果：T1 + T3 远大于 T2，则可以采用线程池。<br>线程池是关注如何缩短或调整T1,T3时间的技术，从而提高服务器程序性能的。它把T1，T3分别安排在服务器程序的启动和结束的时间段或者一些空闲的时间段，这样在服务器程序处理客户请求时，不会有T1，T3的开销了。</li>
+<li>常用线程池：<ol>
+<li>Executors.newCachedThreadPool:必要时创建新线程，空闲线程停留60秒</li>
+<li>Executors.newFixedThreadPool：固定容量的线程池</li>
+<li>Executors.newSingleThreadPool:只有一个线程的线程池</li>
+<li>Executors.newScheduleThreadPool:用于预定指定的线程池</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>请简述抽象类和接口的区别，以及何时使用抽象类，何时使用接口。</p>
+<ol>
+<li>区别：<ol>
+<li>抽象类可以有构造函数，接口不可以有构造函数</li>
+<li>抽象类中可以有普通成员变量，接口中没有普通成员变量，只能有常量</li>
+<li>抽象类中的方法可以被static修饰，接口中的方法不可以被static修饰</li>
+<li>抽象类中可以有普通方法和抽象方法，接口中的方法全是抽象方法</li>
+<li>一个类只能继承一个抽象类，接口可以被多实现，即一个类只能继承一个类，可以实现多个接口</li>
+</ol>
+</li>
+<li>何时使用：<ol>
+<li>接口主要用于模块与模块之间的调用。主要用接口来实现多继承，因为java不支持类的多继承，只能用接口。抽象类主要用于当做基础类使用。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>比如全排列、矩阵旋转、链表找环的入口、Two Sum、Three Sum、逆序对等等</p>
+<ol>
+<li><p>JDBC编程步骤。</p>
+<ol>
+<li>加载驱动程序：Class.forName(“com.mysql.jdbc.Driver”);</li>
+<li>获得数据库连接： DriverManager.getConnection(URL,user,password);</li>
+<li>创建Statement对象:conn.createStatement()</li>
+<li>向数据库发送SQL命令</li>
+<li>处理数据库的返回结果ResultSet类</li>
+</ol>
+</li>
+<li><p>Statement和prepareStatement区别</p>
+<ol>
+<li>PreparedStatement继承自Statement，都是接口</li>
+<li>PreparedStatement可以使用占位符，是预编译的，批处理比statement效率高</li>
+<li>Statement用于执行静态SQL语句并返回它所生产结果的对象</li>
+</ol>
+</li>
+<li>jdbc和mybatis有什么区别<ol>
+<li>java程序都是通过JDBC来访问数据库的。JDBC定义了一系列的接口规范，具体的实现是由个数据库厂商来实现，是一种典型的桥接模式</li>
+<li>JDBC的工作量大：需要先注册驱动和数据库信息，操作Connection，通过statement对象执行SQL，将结果返回给resultSet，然后从resultSet中读取数据并转换成POJO对象，最后关闭数据库相关资源</li>
+<li>Mybatis对JDBC的封装很好，几乎可以取代jdbc。Mybatis可以使用SQLSessionFactoryBuilder来连接完成JDBC需要代码完成的数据库获取和连接，减少了代码的重复。</li>
+<li>JDBC将SQL语句写在代码里面，属于硬编码，非常不易维护，Mybatis可以将SQL代码写入XML中，易于维护和修改，</li>
+<li>JDBC的resultSet对象需要用户自己去读取并且生成对应的POJO，Mybatis的mapper会自动将执行后的结果映射到对应的Java对象中。</li>
+</ol>
+</li>
+<li>resultMap和resultType的区别<ol>
+<li>resultType是直接表示返回类型的（对应着我们的Model实体）</li>
+<li>resultMap是对外部ResultMap的引用，</li>
+<li>当所提供的返回类型属性是resultType时，Mybatis会将Map里面的键值对取出赋给resultType所指定的对象对应的属性</li>
+<li>当提供的返回类型是resultMap时，因为Map不能很好表示领域模型，就需要自己再进一步把它转化为对应的对象，这常常在复杂查询中很有用。</li>
+</ol>
+</li>
+<li><p>Servlet和JSP</p>
+<ol>
+<li>servlet的生命周期<ol>
+<li>web容器加载servlet，生命周期开始。通过调用servlet的init（）方法进行servlet的初始化。通过调用service()方法实现，根据请求的不同调用不同的doGet/post方法。结束服务，web容器调用servlet的destroy方法。</li>
+</ol>
+</li>
+<li>servlet线程不安全，SpringMVC的Controller不安全</li>
+<li>servlet的内置对象</li>
+<li>JSP的内置对象 9个<ol>
+<li>request,response,pageContext,session,application,page,config,out,exception</li>
+</ol>
+</li>
+<li>JSP的指令</li>
+<li>JSP的动作标签<ol>
+<li>jsp:inclue;jsp:useBean;jsp:setPreperty;jsp:getPreperty;jsp:forward;jsp:plugin</li>
+</ol>
+</li>
+<li>el表达式，el的内置对象</li>
+<li>核心标签库</li>
+<li>转发和重定向</li>
+<li>GET和Post请求<ol>
+<li>get是从服务器上获取数据，post是向服务器传送数据</li>
+<li>在客户端，GET方式通过URL提交，数据在URL中可以看到；Post方式，数据放在HTML Header内提交</li>
+<li>GET方式提交的数据最多只有1024字节，而Post没有限制</li>
+<li>安全性问题</li>
+</ol>
+</li>
+<li>JSP的生命周期</li>
+<li>Servlet和JSP的区别</li>
+</ol>
+</li>
+<li><p>线程的创建方式</p>
+</li>
+<li>字节流和字符流的区别</li>
+<li>集合框架<ol>
+<li>List，set，map的区别</li>
+<li>hashSet和treeSet区别（实现比较器（自定义排序），实体类继承比较器（自然排序））</li>
+<li>ArrayList和linkedList,Vector的区别</li>
+<li>hashtable和hashmap的区别</li>
+</ol>
+</li>
+<li>泛型</li>
+<li>SQL语句</li>
+<li>#和$的区别<ol>
+<li>#{}是预编译的，是安全的，${}是未经过预编译的，仅仅是取变量的值，是非安全的，存在sql注入</li>
+<li>当情况order by,like 语句只能用${}了，还有动态拼接SQL也要用${}</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">	String URL=&quot;jdbc:mysql://127.0.0.1:3306/imooc?useUnicode=true;characterEncoding=utf-8&quot;;</div><div class="line">	String User=&quot;root&quot;;</div><div class="line">	String Password=123;</div><div class="line">	//加载驱动程序</div><div class="line">	Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</div><div class="line">	//获得数据库连接</div><div class="line">	Connection conn=DriverManager.getConnection(URL,User,Password);</div><div class="line">	Statement statement=conn.createStatement();</div><div class="line">	ResultSet rs=statement.executeQuery(&quot;select * from user&quot;);</div><div class="line">	while(rs.next())</div><div class="line">	&#123;</div><div class="line">		System.out.println(rs.getString(&quot;user_name&quot;)+&quot; &quot;+rs.getString(&quot;user_password&quot;));</div><div class="line">	</div><div class="line">	&#125;</div><div class="line">	rs.close();</div><div class="line">	statement.close();</div><div class="line">	conn.close();</div><div class="line">	&#125;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>SpringData和mybatis</p>
+<ol>
+<li>都是持久层的框架</li>
+<li>SpringData是标准的ORM模型，基本抛弃SQL语句的编写；mybatis是半ORM</li>
+</ol>
+</li>
+<li><p>Spring中Bean的作用域和生命周期</p>
+<ol>
+<li>bean的作用域<ol>
+<li>singleton在SpringIOC容器中仅存在一个Bean实例，Bean以单例的方式存在，默认值。在创建起容器时就自动创建了一个bean对象，不管你是否使用，他都存在了。</li>
+<li>prototype每次从容器中调用bean都会返回一个新的实例，</li>
+<li>request每次HTTP请求都会创建一个新的Bean，该作用域仅适用于WebApplicationContext环境</li>
+<li>session。同一个HTTPSession共享一个Bean，不同Session使用不同Bean，仅适用于WebApplicationContext环境。</li>
+</ol>
+</li>
+<li>Bean实例生命周期的执行过程（单例）：<ol>
+<li>Bean自身的方法：包括Bean本身调用的方法和通过配置文件中<bean>的init-method和destroy-method指定的方法。</bean></li>
+<li>Bean级生命周期接口的方法：这个方法包括了BeanNameAware,BeanFactoryAware,InitializingBean和DisposableBean这些接口的方法。</li>
+<li>容器级生命周期接口方法：这个包括了InstantiationAwareBeanPostProcessor和BeanPostProcessor这两个接口的实现，一般称它们的实现类为“后处理器”</li>
+<li>工厂后处理器接口方法：这个包括了AspectJWeavingEnabler，ConfigurationClassPostProcessor，CustomAutowireConfgurer等非常有用的工厂后处理器接口的方法。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>请简单介绍Spring支持的常用数据库事务传播属性和事务隔离级别</p>
+<ol>
+<li>事务的传播行为：当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。例如：方法可能继续在现有事务中运行，也可能开启一个新事务，并且在自己的事务中运行。<ol>
+<li>REQUIRED：如果有事务在运行，当前的方法就在这个事务内运行，否则就启动一个新的事务</li>
+<li>REQUIRES_NEW</li>
+<li>SUPPORTS</li>
+<li>NOT_SUPPORTED</li>
+<li>MANDATORY</li>
+<li>NEVER</li>
+<li>NESTED</li>
+</ol>
+</li>
+<li>事务隔离级别：<ol>
+<li>读未提交</li>
+<li>读已提交  默认级别</li>
+<li>可重复读</li>
+<li>串行化</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>POST请求解决中文乱码</p>
+<ol>
+<li>过滤器</li>
+<li>在web.xml中注册，<filter></filter>,包括里面的各种属性。</li>
+</ol>
+</li>
+<li><p>sql相关，</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">	create table employees(</div><div class="line">		Employee_ID int not null primary key,</div><div class="line">		Dept_ID int,</div><div class="line">		Employee_Name char(40),</div><div class="line">		Employee_Salary double</div><div class="line">	);</div><div class="line"></div><div class="line">找出员工工资最高的员工姓名和工资</div><div class="line">	select * from user where employee_salary=(select max(employee_salary) from user)</div><div class="line"></div><div class="line">检索出部门中员工最多的部门号和此部门员工数量</div><div class="line">	select dept_id,count(*) cno from user GROUP BY dept_id desc limit 1</div></pre></td></tr></table></figure>
+<h3 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h3><ol>
+<li><p>重载和重写的区别？重载的方法能否根据返回类型进行区分？</p>
+<ol>
+<li>方法的重载和重写都是实现多态的方式，区别在于前者实现的是编译时的多态，而后者实现的是运行时的多态性。重载发生在一个类中，同名的方法如果有不同的 参数列表（参数类型不同或者个数不同）则视为重载。</li>
+<li>重写发生在子类和父类之间。重写要求子类被重写的方法与父类被重写的方法有相同的返回类型，比父类被重写方法更好访问，不能比父类重写方法声明更多的异常（两同两小一大）。重载对于返回类型没有特殊要求。</li>
+<li><p>方法重载的规则：</p>
+<ol>
+<li>方法名一致，参数列表中参数的顺序，类型个数不同</li>
+<li>重载与方法的返回值无关，存在于父类和子类，同类中。</li>
+<li>可以抛出不同的异常，可以有不同的修饰符。</li>
+</ol>
+</li>
+<li><p>方法重写的规则：</p>
+<ol>
+<li>参数列表必须完全与被重写的方法一致，返回类型必须完全与被重写的方法返回类型一致。</li>
+<li>构造方法不能重写，声明为final的方法不能重写，声明为static的方法不能重写，但是能够被再次声明</li>
+<li>访问权限不能比父类中的被重写的方法的访问权限低</li>
+</ol>
+</li>
+<li>函数返回值只是作为函数运行之后的一个状态，它是保持方法的调用者与被调用者进行通信的关键，并不能作为某个方法的标书。</li>
+</ol>
+</li>
+<li><p>抽象类和接口的异同</p>
+<ol>
+<li><p>不同：</p>
+<ol>
+<li>抽象类中可以定义构造器，而接口不能</li>
+<li>抽象类中可以有抽象方法和具体方法，而接口中只能是抽象方法</li>
+<li>抽象类中的成员可以是private，默认，protected，public；而接口中的成员全部都是public</li>
+<li>抽象类中可以定义成员变量；接口中定义的成员变量实际上都是常量</li>
+<li>抽象类中可以有静态方法，而接口中不能有静态方法。</li>
+</ol>
+</li>
+<li><p>相同：</p>
+<ol>
+<li>不能够实例化</li>
+<li>可以将抽象类和接口作为引用类型</li>
+<li>一个类如果继承了某个抽象类，或者实现了某个接口，都需要对其中的抽象方法全部进行实现。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>equals和==的区别</p>
+<ol>
+<li>一个是方法一个是运算符。</li>
+<li>==：如果比较的对象是基本数据类型，则比较的是数值是否相等；如果比较的是引用数据类型，则比较的是地址值是否相等。</li>
+<li>equals（）：用来比较两个对象内容是否相等。</li>
+<li>equals方法不能用于基本数据类型的变量，如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址。</li>
+</ol>
+</li>
+<li><p>Java中实现多态的机制是什么？</p>
+<ol>
+<li>靠的就是父类或者接口定义的引用变量可以指向子类或者具体实现类的实例对象，而程序调用的方法在运行期才动态绑定，就是引用变量所指向的具体实例对象的方法，也就是内存里正在运行的那个对象的方法，而不是引用变量的类型中定义的方法。</li>
+</ol>
+</li>
+<li><p>Java的异常处理</p>
+<ol>
+<li>分类：按照异常需要处理的时机分为编译时异常也叫做强制性异常，运行时异常，也叫RuntimeException。Java认为编译时异常都是可以被处理的异常，所以Java程序必须显示处理Checked异常。如果程序没有吹Checked异常，该程序就会在编译的时候发生错误无法编译。这体现了Java的设计哲学：没有完善处理的代码根本没有机会被执行。对于Checked异常的处理方法有两种：<ol>
+<li>当前方法知道如何处理该异常，则用try…catch块来处理该异常。</li>
+<li>当前方法不知道如何处理，则在定义该方法时声明抛出该异常。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>常见的RuntimeException。</p>
+<ol>
+<li>java.lang.NullPointException空指针异常</li>
+<li>java.lang.ClassNotFoundException指定的类找不到。类的名称和路径加载错误，通常都是程序视图通过字符串来加载某个类时可能引发异常。</li>
+<li>java.lang.NumberFormatException。字符串转换为数字异常。</li>
+<li>java.lang.IllegalArgumentException.方法传递参数错误</li>
+<li>java.lang.ClassCastException 数据类型转换异常</li>
+<li>SQLException。常见于操作数据库时的SQL语句错误</li>
+<li>java.lang.NoSuchMethodException 方法不存在异常</li>
+</ol>
+</li>
+<li><p>error和exception的区别？</p>
+<ol>
+<li>Error类一般是指与虚拟机相关的问题，如系统崩溃，虚拟机错误，内存空间不足，方法调用栈溢出等。对于这类错误的导致的应用程序的中断，仅靠程序本身无法恢复和预防，遇到这样的错误，建议让程序终止。</li>
+<li>Exception类表示程序可以处理的异常，可以捕获且可能恢复。遇到这类异常，应该尽可能处理异常，使程序恢复运行，而不是随意终止异常。</li>
+</ol>
+</li>
+<li><p>throw和throws的区别</p>
+<ol>
+<li><p>throw:</p>
+<ol>
+<li>位置：在方法体内，表示抛出异常，由方法体内的语句处理</li>
+<li>throw是具体向外抛出异常的动作，所以它抛出的是一个异常的实例，执行throw一定是抛出了某种异常</li>
+</ol>
+</li>
+<li><p>throws:</p>
+<ol>
+<li>throws语句是用在方法声明后面，表示如果抛出异常，由该方法的调用者来进行异常的处理</li>
+<li>throws主要是声明这个方法可能会抛出的某种类型的异常，让他的使用者要知道需要捕获的异常的类型</li>
+<li>表示一种可能性，并不一定会发生这种异常。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>final,finally,finalize的区别</p>
+<ol>
+<li>final：用于声明属性，方法和类，分别表示属性不可变，方法不可覆盖，被其修饰的类不可继承。</li>
+<li>finally：异常处理语句结构的一部分，表示总被执行</li>
+<li>finalize：Object类的一个方法，在来及回收器执行的时候会调用被回收对象的此方法。当该方法被系统调用则代表该对象即将死亡，但是需要注意的是，我们主动行为上去调用该方法并不会导致该对象死亡，这是一个被动的方法，不需要我们调用。</li>
+</ol>
+</li>
+<li><p>String，StringBuilder，StringBuffer的区别？</p>
+<ol>
+<li>java提供了两种类型的字符串，String和StringBuffer/StringBuilder，他们都可以存储和操作字符串，区别如下：</li>
+<li>String是只读字符串，内容不能修改。StringBuffer/StringBuilder表示的字符串可以直接进行修改</li>
+<li>StringBuilder是java5引入的，它和StringBuffer的方法完全相同，区别在于它是单线程环境下使用的，因为它的所有方法都没有被synchronized修饰，因此它的效率理论上也比StringBuffer高。</li>
+</ol>
+</li>
+<li><p>HashMap排序</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package Day06;</div><div class="line">import java.util.ArrayList;</div><div class="line">import java.util.Collections;</div><div class="line">import java.util.Comparator;</div><div class="line">import java.util.HashMap;</div><div class="line">import java.util.LinkedHashMap;</div><div class="line">import java.util.List;</div><div class="line">import java.util.Map.Entry;</div><div class="line">import java.util.Set;</div><div class="line"></div><div class="line">public class demo05 &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		HashMap&lt;Integer, User&gt; users=new HashMap&lt;&gt;();</div><div class="line">		users.put(1, new User(&quot;张三&quot;,23));</div><div class="line">		users.put(2, new User(&quot;张四&quot;,29));</div><div class="line">		users.put(3, new User(&quot;王五&quot;,18));</div><div class="line">		System.out.println(users);</div><div class="line">		HashMap&lt;Integer, User&gt; sortHahsMap=sortHahsMap(users);</div><div class="line">		System.out.println(sortHahsMap);</div><div class="line">	&#125;</div><div class="line">	public static HashMap&lt;Integer, User&gt; sortHahsMap(HashMap&lt;Integer, User&gt; map)</div><div class="line">	&#123;</div><div class="line">		Set&lt;Entry&lt;Integer,User&gt;&gt; entrySet=map.entrySet();</div><div class="line">		</div><div class="line">		//将set集合转为List集合，为啥，这是为了使用工具类的排序方式</div><div class="line">		List&lt;Entry&lt;Integer,User&gt;&gt; list=new ArrayList&lt;Entry&lt;Integer,User&gt;&gt;(entrySet);</div><div class="line">		Collections.sort(list,new Comparator&lt;Entry&lt;Integer,User&gt;&gt;() &#123;</div><div class="line"></div><div class="line">			@Override</div><div class="line">			public int compare(Entry&lt;Integer, User&gt; o1, Entry&lt;Integer, User&gt; o2) &#123;</div><div class="line">				// TODO Auto-generated method stub</div><div class="line">				</div><div class="line">				return o2.getValue().getAge()-o1.getValue().getAge();</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">		LinkedHashMap&lt;Integer, User&gt; linkedHashMap=new LinkedHashMap&lt;Integer,User&gt;();</div><div class="line">		//将List中的数据存储在LinkedHashMap中</div><div class="line">		for(Entry&lt;Integer, User&gt; entry:list)</div><div class="line">		&#123;</div><div class="line">			linkedHashMap.put(entry.getKey(), entry.getValue());</div><div class="line">		&#125;</div><div class="line">		return linkedHashMap;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>ArrayList内部是用什么实现的？</p>
+<ol>
+<li>内部是Object[]数组实现的</li>
+<li>空参构造。直接调用EmptyArray.OBJECT属性。</li>
+<li>带int构造。传入的int值作为数组的长度，如果该值小于0，则抛出一个运行时异常。如果等于0，则使用一个空数组，如果大于0，则创建一个长度为该值的新数组。</li>
+<li>带Collection子类构造。先判断该集合是否为null，为null则抛出空指针异常。如果不是，则将该集合转换为数组a，然后将该数组赋值为成员变量array,</li>
+</ol>
+</li>
+<li><p>List的三个子类的特点</p>
+<ol>
+<li>ArrayList底层结构是数组，查询快，增删慢。需要连续的空间并且数组在实例化时需要长度，那么内存空间可能长时间浪费。</li>
+<li>LinkedList底层是链表，增删块，查询慢</li>
+<li>vector底层是数组，线程安全，增删慢，查询满</li>
+</ol>
+</li>
+<li><p>List，set，Map区别</p>
+<ol>
+<li>List和Set是存储单列数据的集合，Map是存储键和值这样的双列数据的集合；List中存储的数据是有序的，并且允许重复；Map中存储的数据是没有数据的，其键是不能重复的，它的值可以是有重复的，set中存储的数据是无序的，且不允许重复的，但是元素在集合中的位置由元素的hashcode决定，位置是固定的，</li>
+<li>List接口有三个实现类，LinkedList，ArrayList，Vector</li>
+<li>Map接口有三个实现类，HashMap，Hashtable,LinkedHahsMap是HashMap的一个子类，保存了记录的插入顺序；SortMap接口：TreeMap能保存记录根据键值排序，默认是键值的升序排序。</li>
+<li>Set接口有两个实现类，HashSet：底层由HashMap实现，不允许集合中有重复的值，使用该方式时，需要重写equals方法，和hashCode方法；LinkedHashSet：继承HashSet，同时又基于LinkedHashMap来实现，底层使用的是LinkedHashMap</li>
+</ol>
+</li>
+<li>事务四大特性<ol>
+<li>原子性：整个事务中的所有操作要么全部完成，要么全部不完成，不可能停滞在中间某个环节。事务在执行过程中发生错误，会被回滚到事务的开始前的状态，就像这个事务从来没有执行过一样。</li>
+<li>一致性：在事务开始之前和事务结束以后，数据库的完整性约束没有被破坏</li>
+<li>隔离性：隔离状态执行事务，使他们好像是系统在给定时间内执行的唯一操作</li>
+<li>持久性：在事务完成以后，该事务对数据库的更改持久的保存在数据库之中，并不会回滚。</li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><p>集合的遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">for(int i=0;i&lt;arrayList.size();i++)</div><div class="line">&#123;</div><div class="line">	Student student=arrayList.get(i);</div><div class="line">	System.out.println(student);</div><div class="line">&#125;</div><div class="line">//增强的for循环</div><div class="line">for(Student student:arrayList)</div><div class="line">&#123;</div><div class="line">	System.out.println(student);</div><div class="line">&#125;</div><div class="line">//集合自带的Iterable&lt;E&gt;</div><div class="line">Iterator &lt;Student&gt; iterator=arrayList.iterator();</div><div class="line">while(iterator.hasNext())</div><div class="line">&#123;</div><div class="line">	Student student=iterator.next();</div><div class="line">	System.out.println(student);</div><div class="line">&#125;</div><div class="line">Vector自带的遍历方法</div><div class="line">Enumeration &lt;Student&gt; enumeration =vector.elements();</div><div class="line">while(enumeration.hasMoreElements())</div><div class="line">&#123;</div><div class="line">	Student studenmt=enumeration.nextElement();</div><div class="line">	System.out.println(student);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>LinkedList</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class LinkedListTest &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		</div><div class="line">		LinkedList&lt;Integer&gt; link=new LinkedList&lt;&gt;();//泛型是引用类型</div><div class="line">		link.add(1);</div><div class="line">		link.add(2);</div><div class="line">		link.add(3);</div><div class="line">		link.addFirst(4);</div><div class="line">		link.addLast(5);</div><div class="line">		link.add(6);</div><div class="line">		Iterator&lt;Integer&gt; iterator=link.iterator();</div><div class="line">		while(iterator.hasNext()) &#123;</div><div class="line">			System.out.println(iterator.next());</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		link.removeFirst();</div><div class="line">		link.remove(1);</div><div class="line">		for(int ele:link) &#123;</div><div class="line">			System.out.println(ele);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>HashSet去重</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public class StringDemo &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">     String string=&quot;我我我、、、我我、、我要、我要要、、、要要要、、要要、、学学学、、、、学学编、、、学编编编、、编编编程、、程程&quot;;</div><div class="line">	char[] cs=string.toCharArray();</div><div class="line">	HashSet&lt;Character&gt; characters=new HashSet&lt;&gt;();</div><div class="line">	  for(int i=0;i&lt;cs.length;i++) &#123;</div><div class="line">		characters.add(cs[i]);</div><div class="line">	  &#125;</div><div class="line">	  </div><div class="line">	  String string2=&quot;&quot;;</div><div class="line">	  Iterator&lt;Character&gt; iterator=characters.iterator();</div><div class="line">	  while(iterator.hasNext()) &#123;</div><div class="line">		  char c=iterator.next();</div><div class="line">		  if(c!=&apos;、&apos;) &#123;</div><div class="line">			  string2+=c;</div><div class="line">		  &#125;</div><div class="line">		  </div><div class="line">	  &#125;</div><div class="line">	  System.out.println(string2);</div><div class="line">	</div><div class="line">	</div><div class="line">	</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>TreeSet中存放的数据一定要有比较算法：1.自然排序 比较算法放在实体里面，实体类必须实现Comparable接口；2.比较器排序，排序算法以形参的方式传递给TreeSet容器，new Comparator接口的实现类对象。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		</div><div class="line">		TreeSet&lt;Goods&gt; goods=new TreeSet&lt;&gt;();</div><div class="line">		Goods good1=new Goods(&quot;苹果&quot;,4.5,100);</div><div class="line">		Goods good2=new Goods(&quot;梨&quot;,4.5,100);</div><div class="line">		Goods good3=new Goods(&quot;草莓&quot;,7.5,100);</div><div class="line">		Goods good4=new Goods(&quot;西瓜&quot;,1.5,150);</div><div class="line">		goods.add(good1);</div><div class="line">		goods.add(good2);</div><div class="line">		goods.add(good3);</div><div class="line">		goods.add(good4);</div><div class="line">		for (Goods good:goods) &#123;</div><div class="line">			System.out.println(good);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">public class Goods implements Comparable&lt;Goods&gt; &#123;//没有排序算法</div><div class="line">	private String name;</div><div class="line">	private double price;</div><div class="line">	private int num;</div><div class="line">	</div><div class="line">	@Override</div><div class="line">	public int hashCode() &#123;</div><div class="line">		final int prime = 31;</div><div class="line">		int result = 1;</div><div class="line">		result = prime * result + ((name == null) ? 0 : name.hashCode());</div><div class="line">		result = prime * result + num;</div><div class="line">		long temp;</div><div class="line">		temp = Double.doubleToLongBits(price);</div><div class="line">		result = prime * result + (int) (temp ^ (temp &gt;&gt;&gt; 32));</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public boolean equals(Object obj) &#123;</div><div class="line">		if (this == obj)</div><div class="line">			return true;</div><div class="line">		if (obj == null)</div><div class="line">			return false;</div><div class="line">		if (getClass() != obj.getClass())</div><div class="line">			return false;</div><div class="line">		Goods other = (Goods) obj;</div><div class="line">		if (name == null) &#123;</div><div class="line">			if (other.name != null)</div><div class="line">				return false;</div><div class="line">		&#125; else if (!name.equals(other.name))</div><div class="line">			return false;</div><div class="line">		if (num != other.num)</div><div class="line">			return false;</div><div class="line">		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))</div><div class="line">			return false;</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	public Goods() &#123;</div><div class="line">		super();</div><div class="line">		// TODO Auto-generated constructor stub</div><div class="line">	&#125;</div><div class="line">	public Goods(String name, double price, int num) &#123;</div><div class="line">		super();</div><div class="line">		this.name = name;</div><div class="line">		this.price = price;</div><div class="line">		this.num = num;</div><div class="line">	&#125;</div><div class="line">	public String getName() &#123;</div><div class="line">		return name;</div><div class="line">	&#125;</div><div class="line">	public void setName(String name) &#123;</div><div class="line">		this.name = name;</div><div class="line">	&#125;</div><div class="line">	public double getPrice() &#123;</div><div class="line">		return price;</div><div class="line">	&#125;</div><div class="line">	public void setPrice(double price) &#123;</div><div class="line">		this.price = price;</div><div class="line">	&#125;</div><div class="line">	public int getNum() &#123;</div><div class="line">		return num;</div><div class="line">	&#125;</div><div class="line">	public void setNum(int num) &#123;</div><div class="line">		this.num = num;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public String toString() &#123;</div><div class="line">		return &quot;Goods [name=&quot; + name + &quot;, price=&quot; + price + &quot;, num=&quot; + num + &quot;]&quot;;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public int compareTo(Goods o) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		</div><div class="line">		//按照价格排序    我的价格大于O的价格，返回1  等于0  小于返回的-1</div><div class="line">		//基本数据类型double没有方法，Double包装类有compareTo（），double-》Double，使用它的Compareto（）</div><div class="line">		//如果价格相等怎么办？</div><div class="line">		int c=Double.valueOf(this.getPrice()).compareTo(Double.valueOf(o.getPrice()));</div><div class="line">		if(c==0)&#123;</div><div class="line">			//按名字排 ，String也有CompareTo（）方法</div><div class="line">			return this.name.compareTo(o.getName());	</div><div class="line">		&#125;</div><div class="line">		return c;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>String类常用方法</p>
+<ol>
+<li>int length()</li>
+<li>int indexOf(int ch)查找ch字符在该字符串中第一次出现的位置</li>
+<li>int indexOf(String str)查找str字符串在该字符串中第一次出现位置</li>
+<li>int lastIndexOf(String str)查找最后一次出现位置</li>
+<li>String substring(int beginIndex)获取从beginIndex位置开始到结束的子字符串。</li>
+<li>String substring(int beginIndex,int endIndex)获取从beginIndex到endIndex位置的子字符串</li>
+<li>String trim()</li>
+<li>String toLowerCase()</li>
+<li>String toUpperCase()</li>
+<li>char charAt(int index) 获取字符串中指定位置字符</li>
+</ol>
+</li>
+<li><p>将一个Java对象序列化到文件里面。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">在java中能被序列化的类必须先实现Serializable接口。</div><div class="line">ObjectOutputStream objectOutputStream=new ObjectOutputStream(new FileOutputStream(new File(&quot;D://obj&quot;)));</div><div class="line">objectOutputStream.writeObject(new User(&quot;zhangsan&quot;,100));</div><div class="line">objectOutputStream.close();</div><div class="line">//对象输出流</div><div class="line">ObjectInputStream objectInputStream=new ObjectInputStream(new File(&quot;D://obj&quot;));</div><div class="line">User user=(User) objectInputStream.readObject();</div><div class="line">System.out.println(user);</div><div class="line">objectInputStream.close();</div></pre></td></tr></table></figure>
+<h3 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h3><ol>
+<li><p>Ajax</p>
+<ol>
+<li>什么是Ajax。AJAX是Asynchronous JavaScript and XML 的缩写。是一种创建交互式网页应用的网页开发技术。</li>
+<li><p>为什么要使用AJax？</p>
+<ol>
+<li>通过异步模式，提升了用户体验</li>
+<li>优化了浏览器和服务器之间的传输，减少不必要的数据往返，减少带宽占用。</li>
+<li>Ajax引擎在客户端运行，承担了一部分本来由服务器承担的工作，从而减少了大量用户量下的服务器负载。</li>
+</ol>
+</li>
+<li><p>AJAX的特点是什么</p>
+<ol>
+<li>实现局部刷新</li>
+<li>能在不更新整个页面的前提下维护数据，这使得Web应用程序更为迅捷地回应用户动作，并避免了在网络上发送那些没有改变过的信息。</li>
+</ol>
+</li>
+<li><p>AJAX技术体系的组成部分有哪些。</p>
+<ol>
+<li>HTML，CSS，DOM，XML，XMLHTTPRequest，JavaScript</li>
+</ol>
+</li>
+<li><p>AJAX应用与传统Web应用有什么不同。</p>
+<ol>
+<li>使用AJAX技术，可以使JavaScript通过XMLHTTPRequest对象直接和服务器进行交互。</li>
+<li>通过HTTPRequest，一个web页面可以发送一个请求到web服务器并且接受web服务器返回的信息（不用重新加载页面），用户感觉不到页面刷新，也看不到JavaScript后台进行的发送请求和接受响应。</li>
+</ol>
+</li>
+<li><p>AJAX请求共有多少种CallBack</p>
+<ol>
+<li>onSuccess</li>
+<li>onFailure</li>
+<li>onUninitialized</li>
+<li>onLoading</li>
+<li>onLoaded</li>
+<li>onInteractive</li>
+<li>onComplete</li>
+<li>onException</li>
+</ol>
+</li>
+<li><p>XMLHttpRequest对象在IE和FireFox中创建有什么不同。</p>
+<ol>
+<li>IE通过new ActiveXObject（）得到，</li>
+<li>Firefox通过newXmlHttpRequest()得到。</li>
+</ol>
+</li>
+<li><p>AJAX 有哪些优点和缺点？</p>
+<ol>
+<li>页面无刷新，用户体验非常好</li>
+<li>使用异步方式与服务器通信，具有更加迅速的响应能力</li>
+<li>可以把以前一些服务器负担的工作转嫁到客户端，利用客户端闲置的能力来处理，减轻服务器和带宽</li>
+<li>它是基于标准化的并被广泛支持的技术，不需要下载插件或者小程序</li>
+<li>AJAX不支持浏览器back按钮</li>
+<li>安全问题，AJAX暴露了与服务器交互的细节</li>
+<li>破坏了程序的异常机制</li>
+<li>不容易调试</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>Redis</p>
+<ol>
+<li>什么是redis：一个基于内存的高新能的key-value数据库。</li>
+<li>Redis的特点：<ol>
+<li>本质上是一个Key-Value的内存数据库，整个数据库统统加载在内存当中进行操作，定期通过异步操作吧数据库数据flush到硬盘上进行保存。因为是纯内存操作，所以性能非常出色</li>
+<li>支持保存多种数据结构，此外单个value的最大限制是1GB</li>
+<li>数据库容量受到物理内存的限制，不能用作海量数据的高性能读写，因此Redis适合的场景主要是局限在较小数据量的高性能操作和运算上。</li>
+</ol>
+</li>
+<li><p>使用redis的好处</p>
+<ol>
+<li>速度快</li>
+<li>支持丰富的数据类型，支持String，list，set，sorted,set,hash</li>
+<li>支持事务，操作都是原子性，所谓原子性就是对数据的操作要么全部执行，要么全部不执行</li>
+<li>丰富的特性：可以用于缓存，消息，按key设置过期时间，过期后将自动删除，。</li>
+</ol>
+</li>
+<li><p>redis相比memcached有哪些优势</p>
+<ol>
+<li>memcached所有的值均是简单的字符串，redis作为其替代者，支持更为丰富的数据类型</li>
+<li>redis的速度比memcached快很多</li>
+<li>redis可以持久化其数据</li>
+</ol>
+</li>
+<li><p>redis持久化的几种方式</p>
+<ol>
+<li>RDB持久化：该机制可以在指定的时间间隔内生成数据集的时间点快照</li>
+<li>AOF持久化：记录服务器执行的所有写操作命令，并在服务器启动时通过重新执行这些命令来还原数据集。AOF文件中的命令全部以Redis协议的格式来保存，新命令会被追加到文件末尾。</li>
+<li>无持久化：让数据只在服务器运行时存在·</li>
+</ol>
+</li>
+<li><p>为什么redis要把所有数据放到内存中？</p>
+<ol>
+<li>为了达到最快的读写速度将数据都读到内存中，并通过异步的方式将数据写入磁盘。所以redis具有快速和数据持久化的特征。如果不将数据放在内存中，磁盘的IO速度严重影响redis的性能。</li>
+</ol>
+</li>
+<li><p>Redis与Memcached的区别有哪些</p>
+<ol>
+<li>存储方式不同。Memcache是把数据全部存在内存中，数据不能超过内存的大小，断电后数据库会挂掉。Redis有部分数据存在硬盘上，这样保证数据的持久性。</li>
+<li>数据支持的类型不同。</li>
+<li>使用底层模型不同。</li>
+<li>支持的value大小不一样，redis可以到1GB，而memcache只有1MB</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>SpringBoot集成Redis</p>
+<ol>
+<li>在pom.xml中加载SpringBoot redis包，spring-boot-starter-data-redis</li>
+<li>在SpringBoot核心配置文件application.properties中配置redis的连接信息</li>
+<li>在完成以上步骤后，SpringBoot将自动配置Redis Template。在需要操作Redis的类中注入redis Template模板。</li>
+<li>在使用的时候使用@Autowired 自动注入redis Template类，泛型里面只能写<string,string>,<object,object></object,object></string,string></li>
+</ol>
+</li>
+<li><p>cookie的使用。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;%</div><div class="line">	String userName=request.getParameter(&quot;username&quot;);</div><div class="line">	Cookie theUsername=new Cookie(&quot;username&quot;,usernName);</div><div class="line">	response.addCookie(theUsername);</div><div class="line"></div><div class="line">%&gt;</div><div class="line"></div><div class="line"></div><div class="line">　　&lt;％</div><div class="line">　　　Cookie myCookie[]=request.getCookies();//创建一个Cookie对象数组</div><div class="line"></div><div class="line">　　　for(int n=0;n=cookie.length-1;i++);//设立一个循环，来访问Cookie对象数组的每一个元素</div><div class="line"></div><div class="line">　　　Cookie newCookie= myCookie[n];</div><div class="line"></div><div class="line">　　　if(newCookie.getName().equals(&quot;username&quot;)); //判断元素的值是否为username中的值</div><div class="line">　　　　&#123;％&gt;</div><div class="line">　　　　　你好,&lt;％=newCookie.getValue()％&gt;!//如果找到后，向他问好</div><div class="line">　　　　&lt;％&#125;</div><div class="line">　　％&gt;</div></pre></td></tr></table></figure>
+<h3 id="Shiro"><a href="#Shiro" class="headerlink" title="Shiro"></a>Shiro</h3><ol>
+<li>Shiro框架简介：是一个安全框架，可以帮助我们完成：认证，授权，加密，会话管理。</li>
+<li><p>三个核心组件：Subject，SecurityManager，Realms（Shiro连接数据的桥梁）</p>
+<ol>
+<li>Subject:是当前操作的用户，但是，在Shiro中，这一概念不仅仅指人，也可以是第三方进程，后台账户等与当前软件交互的东西。</li>
+<li>SecurityManager管理所有用户的安全操作。是Shiro框架的核心，通过它来管理内部组件实例，并通过它来提供安全管理的各种服务。</li>
+<li>Realm：充当了Shiro与应用安全数据间的桥梁或者连接器。也就是说当对用户执行认证和授权验证时，Shiro会从应用配置的Realm中查找用户及其权限信息。</li>
+</ol>
+</li>
+<li><p>四种权限控制方式</p>
+<ol>
+<li>URL级别权限控制</li>
+<li>方法注解权限控制</li>
+<li>代码级别权限控制</li>
+<li>页面标签权限控制</li>
+</ol>
+</li>
+<li><p>SpringBoot与Shiro整合</p>
+<ol>
+<li>修改pom.xml，导入Spring与shiro的依赖。shiro-spring</li>
+<li>编写Shiro配置类。ShiroConfig。在类的上面添加@Configuration。<ol>
+<li>创建ShiroFilterFactoryBean<ol>
+<li>常用：anon无需认证可以访问，authc必须认证才可以访问，user:使用rememberme可以直接访问；perms:该资源必须使用资源权限才可以访问；role：必须得到角色权限才可以访问。</li>
+<li>shiroFilterFactoryBean.setFilterChainDeinitionMap(filterMap)</li>
+<li>修改默认的登录页面。setLoginUrl(“/toLogin”);</li>
+</ol>
+</li>
+<li>创建DefaultWebSecurityManager</li>
+<li>创建Realm（可支持自定义，继承AuthorizingRealm。1,执行授权逻辑，2.执行认证逻辑）</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>编写用户登录</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">@RequestMapping(&quot;/login&quot;)</div><div class="line">public String login(String name,String password,Model model)</div><div class="line">&#123;</div><div class="line">//使用Shiro编写认证操作</div><div class="line"></div><div class="line">//1. 获取Subject</div><div class="line">	Subject subject=SecurityUtils.getSubject();</div><div class="line">//2. 封装用户数据</div><div class="line">	UsernamePasswordToken token=new UsernamePassowrd(name,password);</div><div class="line"></div><div class="line">//3. 执行登录方法</div><div class="line">	try&#123;</div><div class="line">	subject.login(token); //这里的判断是在realm中进行的</div><div class="line">//登录成功  跳转到成功的HTML</div><div class="line">	return &quot;/user/success&quot;;</div><div class="line">	&#125;catch(UnkonwnAccountException e)&#123;</div><div class="line">		//e.printStackTrace();</div><div class="line">		//登录失败，用户名不存在</div><div class="line">	model.addAttribute(&quot;msg&quot;,&quot;用户名不存在&quot;)</div><div class="line">	return &quot;/user/Login&quot;;</div><div class="line">	&#125;catch(IncorrectCredentialsException e)</div><div class="line">	&#123;</div><div class="line">		model.addAttribute(&quot;msg&quot;,&quot;密码错误&quot;);</div><div class="line">		return &quot;/user/Login&quot;;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">自定义的UserRealm, 编写realm的判断逻辑</div><div class="line">@Override</div><div class="line">protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0)throws AuthenticationException&#123;</div><div class="line">	System.out.println(&quot;执行认证逻辑&quot;);</div><div class="line">	String name=&quot;yanghaun&quot;;//假设是从数据库查出来的数据</div><div class="line">	String password=&quot;123&quot;;  //假设是从数据库中查出来用户的密码</div><div class="line">	UsernamePasswordToken token=(UsernamePasswordToken)arg0;</div><div class="line">	if(!token.getUername().equals(name))&#123;</div><div class="line">		return null;//shiro的底层会抛出UnknownAccountException</div><div class="line">	&#125;</div><div class="line">	//2. 判断 密码 ,第一个是需要返回的数据，第二个是密码</div><div class="line">	return new SimpleAuthenticationInfo(&quot;&quot;,password,&quot;&quot;);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>用户授权</li>
+</ol>
+<h3 id="Tomcat相关"><a href="#Tomcat相关" class="headerlink" title="Tomcat相关"></a>Tomcat相关</h3><ol>
+<li>Tomcat中最顶层的容器是Server，代表整个服务器，一个Server至少包含一个Service。</li>
+<li>Service主要包含两个部分，Connector和Container。一个Service只有一个Container但是可以有多个Connectors，这是因为一个服务可以有多个连接，如同时提供HTTP和Https连接，也可以提供向相同协议不同端口的连接。有了Service就可以对外提供服务了，但是Service必须要有一个生存的环境，必须有人给他生命，掌握生死大权。所以整个Tomcat的生命周期由Server控制。</li>
+<li>Connector用于接受请求并将请求封装成Request和Response来具体处理。</li>
+<li>Container用来封装和管理Servlet以及具体处理request请求</li>
+<li>基本流程：一个请求发送到Tomcat之后，首先经过Service，然后交给Connector，Connector用于接收请求并将接收的请求封装为Request和Response来具体处理，Request和Response封装后再交给Container进行处理，Container处理完请求后再返回给Connector，最后再由Connector通过Socket将处理的结果返回给客户端，这样整个请求就处理完了。Connector最底层使用的是Socket协议来进行连接的，Request和Response是按照HTTP协议来封装的，所以Connector同时需要实现TCP/IP和HTTP协议。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/12/SpringBoot第二天/" rel="prev" title="SpringBoot第二天">
+                SpringBoot第二天 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">121</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">1.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">2.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆排序"><span class="nav-number">3.</span> <span class="nav-text">堆排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面试题汇总"><span class="nav-number">3.1.</span> <span class="nav-text">面试题汇总</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础部分"><span class="nav-number">3.2.</span> <span class="nav-text">基础部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目相关"><span class="nav-number">3.3.</span> <span class="nav-text">项目相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shiro"><span class="nav-number">3.4.</span> <span class="nav-text">Shiro</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat相关"><span class="nav-number">3.5.</span> <span class="nav-text">Tomcat相关</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
