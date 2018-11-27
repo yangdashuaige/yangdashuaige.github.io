@@ -1,0 +1,923 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="集合类* 基本介绍：  Collection接口是List，Set，Queue的父接口 Set接口有两个常用的实现类：HashSet和TreeSet List接口常用接口有：ArrayList和Vector Map接口有两个实现类：Hashtable和HashMap   Collection实现比较要实现什么接口  实体类实现Comprable接口，并实现compareTo(T t)方法。 创建一">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础面试题">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/java基础面试题/index.html">
+<meta property="og:site_name" content="杨大帅哥的博客">
+<meta property="og:description" content="集合类* 基本介绍：  Collection接口是List，Set，Queue的父接口 Set接口有两个常用的实现类：HashSet和TreeSet List接口常用接口有：ArrayList和Vector Map接口有两个实现类：Hashtable和HashMap   Collection实现比较要实现什么接口  实体类实现Comprable接口，并实现compareTo(T t)方法。 创建一">
+<meta property="og:updated_time" content="2018-11-27T14:19:47.812Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java基础面试题">
+<meta name="twitter:description" content="集合类* 基本介绍：  Collection接口是List，Set，Queue的父接口 Set接口有两个常用的实现类：HashSet和TreeSet List接口常用接口有：ArrayList和Vector Map接口有两个实现类：Hashtable和HashMap   Collection实现比较要实现什么接口  实体类实现Comprable接口，并实现compareTo(T t)方法。 创建一">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/java基础面试题/"/>
+
+
+
+
+
+  <title> java基础面试题 | 杨大帅哥的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨大帅哥的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">泥土之上与泥土之下，大概是喜欢与爱的界限吧！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/java基础面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="杨彦修">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨大帅哥的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                java基础面试题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T22:18:17+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="集合类"><a href="#集合类" class="headerlink" title="集合类*"></a>集合类<strong><strong><em>*</em></strong></strong></h3><ol>
+<li><p>基本介绍：</p>
+<ol>
+<li>Collection接口是List，Set，Queue的父接口</li>
+<li>Set接口有两个常用的实现类：HashSet和TreeSet</li>
+<li>List接口常用接口有：ArrayList和Vector</li>
+<li>Map接口有两个实现类：Hashtable和HashMap</li>
+</ol>
+</li>
+<li><p>Collection实现比较要实现什么接口</p>
+<ol>
+<li>实体类实现Comprable<t>接口，并实现compareTo(T t)方法。</t></li>
+<li>创建一个外部比较器，这个比较器实现Comparator接口的compare(T t1,T t2)</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">package Day08;</div><div class="line"></div><div class="line">import java.util.ArrayList;</div><div class="line">import java.util.Collections;</div><div class="line">import java.util.List;</div><div class="line"></div><div class="line">import javax.print.attribute.standard.MediaName;</div><div class="line"></div><div class="line">public class Student implements Comparable&lt;Student&gt;&#123;</div><div class="line"></div><div class="line">	private String name;</div><div class="line">	private int age;</div><div class="line"></div><div class="line">	public Student() &#123;</div><div class="line">		super();</div><div class="line">		// TODO Auto-generated constructor stub</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public String getName() &#123;</div><div class="line">		return name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setName(String name) &#123;</div><div class="line">		this.name = name;</div><div class="line">	&#125;/*-</div><div class="line">	public int getAge() &#123;</div><div class="line">		return age;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void setAge(int age) &#123;</div><div class="line">		this.age = age;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public Student(String name, int age) &#123;</div><div class="line">		super();</div><div class="line">		this.name = name;</div><div class="line">		this.age = age;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public String toString() &#123;</div><div class="line">		return &quot;姓名 ： &quot; + name + &quot; 年龄： &quot; + age;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public int compareTo(Student o) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		if(this.getAge()&gt;o.getAge())</div><div class="line">		&#123;</div><div class="line">			return 1;</div><div class="line">		&#125;else if(this.getAge()&lt;o.getAge())</div><div class="line">		&#123;</div><div class="line">			return -1;</div><div class="line">		&#125;else &#123;</div><div class="line">			return 0;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		List&lt;Student&gt; list=new ArrayList&lt;Student&gt;();</div><div class="line">		list.add(new Student(&quot;张三&quot;,13));</div><div class="line">		list.add(new Student(&quot;李四&quot;,56));</div><div class="line">		list.add(new Student(&quot;王五&quot;,35));</div><div class="line">		list.add(new Student(&quot;张柳&quot;,33));</div><div class="line">		Collections.sort(list);</div><div class="line">		System.out.println(list);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">第二种，实现Comparator接口</div><div class="line">1. 定义一个实体类，</div><div class="line"></div><div class="line">public class Student &#123;</div><div class="line"></div><div class="line">    private String name;</div><div class="line"></div><div class="line">    private int age;</div><div class="line"></div><div class="line">    public Student() &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public Student(String name, int age) &#123;</div><div class="line">        this.name = name;</div><div class="line">        this.age = age;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getName() &#123;</div><div class="line">        return name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setName(String name) &#123;</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public int getAge() &#123;</div><div class="line">        return age;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setAge(int age) &#123;</div><div class="line">        this.age = age;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">2. 定义一个外部比较器类，实现Comparator接口</div><div class="line">public class StudentComparator implements Comparator&lt;Student&gt;&#123;</div><div class="line">    @Override</div><div class="line">    public int compare(Student o1, Student o2) &#123;</div><div class="line">        if (o1.getAge() &gt; o2.getAge()) &#123;</div><div class="line">            return 1;</div><div class="line">        &#125;else if (o1.getAge() == o2.getAge()) &#123;</div><div class="line">            return 0;</div><div class="line">        &#125;else&#123;</div><div class="line">            return -1;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String args[]) &#123;</div><div class="line">        Student marry = new Student(&quot;marry&quot;, 12);</div><div class="line">        Student tom = new Student(&quot;tom&quot;, 3);</div><div class="line">        Student jackson = new Student(&quot;jackson&quot;, 88);</div><div class="line"></div><div class="line">        StudentComparator comparator = new StudentComparator();</div><div class="line">        System.out.println(comparator.compare(marry, tom)); //1</div><div class="line">        System.out.println(comparator.compare(tom, jackson));  //-1</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">package Day06;</div><div class="line">import java.util.ArrayList;</div><div class="line">import java.util.Collections;</div><div class="line">import java.util.Comparator;</div><div class="line">import java.util.HashMap;</div><div class="line">import java.util.LinkedHashMap;</div><div class="line">import java.util.List;</div><div class="line">import java.util.Map.Entry;</div><div class="line">import java.util.Set;</div><div class="line"></div><div class="line">public class demo05 &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		HashMap&lt;Integer, User&gt; users=new HashMap&lt;&gt;();</div><div class="line">		users.put(1, new User(&quot;张三&quot;,23));</div><div class="line">		users.put(2, new User(&quot;张四&quot;,29));</div><div class="line">		users.put(3, new User(&quot;王五&quot;,18));</div><div class="line">		System.out.println(users);</div><div class="line">		HashMap&lt;Integer, User&gt; sortHahsMap=sortHahsMap(users);</div><div class="line">		System.out.println(sortHahsMap);</div><div class="line">	&#125;</div><div class="line">	public static HashMap&lt;Integer, User&gt; sortHahsMap(HashMap&lt;Integer, User&gt; map)</div><div class="line">	&#123;</div><div class="line">		Set&lt;Entry&lt;Integer,User&gt;&gt; entrySet=map.entrySet();</div><div class="line">		</div><div class="line">		//将set集合转为List集合，为啥，这是为了使用工具类的排序方式</div><div class="line">		List&lt;Entry&lt;Integer,User&gt;&gt; list=new ArrayList&lt;Entry&lt;Integer,User&gt;&gt;(entrySet);</div><div class="line">		Collections.sort(list,new Comparator&lt;Entry&lt;Integer,User&gt;&gt;() &#123;</div><div class="line"></div><div class="line">			@Override</div><div class="line">			public int compare(Entry&lt;Integer, User&gt; o1, Entry&lt;Integer, User&gt; o2) &#123;</div><div class="line">				// TODO Auto-generated method stub</div><div class="line">				</div><div class="line">				return o2.getValue().getAge()-o1.getValue().getAge();</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">		LinkedHashMap&lt;Integer, User&gt; linkedHashMap=new LinkedHashMap&lt;Integer,User&gt;();</div><div class="line">		//将List中的数据存储在LinkedHashMap中</div><div class="line">		for(Entry&lt;Integer, User&gt; entry:list)</div><div class="line">		&#123;</div><div class="line">			linkedHashMap.put(entry.getKey(), entry.getValue());</div><div class="line">		&#125;</div><div class="line">		return linkedHashMap;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所以，当希望实体类放入集合的时候能够按照你希望的方式排序，那么需要让实体类实现Comparable接口，。如果只是简单比较两个实体类的大小，最后返回一个结果，那么用Comparator接口实现一个外部比较器比较合适。</p>
+<ol>
+<li><p>ArrayList和Vector的区别（是否有序，是否重复，数据结构，底层实现）</p>
+<ol>
+<li>ArrayList和Vector都实现了List接口，他们都是有序集合，并且存放的元素是允许重复的。他们的底层都是通过数组来实现的，因此这种数据结构检索数据速度快，但增删改速度慢。</li>
+<li>区别：<ol>
+<li>线程安全。Vector是线程安全的，而ArrayList是线程不安全的。因此如果集合数据只有单线程访问，那么使用ArrayList可以提高效率。而如果有多线程访问你的集合数据，那么就必须使用Vector，因为要保证数据安全。</li>
+<li>数据增长。ArrayList和Vector都有一个初始的容量大小，当存储他们里面的元素超过了容量时，就需要增加它们的存储容量。ArrayList每次增长原来的0.5倍，而Vector增长原来的一倍。ArrayList和Vector都可以设置初始空间的大小，Vector还可以设置增长的空间大小，而ArrayList没有提供增长控件的方法。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>HashMap和Hashtable的区别</p>
+<ol>
+<li>HashMap和Hashtable都实现了Map接口，并且都是key-value的数据结构。他们的不同点主要在三个方面</li>
+<li>第一，Hashtable是java1.1的一个类，它基于陈旧的Dictionary类。而HashMap是java1.2引进的Map接口的一个实现。</li>
+<li>第二，Hashtable是线程安全的，也就是说线程同步的，而HashMap是线程不安全的。也就是说在单线程环境下使用HashMap，这样效率高</li>
+<li>HashMap允许将null值作为key或value，但Hashtable不允许（抛出NullPointException）</li>
+</ol>
+</li>
+<li><p>List和Map的区别（数据结构，存储特点）</p>
+<ol>
+<li>主要从两个方面回答，一方面是List和Map的数据结构，另一方面是存储数据的特点。</li>
+<li>数据结构：List存储的是单列数据的集合；而Map存储的是key,value类型的数据集合。</li>
+<li>数据存储：List存储的数据是有序的并且可以重复，而Map中存储的数据是无序的且key值不能重复。</li>
+</ol>
+</li>
+<li><p>List，Map，Set三个接口，存取元素时，各有什么特点？</p>
+<ol>
+<li>List和Set具有相似性，他们都是单列元素的集合，他们有一个共同的父接口，叫Collection。Set里面不允许有重复的元素，所谓重复，即不能有两个相等（注意，不是仅仅是相同）的对象。Set取元素时，没法说取第几个，只能以Iterator接口所取得的所有元素，再逐一遍历各个元素</li>
+<li>List表示有先后顺序的集合，注意，不是那种按年龄、按大小、按价格之类的排序。当我们多次调用add(Obj e)方法时，每次加入的对象就像火车站买票有排队顺序一样，按先来后到的顺序排序。有时候，也可以插队，即调用add(int index,Obj e)方法，就可以指定当前对象在集合中的存放位置。一个对象可以被反复存储进List中，每调用一次add方法，这个对象就被插入进集合中一次，其实，并不是把这个对象本身存储进了集合中，而是在集合中用一个索引变量指向这个对象，当这个对象被add多次时，即相当于集合中有多个索引指向了这个对象，如图x所示。List除了可以以Iterator接口取得所有的元素，再逐一遍历各个元素之外，还可以调用get(index i)来明确说明取第几个</li>
+<li>Map与List和Set不同，它是双列的集合，其中有put方法，定义如下：put(obj key,obj value)，每次存储时，要存储一对key/value，不能存储重复的key，这个重复的规则也是按equals比较相等。取则可以根据key获得相应的value，即get(Object key)返回值为key 所对应的value。另外，也可以获得所有的key的结合（map.keySet()），还可以获得所有的value的结合（map.values()），还可以获得key和value组合成的Map.Entry对象的集合（map.entrySet()）。</li>
+<li>List 以特定次序来持有元素，可有重复元素。Set 无法拥有重复元素,内部排序。Map 保存key-value值，value可多值。</li>
+</ol>
+</li>
+</ol>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><ol>
+<li>什么是线程：线程是操作系统能够运行的最小单位，它被包含在进程中，是进程实际操作的单位。程序员可以通过它进行多处理器编程。</li>
+<li><p>线程和进程的区别：</p>
+<ol>
+<li>线程是进程的子集，一个进程可以有多个线程，每条线程并行执行不同的任务。</li>
+<li>不同的进程使用不同的内存空间，而所有的线程共享一片相同的内存空间。</li>
+</ol>
+</li>
+<li><p>多线程的实现。</p>
+<ol>
+<li>使用Thread类：在Thread子类覆盖的run方法中编写运行代码</li>
+<li>实现Runnable接口</li>
+</ol>
+</li>
+</ol>
+<h3 id="JVM内存模型"><a href="#JVM内存模型" class="headerlink" title="JVM内存模型*"></a>JVM内存模型*</h3><ol>
+<li>JVM内存分哪几个区，每个区的作用是什么？<ol>
+<li>方法区：<ol>
+<li>有时候也称为永久区，在该区很少发生垃圾回收，但是并不代表不发生GC，在这里进行的GC主要是对方法区里的常量池和对类型的卸载。</li>
+</ol>
+</li>
+<li>虚拟机栈（Java栈）：java栈是java方法执行的内存模型。<ol>
+<li>java栈中存放的是一个个的栈帧，每个栈帧对应一个被调用的方法，在栈帧中包括局部变量表（Local Variables），操作数栈（Operand Stack）、指向当前方法所属的类的运行时常量池的引用、方法返回地址和一些额外的附加信息。当线程执行一个方法时，就会随之创建一个对应的栈帧，并将建立的栈帧压栈。当方法执行完毕之后，便会将栈帧出栈。因此可知，线程当前执行的方法所对应的栈帧必定位于java的顶部。</li>
+</ol>
+</li>
+<li>本地方法栈</li>
+<li>堆</li>
+<li>程序计数器：也称作PC寄存器。用来指示执行哪条指令的。由于在JVM中，多线程是通过线程轮流切换获得CPU执行时间的，因此，在任意具体时刻，一个CPU的内核只会执行一条线程中的指令，因此，为了能够使得每个线程都在线程切换后能够恢复在切换之前的程序执行位置，每个线程都需要有自己独立的程序计数器，并且不能够相互干扰，否则就会影响到程序的正常执行次序。因此，可以这么说，程序计数器是每个线程私有的。在JVM规范中规定，如果线程执行的是非native方法，则程序计数器中保存的是当前需要执行的指令的地址；如果线程执行的是native方法，则程序计数器中的值是undefined。由于程序计数器中存储的数据所占的空间的大小不会随程序的执行而发生改变，因此，对于程序计数器是不会发生内存溢出现象的。</li>
+</ol>
+</li>
+</ol>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ol>
+<li><p>事务的四大特性</p>
+<ol>
+<li>原子性：指事务包含的所有操作要么全部成功，要么全部失败回滚。</li>
+<li>一致性：是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须处于一致性状态。</li>
+<li>隔离性。是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务所干扰，多个并发事务之间要相互隔离。</li>
+<li>持久性：是指一个事务一旦被提交了，那么对数据库的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。</li>
+</ol>
+</li>
+<li><p>如果不考虑事务的隔离性，会发生的几种问题：</p>
+<ol>
+<li>脏读：是指在一个事务处理过程里读取了另一个未提交的事务中的数据。</li>
+<li>不可重复读：指在对于数据库中的某个数据，一个事务范围内多次查询却返回了不同的数据值，这是由于在查询间隔，被另一个事务修改并提交了、</li>
+<li>幻读：是事务非独立执行时发生的一种现象。例如事务T1对一个表中所有的行的某个数据项做了从’1’修改为’2’，这时事务T2又对这个表中插入了一行数据项，而这个数据项的数值还是1并且提交给数据库。</li>
+</ol>
+</li>
+<li><p>事务的隔离级别：</p>
+<ol>
+<li>读未提交 read-uncommitted </li>
+<li>不可重复读  read-committed</li>
+<li>可重复读 repeatable=read</li>
+<li>串行化   serializable</li>
+</ol>
+</li>
+<li><p>数据库索引的作用</p>
+<ol>
+<li>提高查询速度</li>
+<li>确保数据的唯一性</li>
+<li>可以加速表和表之间的连接，实现表和表之间的参照完整性</li>
+<li>使用分组和排序子句进行数据检索时，可以减少分组和排序的时间</li>
+<li>全文检索字段进行搜索优化。</li>
+<li>分类：<ol>
+<li>主键索引PRIJMARY KEY：某一个属性组能唯一标识一条记录</li>
+<li>唯一索引 UNIQUE：避免同一个表中某数据列中的值重复。<ol>
+<li>与主键索引的区别：<ol>
+<li>主键索引只能有一个</li>
+<li>唯一索引可以有多个</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>常规索引 INDEX：快速定位特定数据</li>
+<li>全文索引 FULLTEXT：快速定位特定数据</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>什么叫触发器。<ol>
+<li>是一种特殊的存储过程。</li>
+<li>触发器主要是通过事件进行触发而被执行的，而存储过程可以通过存储过程名字而被直接调用。</li>
+<li>触发器的主要作用就是器能够实现由主键和外键所不能保证的复杂的参照完整性和数据的一致性。</li>
+</ol>
+</li>
+<li>写sql语句，表连接查询</li>
+<li>知道数据库查询优化的方法<ol>
+<li>选取合适的字段属性，在可能的情况下，尽量将字段设置为not NULL，这样查询的时候就不用和NULL值进行比较。</li>
+<li>使用连接JOIN来代替子查询</li>
+<li>使用联合UNION来代替手动创建的临时表</li>
+<li>事务</li>
+<li>锁定表</li>
+<li>使用外键</li>
+<li>使用索引</li>
+<li>优化查询语句</li>
+<li></li>
+</ol>
+</li>
+<li>数据库三大范式<ol>
+<li>第一范式：最基本的范式。如果数据库表中所有的字段都是不可分解的原子值，就说明该数据库表满足了第一范式</li>
+<li>第二范式：在第一范式的基础上更进一层，第二范式需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关。、</li>
+<li>第三范式：需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。</li>
+</ol>
+</li>
+</ol>
+<h3 id="JavaWeb"><a href="#JavaWeb" class="headerlink" title="JavaWeb"></a>JavaWeb</h3><ol>
+<li>什么是MVC<ol>
+<li>MVC全名是Model ，View，Controller是模型，视图，控制器的缩写。是一种软件设计典范，用一种业务逻辑，数据，界面显示分离的方法组织代码，将业务逻辑聚集到一个部件里面。</li>
+</ol>
+</li>
+<li>JSP和servlet的异同点<ol>
+<li>相同点：JSP的本质是servlet，JSP是在servlet的基础上推出的，JSP具有Servlet的功能。</li>
+<li>不同点：<ol>
+<li>JSP编译后就成了Servlet（JSP的本质就是Servlet，JVM只能识别Java类，不能识别JSP的代码，Web容器将JSP编译成能够识别的java类）</li>
+<li>JSP更擅长表现与页面的显示，servlet更擅长于逻辑控制</li>
+<li>Servlet没有内置对象，JSP的内置对象都是必须通过HTTPServletRequest对象，HTTPServletResponse对象以及HTTPServlet对象获得</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>JSP的九大内置对象<ol>
+<li>request,response,pageContext,session,application,page,config,out,exception</li>
+</ol>
+</li>
+<li>servlet的生命周期<ol>
+<li>web容器加载servlet，生命周期开始。通过调用servlet的init（）方法进行servlet的初始化。通过调用service()方法实现，根据请求的不同调用不同的doGet/post方法。结束服务，web容器调用servlet的destroy方法。</li>
+</ol>
+</li>
+<li>servlet是单例吗。线程安全吗<ol>
+<li>servlet线程不安全</li>
+</ol>
+</li>
+<li>你用过的数据库连接池产品</li>
+<li>数据源连接池的实现原理是什么</li>
+<li>写出在数据库连接池连接的时候有哪些配置</li>
+<li>jdbc中statement和preparestatement和currentStatement的区别</li>
+<li>什么是ORM框架</li>
+<li>resulttype和resultMap的区别</li>
+<li>hibernate</li>
+<li>mybatis和hibernate的区别</li>
+<li>hibernate的缓存机制和级联</li>
+<li>hibernate的缓存机制有几种</li>
+<li>hibernate中get方法和load方法的区别</li>
+<li>SpringMVC的工作流程</li>
+<li>SpringMVC和Structs2的区别</li>
+<li>SpringMVC中几种param的区别</li>
+<li>SpringICO是什么</li>
+<li>SpringAOP 。日志记录，动态代理</li>
+<li>连接点和切入点的区别</li>
+<li>JDK动态代理和CGlib代理的区别</li>
+<li>Springboot是做什么的</li>
+<li>SpringData是干啥的</li>
+<li>SQL和nosql的区别。分别用于什么场景</li>
+<li>mangoDB和redis的区别</li>
+<li>Springcloud用过吗，有啥用</li>
+<li>dubbo数据库。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/22/面试相关/" rel="prev" title="面试相关">
+                面试相关 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
+               alt="杨彦修" />
+          <p class="site-author-name" itemprop="name">杨彦修</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">122</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合类"><span class="nav-number">1.</span> <span class="nav-text">集合类*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程"><span class="nav-number">2.</span> <span class="nav-text">多线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM内存模型"><span class="nav-number">3.</span> <span class="nav-text">JVM内存模型*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库"><span class="nav-number">4.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaWeb"><span class="nav-number">5.</span> <span class="nav-text">JavaWeb</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">杨彦修</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
