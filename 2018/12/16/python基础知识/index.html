@@ -94,7 +94,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/12/16/python基础知识/index.html">
 <meta property="og:site_name" content="杨大帅哥的博客">
 <meta property="og:description" content="输出：print()函数，可以一次打印一个，也可以接受多个字符，用逗号隔开，就可以成一串输出。如： print(‘100 + 200 =’, 100 + 200)。print()函数会依次打印每个字符串，遇到逗号就会输出一个空格。 输入。input()函数，当输入name=input()并且按下回车之后，Python交互命令行就等待输入，这时可以输入任意字符，然后按回车后完成输入。name=in">
-<meta property="og:updated_time" content="2018-12-16T15:39:27.098Z">
+<meta property="og:updated_time" content="2018-12-17T14:11:55.569Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础知识">
 <meta name="twitter:description" content="输出：print()函数，可以一次打印一个，也可以接受多个字符，用逗号隔开，就可以成一串输出。如： print(‘100 + 200 =’, 100 + 200)。print()函数会依次打印每个字符串，遇到逗号就会输出一个空格。 输入。input()函数，当输入name=input()并且按下回车之后，Python交互命令行就等待输入，这时可以输入任意字符，然后按回车后完成输入。name=in">
@@ -393,6 +393,98 @@
 <li><p>格式化，使用%来实现。%s表示用字符串替换，%d表示用整数替换，%f表示浮点数，%x表示十六进制整数。有几个%?占位符，后面就跟几个变量或者值，顺序要对应。如：’Hello,%s’ %’world’;’Hi,%s,you have $%d’ %(‘Mike’,10000)。</p>
 </li>
 </ol>
+<h3 id="list和tuple"><a href="#list和tuple" class="headerlink" title="list和tuple"></a>list和tuple</h3><ol>
+<li>list:是Python内置的一种数据类型，是列表，表示是一种有序的集合，可以随时添加和删除其中的元素。<ol>
+<li>定义：classmates=[‘Michael’,’Bob’,’Tracy’]</li>
+<li>获取list元素的个数。len(classmates)</li>
+<li>根据索引访问list每一个位置的元素，索引从0开始。当超出范围后会报一个IndexError错误，所以数组不要越界。另外，可以使用-1作为索引，表示倒数第几个元素，同样也有数组越界的问题。</li>
+<li>list是一个可变的有序表，可以往list中追加元素到末尾。classmates.append(‘Apple’);也可以把元素插入到指定的位置，比如索引号为1的位置：classmates.insert(1,’Jack’)</li>
+<li>删除末尾元素，用pop()方法。classmates.pop();删除指定位置元素，classmates.pop(i)，里面放索引的位置。</li>
+<li>把某个元素替换成别的元素，可以直接赋值给对应索引的位置</li>
+<li>list中的元素的数据类型也可以不同，比如：L=[‘apple’,123,True],里面的元素也可以是另一个list</li>
+</ol>
+</li>
+<li>tuple。是另外一种有序的列表，和list非常类似，但是tuple一旦初始化就不能修改。索引没有append(),insert()方法。因为tuple是不可变的，所以代码更加安全。当定义一个tuple的时候，tuple的元素就必须被确定下来。</li>
+</ol>
+<h3 id="条件判断和循环"><a href="#条件判断和循环" class="headerlink" title="条件判断和循环"></a>条件判断和循环</h3><ol>
+<li>条件判断<ol>
+<li>if的判断条件还可以简写，只要x是非零数值，非空字符串，非空list等，就判断为True,否则就判断为False。</li>
+<li>可以使用input()函数读取用户的输入，但是因为input()返回的数据类型是str，str不能直接和整数比较，必须要把str转换成整数，可以使用int()函数来转换。但是当发现一个字符串并不是合法的数字时就会报错，程序就退出了。</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">age =20</div><div class="line">if age&gt;18:</div><div class="line">	print(&apos;your age is&apos;,age)</div><div class="line">	print(&apos;you are an adult&apos;)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">s=input(&apos;输入你的出生年份&apos;)</div><div class="line">birth=int(s)</div><div class="line">if birth&gt;2000:</div><div class="line">	print(&apos;00后&apos;)</div><div class="line">else:</div><div class="line">	print(&apos;00前&apos;)</div></pre></td></tr></table></figure>
+<ol>
+<li>循环。为了让计算机能计算成千上万次的重复运算，我们就需要循环语句。Python有两种循环：<ol>
+<li>一种是for… in循环，依次把list或者tuple中的每个元素迭代出来。</li>
+<li>一种是while循环，只要条件满足，就不断循环，条件不满足时推出循环。</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">names=[&apos;Michael&apos;,&apos;Bob&apos;,&apos;Tracy&apos;]</div><div class="line">for name in names:</div><div class="line">	print(name)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">sum = 0</div><div class="line">n = 99</div><div class="line">while n &gt; 0:</div><div class="line">    sum = sum + n</div><div class="line">    n = n - 2</div><div class="line">print(sum)</div></pre></td></tr></table></figure>
+<h3 id="dict和set"><a href="#dict和set" class="headerlink" title="dict和set"></a>dict和set</h3><ol>
+<li><p>Python内置了字典：dict的支持，dict全称dictionary，在其他语言中也称为map,使用键值对进行存储，具有极快的查找速度。</p>
+<ol>
+<li>定义：d={‘Michael’:95,’Bob’:80,’Tracy’:23}</li>
+<li>取值：d[‘Michael’]</li>
+<li>放值：d[‘Apple’]=67。因为一个key对应一个value，所以多次放会覆盖前面的数值。</li>
+<li><p>当key不存在的时候，dict会报错，所以需要先判断。</p>
+<ol>
+<li>‘Apple’ in d //会返回True或者False</li>
+<li>通过get方法，如果不存在就会返回None,或者自己指定的value:d.get(‘Bpple’);d.get(‘Bpple’,-1)</li>
+</ol>
+</li>
+<li><p>删除，使用pop()方法，对应的value也会从dict中删除。d.pop(‘Apple’)</p>
+</li>
+</ol>
+</li>
+<li><p>dict和list比较：</p>
+<ol>
+<li>查找和插入的速度极快，不会随着key的增加而变慢</li>
+<li>需要占用大量内存，内存浪费极多</li>
+</ol>
+</li>
+<li><p>Set和dict类似，也是一组key的集合，但不存储value,由于key不能重复，所以，在set中，没有重复的key.</p>
+<ol>
+<li>定义：s=set([1,2,3])。要创建一个set,需要提供一个list作为输入集合。</li>
+<li>添加：s.add(5)</li>
+<li>删除：s.remove(key)可以删除元素</li>
+</ol>
+</li>
+</ol>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ol>
+<li>函数定义：def 函数名(参数)：，然后在缩进块中编写函数体，函数的返回值可以使用return 语句返回。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">def funct(x):</div><div class="line">	if x&gt;0:</div><div class="line">		return x</div><div class="line">	else:</div><div class="line">		return -x</div><div class="line"></div><div class="line">print(funct(-20))</div></pre></td></tr></table></figure>
+<ol>
+<li>函数的使用。如果你已经把my_abs()的函数定义保存为abstest.py文件了，那么，可以在该文件的当前目录下启动Python解释器，用from abstest import my_abs来导入my_abs()函数，注意abstest是文件名（不含.py扩展名）</li>
+<li>空函数。可以使用pass语句def nop(): pass</li>
+<li>内置函数isinstance()可以检查数据类型。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">def my_abs(x):</div><div class="line">    if not isinstance(x, (int, float)):</div><div class="line">        raise TypeError(&apos;bad operand type&apos;)</div><div class="line">    if x &gt;= 0:</div><div class="line">        return x</div><div class="line">    else:</div><div class="line">        return -x</div></pre></td></tr></table></figure>
+<ol>
+<li>返回多个值。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import math</div><div class="line"></div><div class="line">def move(x, y, step, angle=0):</div><div class="line">    nx = x + step * math.cos(angle)</div><div class="line">    ny = y - step * math.sin(angle)</div><div class="line">    return nx, ny</div><div class="line"></div><div class="line">&gt;&gt;&gt; x, y = move(100, 100, 60, math.pi / 6)</div><div class="line">&gt;&gt;&gt; print(x, y)</div><div class="line">151.96152422706632 70.0</div></pre></td></tr></table></figure>
+<p>其实Python函数返回的仍然是单一值，是一个tuple。</p>
+<ol>
+<li><p>小结：</p>
+<ol>
+<li>定义函数时，需要确定函数名和参数的个数</li>
+<li>如果有必要，可以先对参数的数据类型做检查</li>
+<li>函数体内部可以用return随时返回函数结果</li>
+<li>函数执行完毕也没有return语句时，自动return None</li>
+<li>函数可以同时返回多个值，但其实就是一个tuple</li>
+</ol>
+</li>
+<li><p>可变参数。在Python中，还可以定义可变参数，就是传入的参数个数时可变的，可以是1个、2个到任意个，还可以时0个。在函数定义的时候就要将函数的参数改为可变参数。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">def calc(*numbers):</div><div class="line">    sum = 0</div><div class="line">    for n in numbers:</div><div class="line">        sum = sum + n * n</div><div class="line">    return sum</div><div class="line">&gt;&gt;&gt; calc(1, 2)</div><div class="line">5</div><div class="line">&gt;&gt;&gt; calc()</div><div class="line">0</div></pre></td></tr></table></figure>
+<p>如果已经有一个list或者 tuple，要调用一个可变参数，可以在list或者tuple之前加一个*号，把list或者tuple变成可变参数传进去。</p>
+<ol>
+<li>关键字参数。可变参数允许你传入0个或者任意个参数，这些可变参数在函数调用时自动组装成一个tuple。而关键字参数允许你传入0个或者任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。关键字参数可以扩展函数的功能，比如，在person函数里面，我们保证能够接收到name和age这两个参数，但是，如果调用者愿意提供更多的参数，我们也能够收到。试想你正在做一个用户注册的功能，除了用户名和年龄时必须填的，其他项都是可选项，利用关键字参数来定义这个函数就能满足注册的需求。</li>
+</ol>
 
       
     </div>
@@ -488,8 +580,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://oohubzl9h.bkt.clouddn.com/%E9%99%88.jpg"
@@ -551,6 +652,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#list和tuple"><span class="nav-number">1.</span> <span class="nav-text">list和tuple</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件判断和循环"><span class="nav-number">2.</span> <span class="nav-text">条件判断和循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dict和set"><span class="nav-number">3.</span> <span class="nav-text">dict和set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">4.</span> <span class="nav-text">函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
